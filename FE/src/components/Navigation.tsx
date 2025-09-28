@@ -14,7 +14,6 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
   const navigationItems = [
     { id: "home", label: "Trang chủ", icon: Home },
     { id: "theory", label: "Lý thuyết nền tảng ", icon: BookOpen },
-    { id: "reality", label: "Thực tiễn hiện nay", icon: Brain },
     { id: "exploitation", label: "Hình thức mới", icon: Users },
     { id: "example", label: "Hiện trạng", icon: Menu },
     { id: "chat", label: "AI Chat", icon: MessageCircle },

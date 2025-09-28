@@ -6,7 +6,6 @@ import ChatPage from "./pages/ChatPage";
 import ExamplePage from "./pages/ExamplePage";
 import ExploitationPage from "./pages/ExploitationPage";
 import HomePage from "./pages/HomePage";
-import RealityPage from "./pages/RealityPage";
 import TheoryPage from "./pages/TheoryPage";
 
 const App = () => {
@@ -18,8 +17,6 @@ const App = () => {
         return <HomePage onPageChange={setCurrentPage} />;
       case "theory":
         return <TheoryPage />;
-      case "reality":
-        return <RealityPage />;
       case "exploitation":
         return <ExploitationPage />;
       case "chat":
@@ -37,7 +34,7 @@ const App = () => {
     <div
       className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100 relative"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 248, 220, 0.85), rgba(245, 222, 179, 0.85)), url(${philosophersImage})`,
+        backgroundImage: ` url(${philosophersImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

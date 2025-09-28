@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { ArrowRight, Play, Brain, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { AlertTriangle, ArrowRight, Brain, Play, TrendingUp, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface HomePageProps {
   onPageChange: (page: string) => void;
@@ -14,7 +14,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
   useEffect(() => {
     setIsVisible(true);
     const timer = setInterval(() => {
-      setAnimationStep(prev => (prev + 1) % 4);
+      setAnimationStep((prev) => (prev + 1) % 4);
     }, 2000);
     return () => clearInterval(timer);
   }, []);
@@ -24,25 +24,34 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
       {/* Hero Section - Intro */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className={`text-5xl md:text-7xl font-bold text-amber-900 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h1
+            className={`text-5xl md:text-7xl font-bold text-amber-900 mb-6 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             Tự do hay bị bóc lột <br />
             <span className="text-orange-600">trong kỷ nguyên số?</span>
           </h1>
-          
-          <p className={`text-xl md:text-2xl text-amber-700 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Khám phá sự thật về "tự do" trong thời đại công nghệ số. Freelancer, YouTuber, TikToker... có thực sự tự do hay đang bị bóc lột một cách tinh vi?
+
+          <p
+            className={`text-xl md:text-2xl text-amber-700 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            Khám phá sự thật về "tự do" trong thời đại công nghệ số. Freelancer, YouTuber, TikToker... có thực sự tự do hay đang bị bóc lột một cách
+            tinh vi?
           </p>
 
           {/* Animated Visual */}
-          <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
             <div className="relative max-w-2xl mx-auto h-64 flex items-center justify-center">
               {/* Freelancer icon in center */}
               <div className="absolute z-10 bg-amber-200 rounded-full p-6 shadow-lg">
                 <Brain className="w-12 h-12 text-amber-800" />
               </div>
-              
+
               {/* Surrounding elements that appear progressively */}
-              <div className={`absolute transition-all duration-1000 ${animationStep >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
+              <div className={`absolute transition-all duration-1000 ${animationStep >= 1 ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}>
                 <div className="absolute -top-20 -left-20 bg-red-200 rounded-full p-4 shadow-md">
                   <TrendingUp className="w-8 h-8 text-red-600" />
                 </div>
@@ -58,7 +67,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
               </div>
 
               {/* Connecting lines */}
-              <div className={`absolute inset-0 transition-all duration-1000 delay-500 ${animationStep >= 2 ? 'opacity-60' : 'opacity-0'}`}>
+              <div className={`absolute inset-0 transition-all duration-1000 delay-500 ${animationStep >= 2 ? "opacity-60" : "opacity-0"}`}>
                 <svg className="w-full h-full" viewBox="0 0 300 200">
                   <line x1="150" y1="100" x2="100" y2="50" stroke="#ef4444" strokeWidth="2" strokeDasharray="5,5" />
                   <line x1="150" y1="100" x2="200" y2="50" stroke="#3b82f6" strokeWidth="2" strokeDasharray="5,5" />
@@ -68,18 +77,20 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
               </div>
 
               {/* Text labels */}
-              <div className={`absolute -top-32 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1000 ${animationStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                <span className="text-sm font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
-                  Thuật toán • Big Tech • Dữ liệu
-                </span>
+              <div
+                className={`absolute -top-32 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1000 ${
+                  animationStep >= 3 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+                }`}
+              >
+                <span className="text-sm font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Thuật toán • Big Tech • Dữ liệu</span>
               </div>
             </div>
           </div>
 
           {/* Call to Action */}
-          <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <Button
-              onClick={() => onPageChange('theory')}
+              onClick={() => onPageChange("theory")}
               size="lg"
               className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
@@ -97,33 +108,28 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
               description: "Khái niệm giai cấp, bóc lột theo Mác-Lênin",
               icon: Brain,
               page: "theory",
-              color: "bg-blue-100 text-blue-800"
-            },
-            {
-              title: "Thực tiễn hiện nay", 
-              description: "Freelancer, YouTuber, TikToker trong kỷ nguyên số",
-              icon: TrendingUp,
-              page: "reality",
-              color: "bg-green-100 text-green-800"
+              color: "bg-blue-100 text-blue-800",
             },
             {
               title: "Hình thức bóc lót mới",
               description: "Nền tảng số và các hình thức bóc lót tinh vi",
               icon: AlertTriangle,
               page: "exploitation",
-              color: "bg-red-100 text-red-800"
+              color: "bg-red-100 text-red-800",
             },
             {
               title: "Trò chuyện AI",
               description: "Thảo luận với AI về triết học và xã hội",
               icon: Play,
               page: "chat",
-              color: "bg-purple-100 text-purple-800"
-            }
+              color: "bg-purple-100 text-purple-800",
+            },
           ].map((item, index) => (
-            <Card 
+            <Card
               key={index}
-              className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-amber-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-amber-200 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
               style={{ transitionDelay: `${(index + 1) * 200}ms` }}
               onClick={() => onPageChange(item.page)}
             >
@@ -140,9 +146,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-amber-700 mb-6 text-lg">
-            "Giai cấp không biến mất, chỉ thay đổi hình thức."
-          </p>
+          <p className="text-amber-700 mb-6 text-lg">"Giai cấp không biến mất, chỉ thay đổi hình thức."</p>
           <p className="text-amber-600 text-sm max-w-2xl mx-auto">
             Hiểu để không ảo tưởng – và để đấu tranh đúng cách. Khám phá cách thức hoạt động của nền kinh tế số và vị trí thực sự của bạn trong đó.
           </p>
