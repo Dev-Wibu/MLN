@@ -118,6 +118,13 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
               color: "bg-red-100 text-red-800",
             },
             {
+              title: "Hiện trạng ngày nay",
+              description: "Các ví dụ thực tế về bóc lột hiện đại trong đời sống",
+              icon: TrendingUp,
+              page: "example",
+              color: "bg-green-100 text-green-800",
+            },
+            {
               title: "Trò chuyện AI",
               description: "Thảo luận với AI về triết học và xã hội",
               icon: Play,
@@ -126,7 +133,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
             },
           ].map((item, index) => (
             <Card
-              key={index}
+              key={`home-card-${item.title}`}
               className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-amber-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
