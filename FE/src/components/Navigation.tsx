@@ -29,7 +29,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
             <div className="flex-shrink-0 cursor-pointer" onClick={() => onPageChange("home")}>
               <span className="text-2xl font-bold text-amber-100 flex items-center gap-2">
                 <Brain className="w-6 h-6" />
-                Free?
+                Tự do 4.0
               </span>
             </div>
           </div>
