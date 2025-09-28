@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import ExpandableCard from "@/components/ui/expandable-card";
 import { ArrowRight, ChevronDown, ChevronUp, Coins, Factory, Lightbulb, Smartphone, UserCheck, UsersRound, Wrench } from "lucide-react";
 import { useState } from "react";
 
@@ -28,6 +29,8 @@ const ExamplePage = () => {
   const [expandedCase, setExpandedCase] = useState<number | null>(null);
   const [expandedSolution, setExpandedSolution] = useState<number | null>(null);
   const [expandedStruggle, setExpandedStruggle] = useState<string | null>(null);
+  const [expandedSurplus, setExpandedSurplus] = useState<string | null>(null);
+  const [expandedExploitation, setExpandedExploitation] = useState<string | null>(null);
 
   const caseStudies: CaseStudy[] = [
     {
@@ -223,8 +226,16 @@ const ExamplePage = () => {
     setExpandedStruggle(expandedStruggle === type ? null : type);
   };
 
+  const toggleSurplus = (worker: string) => {
+    setExpandedSurplus(expandedSurplus === worker ? null : worker);
+  };
+
+  const toggleExploitation = (type: string) => {
+    setExpandedExploitation(expandedExploitation === type ? null : type);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-50 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -263,7 +274,10 @@ const ExamplePage = () => {
                     <div className="p-6 bg-white">
                       <div className="space-y-4">
                         {caseStudy.items.map((item, idx) => (
-                          <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                          <div
+                            key={`case-item-${item.question.substring(0, 10).replace(/\s/g, "-")}-${idx}`}
+                            className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center"
+                          >
                             <div className="font-medium text-indigo-800">{item.question}</div>
                             <div className={`${item.highlight ? "text-red-600 font-semibold" : "text-indigo-600"}`}>{item.answer}</div>
                           </div>
@@ -289,8 +303,7 @@ const ExamplePage = () => {
           </CardHeader>
           <CardContent className="p-8">
             {/* Modern Means of Production */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-amber-900 mb-6">Tư liệu sản xuất thời đại mới</h3>
+            <ExpandableCard title="Tư liệu sản xuất thời đại mới" className="mb-8" defaultExpanded={false}>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
@@ -303,7 +316,7 @@ const ExamplePage = () => {
                   </thead>
                   <tbody>
                     {modernMeansOfProduction.map((item, idx) => (
-                      <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-indigo-50"}>
+                      <tr key={`production-${item.title.replace(/\s/g, "-")}-${idx}`} className={idx % 2 === 0 ? "bg-white" : "bg-indigo-50"}>
                         <td className="p-3 border border-indigo-200 font-medium">{item.title}</td>
                         <td className="p-3 border border-indigo-200">{item.traditional}</td>
                         <td className="p-3 border border-indigo-200 text-indigo-700">{item.modern}</td>
@@ -313,11 +326,10 @@ const ExamplePage = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </ExpandableCard>
 
             {/* New Class Diagram */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-indigo-900 mb-6">Giai cấp mới</h3>
+            <ExpandableCard title="Giai cấp mới" className="mb-8" defaultExpanded={false}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <div className="text-center font-semibold text-lg text-indigo-900">Xưa</div>
@@ -349,12 +361,10 @@ const ExamplePage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </ExpandableCard>
 
             {/* Modern Surplus Value */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-indigo-900 mb-6">Thặng dư giá trị thời đại mới</h3>
-
+            <ExpandableCard title="Thặng dư giá trị thời đại mới" className="mb-8" defaultExpanded={false}>
               <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200 mb-6">
                 <p className="text-indigo-800">
                   Marx nói công nhân tạo ra giá trị 1000 đồng nhưng chỉ được trả 600 đồng, 400 đồng còn lại là thặng dư giá trị mà tư bản chiếm đoạt.
@@ -363,12 +373,22 @@ const ExamplePage = () => {
 
               <div className="space-y-4">
                 {modernSurplusValue.map((item, idx) => (
-                  <Card key={idx} className="border-indigo-200 overflow-hidden">
-                    <CardContent className="p-0">
-                      <div className="bg-indigo-100 p-3">
-                        <h4 className="font-medium text-indigo-900">{item.worker}</h4>
-                      </div>
-                      <div className="p-4 space-y-2">
+                  <div key={`surplus-item-${item.worker.replace(/\s/g, "-")}-${idx}`} className="border border-indigo-200 rounded-lg overflow-hidden">
+                    <Button
+                      onClick={() => toggleSurplus(item.worker)}
+                      variant="ghost"
+                      className="w-full flex justify-between items-center p-3 bg-indigo-100 hover:bg-indigo-200 text-left h-auto"
+                    >
+                      <span className="font-medium text-indigo-900">{item.worker}</span>
+                      {expandedSurplus === item.worker ? (
+                        <ChevronUp className="h-5 w-5 text-indigo-600" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5 text-indigo-600" />
+                      )}
+                    </Button>
+
+                    {expandedSurplus === item.worker && (
+                      <div className="p-4 space-y-2 bg-white">
                         <div className="flex justify-between">
                           <span className="text-indigo-700">Tạo ra:</span>
                           <span className="font-medium">{item.value}</span>
@@ -386,8 +406,8 @@ const ExamplePage = () => {
                           <span>{item.extracted}</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    )}
+                  </div>
                 ))}
               </div>
 
@@ -395,12 +415,10 @@ const ExamplePage = () => {
                 <h4 className="font-semibold text-indigo-900 mb-2">Kết luận:</h4>
                 <p className="text-indigo-800">Thặng dư giá trị được chiếm đoạt một cách tinh vi hơn trong kỷ nguyên platform.</p>
               </div>
-            </div>
+            </ExpandableCard>
 
             {/* Hidden Class Nature */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-indigo-900 mb-6">Tính chất giai cấp che giấu</h3>
-
+            <ExpandableCard title="Tính chất giai cấp che giấu" className="mb-8" defaultExpanded={false}>
               <div className="p-5 bg-indigo-50 rounded-lg border border-indigo-200">
                 <p className="text-indigo-800 mb-4">Điều nguy hiểm là những platform worker này không tự nhận mình là 'công nhân':</p>
                 <ul className="space-y-2 list-disc pl-5">
@@ -410,21 +428,35 @@ const ExamplePage = () => {
                 </ul>
                 <p className="text-indigo-800 font-medium mt-4">→ Ý thức giai cấp bị mờ ám, khó đấu tranh tập thể</p>
               </div>
-            </div>
+            </ExpandableCard>
 
             {/* Modern Exploitation */}
-            <div>
-              <h3 className="text-xl font-bold text-indigo-900 mb-6">Bóc lột kiểu mới</h3>
-
+            <ExpandableCard title="Bóc lột kiểu mới" className="mb-8" defaultExpanded={false}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {modernExploitation.map((item, idx) => (
-                  <div key={idx} className="p-4 bg-white rounded-lg border border-indigo-200 hover:border-indigo-400 transition-all">
-                    <h4 className="font-semibold text-indigo-800 mb-2">{item.type}</h4>
-                    <p className="text-indigo-700 text-sm">{item.description}</p>
+                  <div key={`exploitation-${item.type.replace(/\s/g, "-")}-${idx}`} className="border border-indigo-200 rounded-lg overflow-hidden">
+                    <Button
+                      onClick={() => toggleExploitation(item.type)}
+                      variant="ghost"
+                      className="w-full flex justify-between items-center p-3 bg-indigo-100 hover:bg-indigo-200 text-left h-auto"
+                    >
+                      <span className="font-medium text-indigo-900">{item.type}</span>
+                      {expandedExploitation === item.type ? (
+                        <ChevronUp className="h-5 w-5 text-indigo-600" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5 text-indigo-600" />
+                      )}
+                    </Button>
+
+                    {expandedExploitation === item.type && (
+                      <div className="p-4 bg-white">
+                        <p className="text-indigo-700">{item.description}</p>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
-            </div>
+            </ExpandableCard>
           </CardContent>
         </Card>
 
@@ -460,7 +492,7 @@ const ExamplePage = () => {
                         <h4 className="font-medium text-indigo-900 mb-2">Ví dụ:</h4>
                         <ul className="space-y-2 list-disc pl-5">
                           {option.examples.map((example, idx) => (
-                            <li key={idx} className="text-indigo-700">
+                            <li key={`example-${example.substring(0, 10).replace(/\s/g, "-")}-${idx}`} className="text-indigo-700">
                               {example}
                             </li>
                           ))}
@@ -472,7 +504,7 @@ const ExamplePage = () => {
                           <h4 className="font-medium text-green-800 mb-2">Ưu điểm:</h4>
                           <ul className="space-y-2 list-disc pl-5">
                             {option.pros.map((pro, idx) => (
-                              <li key={idx} className="text-green-700">
+                              <li key={`pro-${pro.substring(0, 10).replace(/\s/g, "-")}-${idx}`} className="text-green-700">
                                 {pro}
                               </li>
                             ))}
@@ -483,7 +515,7 @@ const ExamplePage = () => {
                           <h4 className="font-medium text-red-800 mb-2">Thách thức:</h4>
                           <ul className="space-y-2 list-disc pl-5">
                             {option.cons.map((con, idx) => (
-                              <li key={idx} className="text-red-700">
+                              <li key={`con-${con.substring(0, 10).replace(/\s/g, "-")}-${idx}`} className="text-red-700">
                                 {con}
                               </li>
                             ))}
@@ -521,7 +553,7 @@ const ExamplePage = () => {
                     <div className="p-6 bg-white">
                       <ul className="space-y-2 list-disc pl-5">
                         {struggleTypes.individual.methods.map((method, idx) => (
-                          <li key={idx} className="text-indigo-700">
+                          <li key={`struggle-method-${method.substring(0, 10).replace(/\s/g, "-")}-${idx}`} className="text-indigo-700">
                             {method}
                           </li>
                         ))}
@@ -558,7 +590,10 @@ const ExamplePage = () => {
                         <h4 className="font-medium text-indigo-900 mb-3">Ví dụ thực tế đã diễn ra:</h4>
                         <div className="space-y-4">
                           {struggleTypes.collective.examples.map((example, idx) => (
-                            <div key={idx} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                            <div
+                              key={`collective-example-${example.name.replace(/\s/g, "-")}-${idx}`}
+                              className="p-3 bg-blue-50 rounded-lg border border-blue-200"
+                            >
                               <div className="font-medium text-blue-800">{example.name}</div>
                               <div className="text-blue-700 text-sm mt-1">{example.description}</div>
                             </div>
@@ -570,7 +605,7 @@ const ExamplePage = () => {
                         <h4 className="font-medium text-indigo-900 mb-2">Hình thức đấu tranh:</h4>
                         <ul className="space-y-2 list-disc pl-5">
                           {struggleTypes.collective.methods.map((method, idx) => (
-                            <li key={idx} className="text-indigo-700">
+                            <li key={`collective-method-${method.substring(0, 10).replace(/\s/g, "-")}-${idx}`} className="text-indigo-700">
                               {method}
                             </li>
                           ))}
@@ -602,7 +637,10 @@ const ExamplePage = () => {
                     <div className="p-6 bg-white">
                       <ul className="space-y-3">
                         {struggleTypes.government.examples.map((example, idx) => (
-                          <li key={idx} className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-gray-700">
+                          <li
+                            key={`govt-example-${example.substring(0, 10).replace(/\s/g, "-")}-${idx}`}
+                            className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-gray-700"
+                          >
                             {example}
                           </li>
                         ))}

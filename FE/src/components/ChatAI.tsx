@@ -67,6 +67,24 @@ const ChatAI = () => {
       icon: "M12 2C13.1 2 14 2.9 14 4S13.1 6 12 6 10 5.1 10 4 10.9 2 12 2M21 9V7L15 1H5C3.89 1 3 1.89 3 3V21A2 2 0 0 0 5 23H19A2 2 0 0 0 21 21V9M19 9H14L19 14V9Z",
     },
     {
+      value: "Plato",
+      name: "Plato",
+      desc: "Thuyết hình tướng",
+      icon: "M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z",
+    },
+    {
+      value: "Aristotle",
+      name: "Aristotle",
+      desc: "Thực nghiệm và logic",
+      icon: "M12 3C16.97 3 21 7.03 21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3M12 5C8.13 5 5 8.13 5 12H7C7 9.24 9.24 7 12 7V5Z",
+    },
+    {
+      value: "Kant",
+      name: "Immanuel Kant",
+      desc: "Đạo đức và lý trí thuần túy",
+      icon: "M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M5,3H19C20.11,3 21,3.89 21,5V13.03C20.5,12.23 19.81,11.54 19,11V5H5V19H9.5C9.81,19.75 10.26,20.42 10.81,21H5C3.89,21 3,20.11 3,19V5C3,3.89 3.89,3 5,3M7,7H17V9H7V7M7,11H12.03C11.23,11.5 10.54,12.19 10,13H7V11M7,15H9.17C9.06,15.5 9,16 9,16.5V17H7V15Z",
+    },
+    {
       value: "Marx",
       name: "Karl Marx",
       desc: "Phê phán chủ nghĩa tư bản",
@@ -75,7 +93,7 @@ const ChatAI = () => {
     {
       value: "HoChiMinh",
       name: "Hồ Chí Minh",
-      desc: "Tư tưởng Hồ Chí Minh",
+      desc: "Độc lập, tự do và công bằng xã hội",
       icon: "M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z",
     },
   ];
@@ -85,7 +103,7 @@ const ChatAI = () => {
     {
       id: "1",
       content:
-        "Xin chào! Tôi là trợ lý AI tiếng Việt của bạn. Bạn có thể nhắn tin hoặc nói chuyện với tôi bằng giọng nói. Tôi có thể giúp gì cho bạn?",
+        "Xin chào! Tôi là trợ lý AI tiếng Việt của bạn. Bạn có thể nhắn tin hoặc nói chuyện với tôi bằng giọng nói. Hãy chọn một triết gia để trò chuyện với phong cách khác nhau.",
       sender: "ai",
       timestamp: new Date(),
     },
@@ -215,10 +233,17 @@ const ChatAI = () => {
       });
 
       if (response.ok) {
+        // Tạo tin nhắn dựa trên nhân vật hiện tại
+        let welcomeMessage = "Lịch sử trò chuyện đã được xóa. Hôm nay tôi có thể giúp gì cho bạn?";
+
+        if (currentCharacter.value !== "default") {
+          welcomeMessage = `Lịch sử trò chuyện đã được xóa. Tôi là ${currentCharacter.name}, hãy trò chuyện với tôi về các vấn đề triết học.`;
+        }
+
         setMessages([
           {
             id: "1",
-            content: "Lịch sử trò chuyện đã được xóa. Hôm nay tôi có thể giúp gì cho bạn?",
+            content: welcomeMessage,
             sender: "ai",
             timestamp: new Date(),
           },
@@ -361,6 +386,20 @@ const ChatAI = () => {
                             <button
                               key={char.value}
                               onClick={() => {
+                                // Chỉ hiển thị tin nhắn chuyển nhân vật nếu đang chọn một nhân vật mới
+                                if (currentCharacter.value !== char.value) {
+                                  setMessages((prev) => [
+                                    ...prev,
+                                    {
+                                      id: Date.now().toString() + "_system",
+                                      content: `Đã chuyển sang chế độ trò chuyện với ${char.name}${
+                                        char.value !== "default" ? " - " + char.desc : ""
+                                      }`,
+                                      sender: "ai",
+                                      timestamp: new Date(),
+                                    },
+                                  ]);
+                                }
                                 setCurrentCharacter(char);
                                 setIsDropdownOpen(false);
                               }}

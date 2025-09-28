@@ -34,7 +34,7 @@ const App = () => {
     <div
       className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100 relative"
       style={{
-        backgroundImage: ` url(${philosophersImage})`,
+        backgroundImage: `linear-gradient(rgba(255, 248, 220, 0.85), rgba(245, 222, 179, 0.85)), url(${philosophersImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
