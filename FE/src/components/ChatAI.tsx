@@ -180,7 +180,7 @@ const ChatAI = () => {
     try {
       // Call the API (adapted from original HTML template)
       const queryParams = `message=${encodeURIComponent(inputMessage)}&character=${encodeURIComponent(currentCharacter.value)}`;
-      const response = await fetch(`http://localhost:8080/chat?${queryParams}`);
+      const response = await fetch(`https://mln.kdz.asia/chat?${queryParams}`);
 
       if (!response.ok) throw new Error("API error");
       const aiResponse = await response.text();
@@ -228,7 +228,7 @@ const ChatAI = () => {
 
   const clearHistory = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/chat/history`, {
+      const response = await fetch(`https://mln.kdz.asia/chat/history`, {
         method: "DELETE",
       });
 
