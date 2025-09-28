@@ -1,207 +1,153 @@
 import { useState, useEffect } from 'react';
-import { AlertTriangle, Loader2, Zap, Brain, User, MapPin, Lightbulb, BookOpen, Globe } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import type { Quote, Philosopher } from '../types';
-import { philosophyApi } from '../services/api';
+import { ArrowRight, Play, Brain, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
-const HomePage = () => {
-  const [featuredQuotes, setFeaturedQuotes] = useState<Quote[]>([]);
-  const [philosophers, setPhilosophers] = useState<Philosopher[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface HomePageProps {
+  onPageChange: (page: string) => void;
+}
+
+const HomePage = ({ onPageChange }: HomePageProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [quotesData, philosophersData] = await Promise.all([
-          philosophyApi.getFeaturedQuotes(),
-          philosophyApi.getPhilosophers(),
-        ]);
-        setFeaturedQuotes(quotesData);
-        setPhilosophers(philosophersData);
-      } catch (err) {
-        setError('Failed to load content. Please ensure the backend server is running.');
-        console.error('Error fetching data:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    setIsVisible(true);
+    const timer = setInterval(() => {
+      setAnimationStep(prev => (prev + 1) % 4);
+    }, 2000);
+    return () => clearInterval(timer);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100">
-        <div className="text-center">
-          <Loader2 className="animate-spin h-32 w-32 text-amber-600 mx-auto" />
-          <p className="text-amber-800 mt-4 text-xl">Loading philosophical wisdom...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100">
-        <div className="text-center text-amber-800">
-          <AlertTriangle className="w-16 h-16 mb-4 mx-auto text-red-600" />
-          <h2 className="text-2xl font-bold mb-2">Connection Error</h2>
-          <p className="text-lg">{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="mt-4 px-6 py-2 bg-amber-700 hover:bg-amber-800 text-amber-100 rounded-lg transition-colors"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-amber-900/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-amber-900 mb-6 leading-tight">
-            Welcome to
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-yellow-600">
-              Philosophia
-            </span>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-50">
+      {/* Hero Section - Intro */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <h1 className={`text-5xl md:text-7xl font-bold text-amber-900 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            Tự do hay bị bóc lột <br />
+            <span className="text-orange-600">trong kỷ nguyên số?</span>
           </h1>
-          <p className="text-xl md:text-2xl text-amber-800 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Explore the profound wisdom of history's greatest thinkers. Dive into the minds that shaped our understanding 
-            of existence, society, and human nature.
+          
+          <p className={`text-xl md:text-2xl text-amber-700 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            Khám phá sự thật về "tự do" trong thời đại công nghệ số. Freelancer, YouTuber, TikToker... có thực sự tự do hay đang bị bóc lột một cách tinh vi?
           </p>
-          <div className="flex justify-center items-center space-x-4 text-amber-700">
-            <div className="h-1 w-16 bg-amber-700"></div>
-            <Zap className="w-6 h-6" />
-            <div className="h-1 w-16 bg-amber-700"></div>
-          </div>
-        </div>
-      </section>
 
-      {/* Featured Quotes Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-amber-900 text-center mb-16">
-            Words That Changed the World
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredQuotes.map((quote, index) => {
-              const philosopher = philosophers.find(p => p.name === quote.author);
-              const colors = [
-                'from-red-700 to-red-900',
-                'from-blue-700 to-blue-900', 
-                'from-green-700 to-green-900'
-              ];
+          {/* Animated Visual */}
+          <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+            <div className="relative max-w-2xl mx-auto h-64 flex items-center justify-center">
+              {/* Freelancer icon in center */}
+              <div className="absolute z-10 bg-amber-200 rounded-full p-6 shadow-lg">
+                <Brain className="w-12 h-12 text-amber-800" />
+              </div>
               
-              return (
-                <Card
-                  key={quote.id}
-                  className={`relative group cursor-pointer transform hover:scale-105 transition-all duration-300 border-0 overflow-hidden`}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${colors[index]} opacity-90 group-hover:opacity-95 transition-opacity`}></div>
-                  <CardContent className="relative p-8 h-full min-h-[400px] flex flex-col justify-between text-white">
-                    <div>
-                      <div className="text-6xl mb-4 opacity-60 text-amber-100">"</div>
-                      <blockquote className="text-lg font-medium leading-relaxed mb-6">
-                        {quote.text}
-                      </blockquote>
-                    </div>
-                    <div className="border-t border-amber-100/20 pt-6">
-                      <div className="flex items-center space-x-4">
-                        <Avatar className="w-12 h-12">
-                          <AvatarFallback className="bg-amber-100/20 text-amber-100">
-                            <Brain className="w-6 h-6" />
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-bold text-amber-100">{quote.author}</p>
-                          <p className="text-sm text-amber-200">
-                            {philosopher?.birthYear} - {philosopher?.deathYear}
-                          </p>
-                          <Badge variant="secondary" className="text-xs mt-1 bg-amber-100/20 text-amber-300 border-0">
-                            {quote.context}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+              {/* Surrounding elements that appear progressively */}
+              <div className={`absolute transition-all duration-1000 ${animationStep >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
+                <div className="absolute -top-20 -left-20 bg-red-200 rounded-full p-4 shadow-md">
+                  <TrendingUp className="w-8 h-8 text-red-600" />
+                </div>
+                <div className="absolute -top-20 -right-20 bg-blue-200 rounded-full p-4 shadow-md">
+                  <AlertTriangle className="w-8 h-8 text-blue-600" />
+                </div>
+                <div className="absolute -bottom-20 -left-20 bg-purple-200 rounded-full p-4 shadow-md">
+                  <Zap className="w-8 h-8 text-purple-600" />
+                </div>
+                <div className="absolute -bottom-20 -right-20 bg-green-200 rounded-full p-4 shadow-md">
+                  <Play className="w-8 h-8 text-green-600" />
+                </div>
+              </div>
+
+              {/* Connecting lines */}
+              <div className={`absolute inset-0 transition-all duration-1000 delay-500 ${animationStep >= 2 ? 'opacity-60' : 'opacity-0'}`}>
+                <svg className="w-full h-full" viewBox="0 0 300 200">
+                  <line x1="150" y1="100" x2="100" y2="50" stroke="#ef4444" strokeWidth="2" strokeDasharray="5,5" />
+                  <line x1="150" y1="100" x2="200" y2="50" stroke="#3b82f6" strokeWidth="2" strokeDasharray="5,5" />
+                  <line x1="150" y1="100" x2="100" y2="150" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="5,5" />
+                  <line x1="150" y1="100" x2="200" y2="150" stroke="#10b981" strokeWidth="2" strokeDasharray="5,5" />
+                </svg>
+              </div>
+
+              {/* Text labels */}
+              <div className={`absolute -top-32 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1000 ${animationStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+                <span className="text-sm font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
+                  Thuật toán • Big Tech • Dữ liệu
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <Button
+              onClick={() => onPageChange('theory')}
+              size="lg"
+              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+            >
+              Khám phá sự thật
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
         </div>
-      </section>
 
-      {/* Philosophers Preview Section */}
-      <section className="py-20 bg-amber-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-amber-900 text-center mb-16">
-            Meet the Great Minds
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {philosophers.map((philosopher) => (
-              <Card
-                key={philosopher.id}
-                className="group cursor-pointer border border-amber-800/30 bg-amber-800/20 backdrop-blur-sm hover:bg-amber-700/30 transition-all duration-300"
-              >
-                <CardContent className="p-6 text-center">
-                  <Avatar className="w-24 h-24 mx-auto mb-4">
-                    <AvatarFallback className="bg-gradient-to-br from-amber-600 to-yellow-600 text-amber-100">
-                      <User className="w-8 h-8" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <CardTitle className="text-2xl font-bold text-amber-900 mb-2">{philosopher.name}</CardTitle>
-                  <p className="text-amber-700 mb-4">
-                    {philosopher.birthYear} - {philosopher.deathYear}
-                  </p>
-                  <p className="text-amber-800 leading-relaxed group-hover:text-amber-900 transition-colors mb-4">
-                    {philosopher.description}
-                  </p>
-                  <Badge variant="outline" className="text-amber-700 group-hover:text-amber-800 transition-colors border-amber-700">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    {philosopher.nationality}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        {/* Preview Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+          {[
+            {
+              title: "Lý thuyết nền tảng",
+              description: "Khái niệm giai cấp, bóc lột theo Mác-Lênin",
+              icon: Brain,
+              page: "theory",
+              color: "bg-blue-100 text-blue-800"
+            },
+            {
+              title: "Thực tiễn hiện nay", 
+              description: "Freelancer, YouTuber, TikToker trong kỷ nguyên số",
+              icon: TrendingUp,
+              page: "reality",
+              color: "bg-green-100 text-green-800"
+            },
+            {
+              title: "Hình thức bóc lót mới",
+              description: "Nền tảng số và các hình thức bóc lót tinh vi",
+              icon: AlertTriangle,
+              page: "exploitation",
+              color: "bg-red-100 text-red-800"
+            },
+            {
+              title: "Trò chuyện AI",
+              description: "Thảo luận với AI về triết học và xã hội",
+              icon: Play,
+              page: "chat",
+              color: "bg-purple-100 text-purple-800"
+            }
+          ].map((item, index) => (
+            <Card 
+              key={index}
+              className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-amber-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${(index + 1) * 200}ms` }}
+              onClick={() => onPageChange(item.page)}
+            >
+              <CardContent className="p-6 text-center">
+                <div className={`w-16 h-16 rounded-full ${item.color} flex items-center justify-center mx-auto mb-4`}>
+                  <item.icon className="w-8 h-8" />
+                </div>
+                <CardTitle className="text-lg text-amber-900 mb-2">{item.title}</CardTitle>
+                <p className="text-sm text-amber-700">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </section>
 
-      {/* Call to Action */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-amber-900 mb-6">
-            Begin Your Philosophical Journey
-          </h2>
-          <p className="text-xl text-amber-800 mb-8">
-            Explore the depths of human thought and discover timeless wisdom that continues to shape our world today.
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-amber-700 mb-6 text-lg">
+            "Giai cấp không biến mất, chỉ thay đổi hình thức."
           </p>
-          <div className="space-y-4 text-amber-800">
-            <p className="flex items-center justify-center space-x-2">
-              <Lightbulb className="w-5 h-5" />
-              <span>Discover profound insights from history's greatest thinkers</span>
-            </p>
-            <p className="flex items-center justify-center space-x-2">
-              <BookOpen className="w-5 h-5" />
-              <span>Explore comprehensive collections of philosophical quotes</span>
-            </p>
-            <p className="flex items-center justify-center space-x-2">
-              <Globe className="w-5 h-5" />
-              <span>Understand how philosophy continues to influence our modern world</span>
-            </p>
-          </div>
+          <p className="text-amber-600 text-sm max-w-2xl mx-auto">
+            Hiểu để không ảo tưởng – và để đấu tranh đúng cách. Khám phá cách thức hoạt động của nền kinh tế số và vị trí thực sự của bạn trong đó.
+          </p>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
