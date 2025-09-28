@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
-import { Send, Mic, MicOff, Bot, User, Trash2, Settings } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Bot, Mic, MicOff, Send, Settings, Trash2, User } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 // Type definitions for Speech Recognition
 interface SpeechRecognitionEvent {
@@ -40,7 +40,7 @@ interface WindowWithSpeechRecognition extends Window {
 interface Message {
   id: string;
   content: string;
-  sender: 'user' | 'ai';
+  sender: "user" | "ai";
   timestamp: Date;
 }
 
@@ -54,62 +54,53 @@ interface Character {
 const ChatAI = () => {
   // Character data with icons and descriptions adapted to Vietnamese philosophy theme
   const characters: Character[] = [
-    { 
-      value: 'default', 
-      name: 'Mặc định', 
-      desc: 'Trợ lý AI tiêu chuẩn', 
-      icon: 'M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2-3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z' 
+    {
+      value: "default",
+      name: "Mặc định",
+      desc: "Trợ lý AI tiêu chuẩn",
+      icon: "M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2-3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z",
     },
-    { 
-      value: 'Socrates', 
-      name: 'Socrates', 
-      desc: 'Triết gia đặt câu hỏi', 
-      icon: 'M12 2C13.1 2 14 2.9 14 4S13.1 6 12 6 10 5.1 10 4 10.9 2 12 2M21 9V7L15 1H5C3.89 1 3 1.89 3 3V21A2 2 0 0 0 5 23H19A2 2 0 0 0 21 21V9M19 9H14L19 14V9Z' 
+    {
+      value: "Socrates",
+      name: "Socrates",
+      desc: "Triết gia đặt câu hỏi",
+      icon: "M12 2C13.1 2 14 2.9 14 4S13.1 6 12 6 10 5.1 10 4 10.9 2 12 2M21 9V7L15 1H5C3.89 1 3 1.89 3 3V21A2 2 0 0 0 5 23H19A2 2 0 0 0 21 21V9M19 9H14L19 14V9Z",
     },
-    { 
-      value: 'Marx', 
-      name: 'Karl Marx', 
-      desc: 'Phê phán chủ nghĩa tư bản', 
-      icon: 'M12 2l3 6h-6l3-6zM10 20l-3-6h6l-3 6z' 
+    {
+      value: "Marx",
+      name: "Karl Marx",
+      desc: "Phê phán chủ nghĩa tư bản",
+      icon: "M12 2l3 6h-6l3-6zM10 20l-3-6h6l-3 6z",
     },
-    { 
-      value: 'HoChiMinh', 
-      name: 'Hồ Chí Minh', 
-      desc: 'Tư tưởng Hồ Chí Minh', 
-      icon: 'M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z' 
-    }
+    {
+      value: "HoChiMinh",
+      name: "Hồ Chí Minh",
+      desc: "Tư tưởng Hồ Chí Minh",
+      icon: "M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z",
+    },
   ];
 
   // State management
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
-      content: 'Xin chào! Tôi là trợ lý AI tiếng Việt của bạn. Bạn có thể nhắn tin hoặc nói chuyện với tôi bằng giọng nói. Tôi có thể giúp gì cho bạn?',
-      sender: 'ai',
+      id: "1",
+      content:
+        "Xin chào! Tôi là trợ lý AI tiếng Việt của bạn. Bạn có thể nhắn tin hoặc nói chuyện với tôi bằng giọng nói. Tôi có thể giúp gì cho bạn?",
+      sender: "ai",
       timestamp: new Date(),
-    }
+    },
   ]);
-  const [inputMessage, setInputMessage] = useState('');
+  const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [currentCharacter, setCurrentCharacter] = useState<Character>(characters[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [conversationId] = useState(() => generateUUID());
-  
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognition = useRef<SpeechRecognitionAPI | null>(null);
 
-  // Helper function to generate UUID
-  function generateUUID(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const r = Math.random() * 16 | 0;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
-
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -118,30 +109,30 @@ const ChatAI = () => {
 
   // Initialize speech recognition
   useEffect(() => {
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const windowWithSR = window as WindowWithSpeechRecognition;
       const SpeechRecognition = windowWithSR.webkitSpeechRecognition || windowWithSR.SpeechRecognition;
       if (SpeechRecognition) {
         recognition.current = new SpeechRecognition();
-      recognition.current.lang = "vi-VN";
-      recognition.current.continuous = true;
-      recognition.current.interimResults = true;
+        recognition.current.lang = "vi-VN";
+        recognition.current.continuous = true;
+        recognition.current.interimResults = true;
 
-      recognition.current.onstart = () => {
-        setIsListening(true);
-      };
+        recognition.current.onstart = () => {
+          setIsListening(true);
+        };
 
-      recognition.current.onresult = (event: SpeechRecognitionEvent) => {
-        let finalTranscript = '';
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            finalTranscript += event.results[i][0].transcript;
+        recognition.current.onresult = (event: SpeechRecognitionEvent) => {
+          let finalTranscript = "";
+          for (let i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              finalTranscript += event.results[i][0].transcript;
+            }
           }
-        }
-        if (finalTranscript) {
-          setInputMessage(prev => prev + finalTranscript);
-        }
-      };
+          if (finalTranscript) {
+            setInputMessage((prev) => prev + finalTranscript);
+          }
+        };
 
         recognition.current.onend = () => {
           setIsListening(false);
@@ -158,49 +149,49 @@ const ChatAI = () => {
     if (!inputMessage.trim() || isLoading) return;
 
     const userMessage: Message = {
-      id: Date.now().toString() + '_user',
+      id: Date.now().toString() + "_user",
       content: inputMessage,
-      sender: 'user',
+      sender: "user",
       timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
-    setInputMessage('');
+    setMessages((prev) => [...prev, userMessage]);
+    setInputMessage("");
     setIsLoading(true);
 
     try {
       // Call the API (adapted from original HTML template)
-      const queryParams = `message=${encodeURIComponent(inputMessage)}&character=${encodeURIComponent(currentCharacter.value)}&conversationId=${encodeURIComponent(conversationId)}`;
+      const queryParams = `message=${encodeURIComponent(inputMessage)}&character=${encodeURIComponent(currentCharacter.value)}`;
       const response = await fetch(`http://localhost:8080/chat?${queryParams}`);
-      
-      if (!response.ok) throw new Error('API error');
+
+      if (!response.ok) throw new Error("API error");
       const aiResponse = await response.text();
 
       const aiMessage: Message = {
-        id: Date.now().toString() + '_ai',
+        id: Date.now().toString() + "_ai",
         content: aiResponse,
-        sender: 'ai',
+        sender: "ai",
         timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, aiMessage]);
-      
+      setMessages((prev) => [...prev, aiMessage]);
+
       // Text-to-speech
-      if ('speechSynthesis' in window) {
+      if ("speechSynthesis" in window) {
         const utterance = new SpeechSynthesisUtterance(aiResponse);
         utterance.lang = "vi-VN";
         utterance.rate = 0.9;
         window.speechSynthesis.speak(utterance);
       }
     } catch (error) {
-      console.error('Chat error:', error);
+      console.error("Chat error:", error);
       const fallbackMessage: Message = {
-        id: Date.now().toString() + '_ai',
-        content: 'Xin lỗi, tôi gặp lỗi khi xử lý. Hãy thử lại nhé!',
-        sender: 'ai',
+        id: Date.now().toString() + "_ai",
+        content: "Xin lỗi, tôi gặp lỗi khi xử lý. Hãy thử lại nhé!",
+        sender: "ai",
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, fallbackMessage]);
+      setMessages((prev) => [...prev, fallbackMessage]);
     }
 
     setIsLoading(false);
@@ -212,32 +203,34 @@ const ChatAI = () => {
     if (isListening) {
       recognition.current.stop();
     } else {
-      setInputMessage(''); // Clear input when starting voice recognition
+      setInputMessage(""); // Clear input when starting voice recognition
       recognition.current.start();
     }
   };
 
   const clearHistory = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/chat/history?conversationId=${encodeURIComponent(conversationId)}`, {
-        method: 'DELETE'
+      const response = await fetch(`http://localhost:8080/chat/history`, {
+        method: "DELETE",
       });
-      
+
       if (response.ok) {
-        setMessages([{
-          id: '1',
-          content: 'Lịch sử trò chuyện đã được xóa. Hôm nay tôi có thể giúp gì cho bạn?',
-          sender: 'ai',
-          timestamp: new Date(),
-        }]);
+        setMessages([
+          {
+            id: "1",
+            content: "Lịch sử trò chuyện đã được xóa. Hôm nay tôi có thể giúp gì cho bạn?",
+            sender: "ai",
+            timestamp: new Date(),
+          },
+        ]);
       }
     } catch (error) {
-      console.error('Clear history failed:', error);
+      console.error("Clear history failed:", error);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
@@ -254,25 +247,16 @@ const ChatAI = () => {
                   <span className="text-sm font-bold text-white">AI</span>
                 </div>
                 <div>
-                  <CardTitle className="text-lg font-semibold text-amber-900">
-                    Trợ lý AI Tiếng Việt
-                  </CardTitle>
-                  <p className="text-sm text-amber-700">
-                    Sẵn sàng trò chuyện • Hỗ trợ giọng nói
-                  </p>
+                  <CardTitle className="text-lg font-semibold text-amber-900">Trợ lý AI Tiếng Việt</CardTitle>
+                  <p className="text-sm text-amber-700">Sẵn sàng trò chuyện • Hỗ trợ giọng nói</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <Badge variant="secondary" className="bg-green-100 text-green-800">
                   Trực tuyến
                 </Badge>
-                <Button
-                  onClick={clearHistory}
-                  variant="outline"
-                  size="sm"
-                  className="border-amber-300 text-amber-700 hover:bg-amber-50"
-                >
+                <Button onClick={clearHistory} variant="outline" size="sm" className="border-amber-300 text-amber-700 hover:bg-amber-50">
                   <Trash2 className="w-4 h-4 mr-1" />
                   Xóa lịch sử
                 </Button>
@@ -285,39 +269,34 @@ const ChatAI = () => {
               {/* Messages Area */}
               <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`flex gap-3 ${message.sender === 'user' ? 'justify-end' : 'justify-start'} animate-slide-in`}
-                  >
-                    {message.sender === 'ai' && (
+                  <div key={message.id} className={`flex gap-3 ${message.sender === "user" ? "justify-end" : "justify-start"} animate-slide-in`}>
+                    {message.sender === "ai" && (
                       <Avatar className="w-8 h-8 mt-1">
                         <AvatarFallback className="bg-amber-200 text-amber-800">
                           <Bot className="w-4 h-4" />
                         </AvatarFallback>
                       </Avatar>
                     )}
-                    
-                    <div className={`max-w-[70%] ${message.sender === 'user' ? 'order-1' : ''}`}>
+
+                    <div className={`max-w-[70%] ${message.sender === "user" ? "order-1" : ""}`}>
                       <div
                         className={`rounded-2xl px-4 py-3 shadow-lg transition-all duration-300 hover:scale-[1.02] ${
-                          message.sender === 'user'
-                            ? 'bg-amber-600 text-white rounded-br-md'
-                            : 'bg-white border border-amber-200 text-amber-900 rounded-bl-md'
+                          message.sender === "user"
+                            ? "bg-amber-600 text-white rounded-br-md"
+                            : "bg-white border border-amber-200 text-amber-900 rounded-bl-md"
                         }`}
                       >
-                        <div className="text-sm leading-relaxed whitespace-pre-wrap">
-                          {message.content}
-                        </div>
+                        <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
                       </div>
                       <p className="text-xs text-amber-600 mt-1 px-2">
-                        {message.timestamp.toLocaleTimeString('vi-VN', {
-                          hour: '2-digit',
-                          minute: '2-digit'
+                        {message.timestamp.toLocaleTimeString("vi-VN", {
+                          hour: "2-digit",
+                          minute: "2-digit",
                         })}
                       </p>
                     </div>
 
-                    {message.sender === 'user' && (
+                    {message.sender === "user" && (
                       <Avatar className="w-8 h-8 mt-1 order-2">
                         <AvatarFallback className="bg-blue-200 text-blue-800">
                           <User className="w-4 h-4" />
@@ -338,8 +317,8 @@ const ChatAI = () => {
                       <div className="flex items-center gap-2 text-amber-600">
                         <div className="flex space-x-1">
                           <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                         </div>
                         <span className="text-sm">Đang suy nghĩ...</span>
                       </div>
@@ -369,14 +348,12 @@ const ChatAI = () => {
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       variant="outline"
                       size="sm"
-                      className={`border-amber-300 text-amber-700 hover:bg-amber-50 ${
-                        currentCharacter.value !== 'default' ? 'bg-amber-100' : ''
-                      }`}
+                      className={`border-amber-300 text-amber-700 hover:bg-amber-50 ${currentCharacter.value !== "default" ? "bg-amber-100" : ""}`}
                     >
                       <Settings className="w-4 h-4 mr-1" />
                       {currentCharacter.name}
                     </Button>
-                    
+
                     {isDropdownOpen && (
                       <div className="absolute bottom-full left-0 mb-2 w-64 bg-white border border-amber-200 rounded-lg shadow-lg z-10">
                         <div className="p-2 space-y-1">
@@ -388,7 +365,7 @@ const ChatAI = () => {
                                 setIsDropdownOpen(false);
                               }}
                               className={`w-full text-left p-2 rounded-md hover:bg-amber-50 ${
-                                currentCharacter.value === char.value ? 'bg-amber-100' : ''
+                                currentCharacter.value === char.value ? "bg-amber-100" : ""
                               }`}
                             >
                               <div className="flex items-start gap-2">
@@ -411,11 +388,11 @@ const ChatAI = () => {
                     <textarea
                       value={inputMessage}
                       onChange={(e) => setInputMessage(e.target.value)}
-                      onKeyPress={handleKeyPress}
+                      onKeyDown={handleKeyPress}
                       placeholder="Nhập tin nhắn hoặc sử dụng mic..."
                       className="w-full resize-none rounded-xl border border-amber-300 p-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white"
                       rows={1}
-                      style={{ minHeight: '44px', maxHeight: '120px' }}
+                      style={{ minHeight: "44px", maxHeight: "120px" }}
                     />
                   </div>
 
@@ -426,9 +403,7 @@ const ChatAI = () => {
                       variant="outline"
                       size="icon"
                       className={`border-amber-300 hover:bg-amber-50 ${
-                        isListening 
-                          ? 'bg-red-100 border-red-300 text-red-700 animate-pulse' 
-                          : 'text-amber-700'
+                        isListening ? "bg-red-100 border-red-300 text-red-700 animate-pulse" : "text-amber-700"
                       }`}
                     >
                       {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
@@ -444,10 +419,8 @@ const ChatAI = () => {
                     <Send className="w-4 h-4" />
                   </Button>
                 </div>
-                
-                <p className="text-xs text-amber-600 mt-2">
-                  Nhấn Enter để gửi, Shift+Enter để xuống dòng
-                </p>
+
+                <p className="text-xs text-amber-600 mt-2">Nhấn Enter để gửi, Shift+Enter để xuống dòng</p>
               </div>
             </div>
           </CardContent>
