@@ -262,18 +262,18 @@ const ChatAI = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-100 to-white p-4">
       <div className="max-w-4xl mx-auto">
-        <Card className="h-[80vh] flex flex-col shadow-2xl border-amber-200">
-          <CardHeader className="border-b bg-gradient-to-r from-amber-100 to-yellow-100 rounded-t-lg">
+        <Card className="h-[80vh] flex flex-col shadow-2xl border-blue-200">
+          <CardHeader className="border-b bg-gradient-to-r from-blue-100 to-sky-100 rounded-t-lg">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-sky-600 rounded-full flex items-center justify-center shadow-lg">
                   <span className="text-sm font-bold text-white">AI</span>
                 </div>
                 <div>
-                  <CardTitle className="text-lg font-semibold text-amber-900">Trợ lý AI Tiếng Việt</CardTitle>
-                  <p className="text-sm text-amber-700">Sẵn sàng trò chuyện • Hỗ trợ giọng nói</p>
+                  <CardTitle className="text-lg font-semibold text-blue-900">Trợ lý AI Tiếng Việt</CardTitle>
+                  <p className="text-sm text-blue-700">Sẵn sàng trò chuyện • Hỗ trợ giọng nói</p>
                 </div>
               </div>
 
@@ -281,7 +281,7 @@ const ChatAI = () => {
                 <Badge variant="secondary" className="bg-green-100 text-green-800">
                   Trực tuyến
                 </Badge>
-                <Button onClick={clearHistory} variant="outline" size="sm" className="border-amber-300 text-amber-700 hover:bg-amber-50">
+                <Button onClick={clearHistory} variant="outline" size="sm" className="border-blue-300 text-blue-700 hover:bg-blue-50">
                   <Trash2 className="w-4 h-4 mr-1" />
                   Xóa lịch sử
                 </Button>
@@ -297,7 +297,7 @@ const ChatAI = () => {
                   <div key={message.id} className={`flex gap-3 ${message.sender === "user" ? "justify-end" : "justify-start"} animate-slide-in`}>
                     {message.sender === "ai" && (
                       <Avatar className="w-8 h-8 mt-1">
-                        <AvatarFallback className="bg-amber-200 text-amber-800">
+                        <AvatarFallback className="bg-blue-200 text-blue-800">
                           <Bot className="w-4 h-4" />
                         </AvatarFallback>
                       </Avatar>
@@ -307,13 +307,13 @@ const ChatAI = () => {
                       <div
                         className={`rounded-2xl px-4 py-3 shadow-lg transition-all duration-300 hover:scale-[1.02] ${
                           message.sender === "user"
-                            ? "bg-amber-600 text-white rounded-br-md"
-                            : "bg-white border border-amber-200 text-amber-900 rounded-bl-md"
+                            ? "bg-blue-600 text-white rounded-br-md"
+                            : "bg-white border border-blue-200 text-blue-900 rounded-bl-md"
                         }`}
                       >
                         <div className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</div>
                       </div>
-                      <p className="text-xs text-amber-600 mt-1 px-2">
+                      <p className="text-xs text-blue-600 mt-1 px-2">
                         {message.timestamp.toLocaleTimeString("vi-VN", {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -334,16 +334,16 @@ const ChatAI = () => {
                 {isLoading && (
                   <div className="flex gap-3 justify-start">
                     <Avatar className="w-8 h-8 mt-1">
-                      <AvatarFallback className="bg-amber-200 text-amber-800">
+                      <AvatarFallback className="bg-blue-200 text-blue-800">
                         <Bot className="w-4 h-4" />
                       </AvatarFallback>
                     </Avatar>
-                    <div className="bg-white border border-amber-200 rounded-2xl px-4 py-3 rounded-bl-md">
-                      <div className="flex items-center gap-2 text-amber-600">
+                    <div className="bg-white border border-blue-200 rounded-2xl px-4 py-3 rounded-bl-md">
+                      <div className="flex items-center gap-2 text-blue-600">
                         <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                         </div>
                         <span className="text-sm">Đang suy nghĩ...</span>
                       </div>
@@ -355,7 +355,7 @@ const ChatAI = () => {
               </div>
 
               {/* Input Area */}
-              <div className="border-t border-amber-200 bg-amber-50/50 p-4">
+              <div className="border-t border-blue-200 bg-blue-50/50 p-4">
                 {/* Listening Status */}
                 {isListening && (
                   <div className="mb-3 flex items-center justify-center">
@@ -373,14 +373,14 @@ const ChatAI = () => {
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       variant="outline"
                       size="sm"
-                      className={`border-amber-300 text-amber-700 hover:bg-amber-50 ${currentCharacter.value !== "default" ? "bg-amber-100" : ""}`}
+                      className={`border-blue-300 text-blue-700 hover:bg-blue-50 ${currentCharacter.value !== "default" ? "bg-blue-100" : ""}`}
                     >
                       <Settings className="w-4 h-4 mr-1" />
                       {currentCharacter.name}
                     </Button>
 
                     {isDropdownOpen && (
-                      <div className="absolute bottom-full left-0 mb-2 w-64 bg-white border border-amber-200 rounded-lg shadow-lg z-10">
+                      <div className="absolute bottom-full left-0 mb-2 w-64 bg-white border border-blue-200 rounded-lg shadow-lg z-10">
                         <div className="p-2 space-y-1">
                           {characters.map((char) => (
                             <button
@@ -403,17 +403,17 @@ const ChatAI = () => {
                                 setCurrentCharacter(char);
                                 setIsDropdownOpen(false);
                               }}
-                              className={`w-full text-left p-2 rounded-md hover:bg-amber-50 ${
-                                currentCharacter.value === char.value ? "bg-amber-100" : ""
+                              className={`w-full text-left p-2 rounded-md hover:bg-blue-50 ${
+                                currentCharacter.value === char.value ? "bg-blue-100" : ""
                               }`}
                             >
                               <div className="flex items-start gap-2">
-                                <svg className="w-4 h-4 mt-0.5 text-amber-600" viewBox="0 0 24 24" fill="currentColor">
+                                <svg className="w-4 h-4 mt-0.5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
                                   <path d={char.icon} />
                                 </svg>
                                 <div>
-                                  <div className="font-medium text-sm text-amber-900">{char.name}</div>
-                                  <div className="text-xs text-amber-600">{char.desc}</div>
+                                  <div className="font-medium text-sm text-blue-900">{char.name}</div>
+                                  <div className="text-xs text-blue-600">{char.desc}</div>
                                 </div>
                               </div>
                             </button>
@@ -429,7 +429,7 @@ const ChatAI = () => {
                       onChange={(e) => setInputMessage(e.target.value)}
                       onKeyDown={handleKeyPress}
                       placeholder="Nhập tin nhắn hoặc sử dụng mic..."
-                      className="w-full resize-none rounded-xl border border-amber-300 p-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent bg-white"
+                      className="w-full resize-none rounded-xl border border-blue-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                       rows={1}
                       style={{ minHeight: "44px", maxHeight: "120px" }}
                     />
@@ -441,8 +441,8 @@ const ChatAI = () => {
                       onClick={toggleListening}
                       variant="outline"
                       size="icon"
-                      className={`border-amber-300 hover:bg-amber-50 ${
-                        isListening ? "bg-red-100 border-red-300 text-red-700 animate-pulse" : "text-amber-700"
+                      className={`border-blue-300 hover:bg-blue-50 ${
+                        isListening ? "bg-red-100 border-red-300 text-red-700 animate-pulse" : "text-blue-700"
                       }`}
                     >
                       {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
@@ -453,13 +453,13 @@ const ChatAI = () => {
                   <Button
                     onClick={handleSendMessage}
                     disabled={!inputMessage.trim() || isLoading}
-                    className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2"
                   >
                     <Send className="w-4 h-4" />
                   </Button>
                 </div>
 
-                <p className="text-xs text-amber-600 mt-2">Nhấn Enter để gửi, Shift+Enter để xuống dòng</p>
+                <p className="text-xs text-blue-600 mt-2">Nhấn Enter để gửi, Shift+Enter để xuống dòng</p>
               </div>
             </div>
           </CardContent>

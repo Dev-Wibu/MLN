@@ -13,23 +13,23 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
 
   const navigationItems = [
     { id: "home", label: "Trang chủ", icon: Home },
-    { id: "theory", label: "Lý thuyết nền tảng ", icon: BookOpen },
-    { id: "exploitation", label: "Hình thức mới", icon: Users },
-    { id: "example", label: "Hiện trạng", icon: Menu },
+    { id: "theory", label: "Lý thuyết Lenin", icon: BookOpen },
+    { id: "exploitation", label: "Phân tích Big Tech", icon: Users },
+    { id: "example", label: "Tác động", icon: Menu },
     { id: "chat", label: "AI Chat", icon: MessageCircle },
-    { id: "about", label: "About us", icon: HelpCircle },
+    { id: "about", label: "Định hướng", icon: HelpCircle },
   ];
 
   return (
-    <nav className="bg-amber-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-amber-700">
+    <nav className="bg-blue-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-blue-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0 cursor-pointer" onClick={() => onPageChange("home")}>
-              <span className="text-2xl font-bold text-amber-100 flex items-center gap-2">
+              <span className="text-2xl font-bold text-blue-100 flex items-center gap-2">
                 <Brain className="w-6 h-6" />
-                Tự do 4.0
+                Độc quyền AI
               </span>
             </div>
           </div>
@@ -46,8 +46,8 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
                   className={cn(
                     "flex items-center space-x-2 transition-colors duration-200",
                     currentPage === item.id
-                      ? "bg-amber-700 text-amber-100 hover:bg-amber-600"
-                      : "text-amber-200 hover:bg-amber-800 hover:text-amber-100"
+                      ? "bg-blue-700 text-blue-100 hover:bg-blue-600"
+                      : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
                   )}
                 >
                   <IconComponent className="w-4 h-4" />
@@ -63,7 +63,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               variant="ghost"
               size="icon"
-              className="text-amber-200 hover:text-amber-100 hover:bg-amber-800"
+              className="text-blue-200 hover:text-blue-100 hover:bg-blue-800"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -87,8 +87,8 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
                     className={cn(
                       "w-full justify-start flex items-center space-x-2 transition-colors duration-200",
                       currentPage === item.id
-                        ? "bg-amber-700 text-amber-100 hover:bg-amber-600"
-                        : "text-amber-200 hover:bg-amber-800 hover:text-amber-100"
+                        ? "bg-blue-700 text-blue-100 hover:bg-blue-600"
+                        : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
                     )}
                   >
                     <IconComponent className="w-4 h-4" />

@@ -32,9 +32,9 @@ const App = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100 relative"
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-100 to-white relative"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 248, 220, 0.85), rgba(245, 222, 179, 0.85)), url(${philosophersImage})`,
+        backgroundImage: `linear-gradient(rgba(240, 249, 255, 0.85), rgba(224, 242, 254, 0.85)), url(${philosophersImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

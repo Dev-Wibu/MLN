@@ -20,34 +20,33 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-100 to-white">
       {/* Hero Section - Intro */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1
-            className={`text-5xl md:text-7xl font-bold text-amber-900 mb-6 transition-all duration-1000 ${
+            className={`text-5xl md:text-7xl font-bold text-blue-900 mb-6 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Tự do hay bị bóc lột <br />
-            <span className="text-orange-600">trong kỷ nguyên số?</span>
+            Độc quyền AI <br />
+            <span className="text-blue-600">Chủ nghĩa tư bản công nghệ mới</span>
           </h1>
 
           <p
-            className={`text-xl md:text-2xl text-amber-700 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
+            className={`text-xl md:text-2xl text-blue-700 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Khám phá sự thật về "tự do" trong thời đại công nghệ số. Freelancer, YouTuber, TikToker... có thực sự tự do hay đang bị bóc lột một cách
-            tinh vi?
+            Khám phá sự thật về "độc quyền công nghệ" trong kỷ nguyên AI. OpenAI, Google, Nvidia... đang tạo ra một hình thức độc quyền mới theo đúng lý thuyết của V.I. Lenin?
           </p>
 
           {/* Animated Visual */}
           <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
             <div className="relative max-w-2xl mx-auto h-64 flex items-center justify-center">
               {/* Freelancer icon in center */}
-              <div className="absolute z-10 bg-amber-200 rounded-full p-6 shadow-lg">
-                <Brain className="w-12 h-12 text-amber-800" />
+              <div className="absolute z-10 bg-blue-200 rounded-full p-6 shadow-lg">
+                <Brain className="w-12 h-12 text-blue-800" />
               </div>
 
               {/* Surrounding elements that appear progressively */}
@@ -82,7 +81,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
                   animationStep >= 3 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
                 }`}
               >
-                <span className="text-sm font-semibold text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Thuật toán • Big Tech • Dữ liệu</span>
+                <span className="text-sm font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">AI Chips • Cloud Computing • Big Data</span>
               </div>
             </div>
           </div>
@@ -92,7 +91,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
             <Button
               onClick={() => onPageChange("theory")}
               size="lg"
-              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               Khám phá sự thật
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -104,22 +103,22 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
           {[
             {
-              title: "Lý thuyết nền tảng",
-              description: "Khái niệm giai cấp, bóc lột theo Mác-Lênin",
+              title: "Lý thuyết Lenin",
+              description: "Đặc điểm kinh tế của độc quyền và chủ nghĩa đế quốc",
               icon: Brain,
               page: "theory",
               color: "bg-blue-100 text-blue-800",
             },
             {
-              title: "Hình thức bóc lót mới",
-              description: "Nền tảng số và các hình thức bóc lót tinh vi",
+              title: "Phân tích Big Tech",
+              description: "OpenAI, Google, Nvidia và biểu hiện độc quyền AI",
               icon: AlertTriangle,
               page: "exploitation",
               color: "bg-red-100 text-red-800",
             },
             {
-              title: "Hiện trạng ngày nay",
-              description: "Các ví dụ thực tế về bóc lột hiện đại trong đời sống",
+              title: "Tác động toàn diện",
+              description: "Ảnh hưởng đến lao động, startup, dữ liệu cá nhân",
               icon: TrendingUp,
               page: "example",
               color: "bg-green-100 text-green-800",
@@ -134,7 +133,7 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
           ].map((item, index) => (
             <Card
               key={`home-card-${item.title}`}
-              className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-amber-200 ${
+              className={`cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-blue-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${(index + 1) * 200}ms` }}
@@ -144,8 +143,8 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
                 <div className={`w-16 h-16 rounded-full ${item.color} flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className="w-8 h-8" />
                 </div>
-                <CardTitle className="text-lg text-amber-900 mb-2">{item.title}</CardTitle>
-                <p className="text-sm text-amber-700">{item.description}</p>
+                <CardTitle className="text-lg text-blue-900 mb-2">{item.title}</CardTitle>
+                <p className="text-sm text-blue-700">{item.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -153,9 +152,9 @@ const HomePage = ({ onPageChange }: HomePageProps) => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-amber-700 mb-6 text-lg">"Giai cấp không biến mất, chỉ thay đổi hình thức."</p>
-          <p className="text-amber-600 text-sm max-w-2xl mx-auto">
-            Hiểu để không ảo tưởng – và để đấu tranh đúng cách. Khám phá cách thức hoạt động của nền kinh tế số và vị trí thực sự của bạn trong đó.
+          <p className="text-blue-700 mb-6 text-lg">"Độc quyền là giai đoạn cao nhất của chủ nghĩa tư bản." - V.I. Lenin</p>
+          <p className="text-blue-600 text-sm max-w-2xl mx-auto">
+            Hiểu để không ảo tưởng về "tự do công nghệ". Khám phá cách thức các tập đoàn công nghệ lớn đang tạo ra một hình thức độc quyền mới và vai trò của bạn trong đó.
           </p>
         </div>
       </div>
