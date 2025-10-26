@@ -1,7 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DataMining, FirewallBypass, NetworkHacking, PasswordCracking } from "../components/minigames";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 type MenuState =
   | "main"
@@ -910,7 +910,7 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
       setDisplayedLines(endingLines);
       setIsTyping(false);
       playSound("success");
-      
+
       // Check if player achieved Master Hacker or higher rank and show the event dialog
       const currentRank = gameState.rank;
       if (currentRank === RANK.MASTER_HACKER || currentRank === RANK.LORD_OF_HACK) {
@@ -919,7 +919,7 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
           setShowEventDialog(true);
         }, 3000);
       }
-      
+
       return;
     }
 
@@ -1198,9 +1198,7 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
       <Dialog open={showEventDialog} onOpenChange={setShowEventDialog}>
         <DialogContent className="sm:max-w-[500px] bg-gradient-to-br from-blue-950 to-purple-950 border-cyan-400 border-2">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-cyan-400 text-center">
-              🎉 Special Event Unlocked! 🎉
-            </DialogTitle>
+            <DialogTitle className="text-2xl font-bold text-cyan-400 text-center">🎉 Special Event Unlocked! 🎉</DialogTitle>
             <DialogDescription className="text-white text-center text-base mt-4">
               Chúc mừng bạn đã đạt rank <span className="text-yellow-400 font-bold">{gameState.rank}</span>!
               <br />
@@ -1208,9 +1206,7 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
               Bạn đã hoàn thành hành trình và khám phá những bí mật về độc quyền AI.
               <br />
               <br />
-              <span className="text-cyan-300">
-                Bạn có muốn xem thêm chi tiết về dự án ScrollyTelling này không?
-              </span>
+              <span className="text-cyan-300">Bạn có muốn xem thêm chi tiết về dự án ScrollyTelling này không?</span>
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex gap-3 sm:gap-0">
@@ -1229,9 +1225,8 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
             <Button
               onClick={() => {
                 setShowEventDialog(false);
-                if (onPageChange) {
-                  onPageChange("scrollycredits");
-                }
+                // Redirect to index.html
+                window.location.href = "/src/index.html";
               }}
               className="bg-cyan-500 hover:bg-cyan-600 text-white"
             >
