@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BookOpen, Brain, HelpCircle, Home, Menu, MessageCircle, Users, X } from "lucide-react";
+import { BookOpen, Brain, Gamepad, HelpCircle, Home, Menu, MessageCircle, Users, X } from "lucide-react";
 import { useState } from "react";
 
 interface NavigationProps {
@@ -16,6 +16,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
     { id: "theory", label: "Lý thuyết Lenin", icon: BookOpen },
     { id: "exploitation", label: "Phân tích Big Tech", icon: Users },
     { id: "example", label: "Tác động", icon: Menu },
+    { id: "scrollytelling", label: "GAME", icon: Gamepad },
     { id: "chat", label: "AI Chat", icon: MessageCircle },
     { id: "about", label: "Định hướng", icon: HelpCircle },
   ];
@@ -45,9 +46,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
                   variant={currentPage === item.id ? "default" : "ghost"}
                   className={cn(
                     "flex items-center space-x-2 transition-colors duration-200",
-                    currentPage === item.id
-                      ? "bg-blue-700 text-blue-100 hover:bg-blue-600"
-                      : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
+                    currentPage === item.id ? "bg-blue-700 text-blue-100 hover:bg-blue-600" : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
                   )}
                 >
                   <IconComponent className="w-4 h-4" />
@@ -86,9 +85,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
                     variant={currentPage === item.id ? "default" : "ghost"}
                     className={cn(
                       "w-full justify-start flex items-center space-x-2 transition-colors duration-200",
-                      currentPage === item.id
-                        ? "bg-blue-700 text-blue-100 hover:bg-blue-600"
-                        : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
+                      currentPage === item.id ? "bg-blue-700 text-blue-100 hover:bg-blue-600" : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
                     )}
                   >
                     <IconComponent className="w-4 h-4" />

@@ -6,6 +6,7 @@ import ChatPage from "./pages/ChatPage";
 import ExamplePage from "./pages/ExamplePage";
 import ExploitationPage from "./pages/ExploitationPage";
 import HomePage from "./pages/HomePage";
+import ScrollytellingPage from "./pages/ScrollytellingPage";
 import TheoryPage from "./pages/TheoryPage";
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
         return <ChatPage />;
       case "example":
         return <ExamplePage />;
+      case "scrollytelling":
+        return <ScrollytellingPage />;
       case "about":
         return <AboutPage />;
       default:
