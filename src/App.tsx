@@ -7,6 +7,7 @@ import ExamplePage from "./pages/ExamplePage";
 import ExploitationPage from "./pages/ExploitationPage";
 import HomePage from "./pages/HomePage";
 import ScrollytellingPage from "./pages/ScrollytellingPage";
+import ScrollyCreditsPage from "./pages/ScrollyCreditsPage";
 import TheoryPage from "./pages/TheoryPage";
 
 const App = () => {
@@ -25,7 +26,9 @@ const App = () => {
       case "example":
         return <ExamplePage />;
       case "scrollytelling":
-        return <ScrollytellingPage />;
+        return <ScrollytellingPage onPageChange={setCurrentPage} />;
+      case "scrollycredits":
+        return <ScrollyCreditsPage />;
       case "about":
         return <AboutPage />;
       default:

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DataMining, FirewallBypass, NetworkHacking, PasswordCracking } from "../components/minigames";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 type MenuState =
   | "main"
@@ -16,6 +18,16 @@ type MenuState =
 type ThemeType = "classic" | "cyberpunk" | "matrix" | "hacker";
 type RankType = "Analyst" | "Investigator" | "Specialist" | "Expert" | "Master Hacker" | "Lord of Hack";
 type EndingType = "revolutionary" | "pragmatic" | "nihilist" | null;
+
+// Rank constants for better maintainability
+const RANK = {
+  ANALYST: "Analyst" as const,
+  INVESTIGATOR: "Investigator" as const,
+  SPECIALIST: "Specialist" as const,
+  EXPERT: "Expert" as const,
+  MASTER_HACKER: "Master Hacker" as const,
+  LORD_OF_HACK: "Lord of Hack" as const,
+};
 
 interface TerminalLine {
   text: string;
@@ -59,7 +71,7 @@ interface Achievement {
   unlocked: boolean;
 }
 
-const ScrollytellingPage = () => {
+const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) => void }) => {
   const [currentMenu, setCurrentMenu] = useState<MenuState>("main");
   const [displayedLines, setDisplayedLines] = useState<TerminalLine[]>([]);
   const [isTyping, setIsTyping] = useState(true);
@@ -70,7 +82,7 @@ const ScrollytellingPage = () => {
     score: 0,
     completedMissions: new Set(),
     unlockedSecrets: [],
-    rank: "Analyst",
+    rank: RANK.ANALYST,
     username: "",
     startTime: null,
     completionTime: null,
@@ -82,6 +94,7 @@ const ScrollytellingPage = () => {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [selectedEnding, setSelectedEnding] = useState<EndingType>(null);
   const [showDossier, setShowDossier] = useState<string | null>(null);
+  const [showEventDialog, setShowEventDialog] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -145,14 +158,14 @@ const ScrollytellingPage = () => {
     const hasPerfectScore = score >= 1250; // Maximum possible score
 
     if (hasAllMissions && hasAllEasterEggs && hasAllSecrets && hasPerfectScore) {
-      return "Lord of Hack";
+      return RANK.LORD_OF_HACK;
     }
 
-    if (score >= 1000) return "Master Hacker";
-    if (score >= 750) return "Expert";
-    if (score >= 500) return "Specialist";
-    if (score >= 250) return "Investigator";
-    return "Analyst";
+    if (score >= 1000) return RANK.MASTER_HACKER;
+    if (score >= 750) return RANK.EXPERT;
+    if (score >= 500) return RANK.SPECIALIST;
+    if (score >= 250) return RANK.INVESTIGATOR;
+    return RANK.ANALYST;
   };
 
   // Update rank when score changes
@@ -162,7 +175,7 @@ const ScrollytellingPage = () => {
       setGameState((prev) => ({ ...prev, rank: newRank }));
 
       // Special celebration for Lord of Hack
-      if (newRank === "Lord of Hack") {
+      if (newRank === RANK.LORD_OF_HACK) {
         playSound("success");
         setTimeout(() => playSound("success"), 200);
         setTimeout(() => playSound("success"), 400);
@@ -897,6 +910,16 @@ const ScrollytellingPage = () => {
       setDisplayedLines(endingLines);
       setIsTyping(false);
       playSound("success");
+      
+      // Check if player achieved Master Hacker or higher rank and show the event dialog
+      const currentRank = gameState.rank;
+      if (currentRank === RANK.MASTER_HACKER || currentRank === RANK.LORD_OF_HACK) {
+        // Delay the dialog to show after the ending text is displayed
+        setTimeout(() => {
+          setShowEventDialog(true);
+        }, 3000);
+      }
+      
       return;
     }
 
@@ -1170,6 +1193,53 @@ const ScrollytellingPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Special Event Dialog */}
+      <Dialog open={showEventDialog} onOpenChange={setShowEventDialog}>
+        <DialogContent className="sm:max-w-[500px] bg-gradient-to-br from-blue-950 to-purple-950 border-cyan-400 border-2">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-cyan-400 text-center">
+              🎉 Special Event Unlocked! 🎉
+            </DialogTitle>
+            <DialogDescription className="text-white text-center text-base mt-4">
+              Chúc mừng bạn đã đạt rank <span className="text-yellow-400 font-bold">{gameState.rank}</span>!
+              <br />
+              <br />
+              Bạn đã hoàn thành hành trình và khám phá những bí mật về độc quyền AI.
+              <br />
+              <br />
+              <span className="text-cyan-300">
+                Bạn có muốn xem thêm chi tiết về dự án ScrollyTelling này không?
+              </span>
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex gap-3 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShowEventDialog(false);
+                if (onPageChange) {
+                  onPageChange("home");
+                }
+              }}
+              className="bg-red-500/20 hover:bg-red-500/30 text-red-400 border-red-400"
+            >
+              ❌ Không, quay về trang chủ
+            </Button>
+            <Button
+              onClick={() => {
+                setShowEventDialog(false);
+                if (onPageChange) {
+                  onPageChange("scrollycredits");
+                }
+              }}
+              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+            >
+              ✅ Có, xem chi tiết!
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
