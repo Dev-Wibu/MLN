@@ -1226,7 +1226,7 @@ const ScrollytellingPage = ({ onPageChange }: { onPageChange?: (page: string) =>
               onClick={() => {
                 setShowEventDialog(false);
                 // Redirect to index.html
-                window.location.href = "/src/index.html";
+                window.location.href = "http://localhost:5173/src/index.html";
               }}
               className="bg-cyan-500 hover:bg-cyan-600 text-white"
             >
