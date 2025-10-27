@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BookOpen, Brain, Gamepad, HelpCircle, Home, Menu, MessageCircle, Users, X } from "lucide-react";
+import { BookOpen, Brain, Gamepad, HelpCircle, Home, Menu, Users, X } from "lucide-react";
 import { useState } from "react";
 
 interface NavigationProps {
