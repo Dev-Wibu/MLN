@@ -17,7 +17,6 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
     { id: "exploitation", label: "Phân tích Big Tech", icon: Users },
     { id: "example", label: "Tác động", icon: Menu },
     { id: "scrollytelling", label: "GAME", icon: Gamepad },
-    { id: "chat", label: "AI Chat", icon: MessageCircle },
     { id: "about", label: "Định hướng", icon: HelpCircle },
   ];
 
