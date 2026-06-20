@@ -1,35 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { BookOpen, Brain, Gamepad, HelpCircle, Home, Menu, Users, X } from "lucide-react";
+import { BookOpen, Home, Menu, X } from "lucide-react";
 import { useState } from "react";
 
-interface NavigationProps {
-  currentPage: string;
-  onPageChange: (page: string) => void;
-}
-
-const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
+const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigationItems = [
     { id: "home", label: "Trang chủ", icon: Home },
-    { id: "theory", label: "Lý thuyết Lenin", icon: BookOpen },
-    { id: "exploitation", label: "Phân tích Big Tech", icon: Users },
-    { id: "example", label: "Tác động", icon: Menu },
-    { id: "scrollytelling", label: "GAME", icon: Gamepad },
-    { id: "about", label: "Định hướng", icon: HelpCircle },
+    { id: "theory", label: "Lý thuyết", icon: BookOpen },
   ];
 
   return (
-    <nav className="bg-blue-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-blue-700">
+    <nav className="bg-red-900/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-red-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex-shrink-0 cursor-pointer" onClick={() => onPageChange("home")}>
-              <span className="text-2xl font-bold text-blue-100 flex items-center gap-2">
-                <Brain className="w-6 h-6" />
-                Độc quyền AI
+            <div className="flex-shrink-0 cursor-pointer">
+              <span className="text-2xl font-bold text-red-100 flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                CNXHKH
               </span>
             </div>
           </div>
@@ -41,12 +31,8 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
               return (
                 <Button
                   key={item.id}
-                  onClick={() => onPageChange(item.id)}
-                  variant={currentPage === item.id ? "default" : "ghost"}
-                  className={cn(
-                    "flex items-center space-x-2 transition-colors duration-200",
-                    currentPage === item.id ? "bg-blue-700 text-blue-100 hover:bg-blue-600" : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
-                  )}
+                  variant={item.id === "home" ? "default" : "ghost"}
+                  className="flex items-center space-x-2 transition-colors duration-200 text-red-100 hover:bg-red-800"
                 >
                   <IconComponent className="w-4 h-4" />
                   <span className="text-sm">{item.label}</span>
@@ -61,7 +47,7 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               variant="ghost"
               size="icon"
-              className="text-blue-200 hover:text-blue-100 hover:bg-blue-800"
+              className="text-red-200 hover:text-red-100 hover:bg-red-800"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -77,15 +63,8 @@ const Navigation = ({ currentPage, onPageChange }: NavigationProps) => {
                 return (
                   <Button
                     key={item.id}
-                    onClick={() => {
-                      onPageChange(item.id);
-                      setIsMenuOpen(false);
-                    }}
-                    variant={currentPage === item.id ? "default" : "ghost"}
-                    className={cn(
-                      "w-full justify-start flex items-center space-x-2 transition-colors duration-200",
-                      currentPage === item.id ? "bg-blue-700 text-blue-100 hover:bg-blue-600" : "text-blue-200 hover:bg-blue-800 hover:text-blue-100"
-                    )}
+                    variant={item.id === "home" ? "default" : "ghost"}
+                    className="w-full justify-start flex items-center space-x-2 transition-colors duration-200 text-red-100 hover:bg-red-800"
                   >
                     <IconComponent className="w-4 h-4" />
                     <span>{item.label}</span>
