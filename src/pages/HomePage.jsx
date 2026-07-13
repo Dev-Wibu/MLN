@@ -40,39 +40,27 @@ const HomePage = () => {
            }
         }
         setScrollProgress(newProgress);
+        
+        // Sync activeSection precisely with the closest dot on the progress bar
+        const closestIndex = Math.round(newProgress * (sectionIds.length - 1));
+        setActiveSection(sectionIds[closestIndex]);
       } else {
         // Fallback
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         if (docHeight > 0) {
-          setScrollProgress(scrollTop / docHeight);
+          const progress = scrollTop / docHeight;
+          setScrollProgress(progress);
+          const closestIndex = Math.round(progress * (sectionIds.length - 1));
+          setActiveSection(sectionIds[closestIndex]);
         }
       }
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    // Intersection observer for waypoints
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.2, rootMargin: "-10% 0px -40% 0px" }
-    );
-
-    const sections = ["muc-1-1", "muc-1-2", "muc-2", "muc-3-1", "muc-3-2"];
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
     };
   }, []);
 
