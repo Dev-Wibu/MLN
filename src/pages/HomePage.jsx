@@ -19,65 +19,141 @@ const HomePage = () => {
 
       <main className="mt-16">
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 flex items-center justify-center min-h-[70vh] border-b border-outline-variant">
-          <div className="absolute inset-0 z-0">
-            <img src="/assets/docx_images/image2.jpg" alt="Poster" className="w-full h-full object-cover opacity-20 object-top" />
-            <div className="absolute inset-0 bg-gradient-to-b from-surface/80 to-surface"></div>
+        <section className="relative overflow-hidden bg-surface py-24 sm:py-32 flex items-center justify-center min-h-[80vh] border-b border-outline-variant">
+          {/* Background Glow */}
+          <div className="absolute -top-40 -z-10 transform-gpu blur-3xl sm:-top-80">
+            <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary to-tertiary opacity-20"></div>
           </div>
           
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center">
-            <h1 className="font-display-lg text-4xl md:text-6xl text-primary mb-8 font-bold uppercase">
-              Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên Chủ nghĩa xã hội ở Việt Nam
-            </h1>
-            <div className="flex justify-center mt-8">
-              <Link to="/games" className="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all text-lg">Khám phá Trò Chơi</Link>
-            </div>
+          <div className="absolute inset-0 z-0">
+            <img src="/assets/docx_images/image2.jpg" alt="Poster" className="w-full h-full object-cover opacity-10 object-top mix-blend-multiply dark:mix-blend-screen" />
+            <div className="absolute inset-0 bg-gradient-to-b from-surface/50 via-surface/80 to-surface"></div>
+          </div>
+          
+          <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl font-extrabold tracking-tight text-on-surface sm:text-7xl leading-tight"
+            >
+              Cơ cấu xã hội <br className="hidden sm:block"/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-secondary">Giai cấp & Liên minh</span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="mt-6 text-xl leading-8 text-on-surface-variant max-w-3xl mx-auto"
+            >
+              Tìm hiểu về sự phân tầng, đặc điểm và sự biến đổi của cơ cấu xã hội trong thời kỳ quá độ lên Chủ nghĩa Xã hội ở Việt Nam.
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="mt-10 flex items-center justify-center gap-x-6"
+            >
+              <Link to="/games" className="group rounded-full bg-primary px-8 py-4 text-lg font-bold text-on-primary shadow-sm hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-xl flex items-center gap-2">
+                Khám phá Trò Chơi 
+                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </Link>
+            </motion.div>
           </div>
         </section>
 
         {/* MỤC 1.1 */}
-        <section className="py-16 border-b border-outline-variant max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl text-primary font-bold mb-8">Khái niệm và vị trí của cơ cấu xã hội - giai cấp trong cơ cấu xã hội</h2>
+        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+          <div className="mb-16 max-w-3xl">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">Khái niệm và vị trí của cơ cấu xã hội - giai cấp trong cơ cấu xã hội</h2>
+            <p className="mt-4 text-xl text-on-surface-variant border-l-4 border-primary pl-6 py-2 bg-surface-container-low rounded-r-xl">
+              Cơ cấu xã hội – giai cấp là tổng thể các giai cấp, tầng lớp xã hội cùng tồn tại khách quan trong một chế độ xã hội nhất định và những mối quan hệ của chúng được hình thành dựa trên những đặc điểm như sở hữu tư liệu sản xuất, sự khác biệt về tổ chức quản lí, về địa vị chính trị - xã hội… giữa những giai cấp và tầng lớp đó.
+            </p>
+          </div>
           
-          <div className="space-y-6 text-lg">
+          <div className="space-y-20">
+            {/* Thành phần chủ yếu */}
             <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Khái niệm:</h3>
-              <p>Cơ cấu xã hội – giai cấp là tổng thể các giai cấp, tầng lớp xã hội cùng tồn tại khách quan trong một chế độ xã hội nhất định và những mối quan hệ của chúng được hình thành dựa trên những đặc điểm như sở hữu tư liệu sản xuất, sự khác biệt về tổ chức quản lí, về địa vị chính trị - xã hội… giữa những giai cấp và tầng lớp đó.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Gồm có các thành phần chủ yếu:</h3>
-              <ul className="list-disc pl-8 space-y-2">
-                <li><strong>Giai cấp công nhân:</strong> Lực lượng giữ vai trò lãnh đạo thông qua Đảng.</li>
-                <li><strong>Giai cấp nông dân:</strong> Lực lượng đông đảo, có vai trò quan trọng trong phát triển nông nghiệp và nông thôn.</li>
-                <li><strong>Tầng lớp trí thức:</strong> Đóng góp vào khoa học, công nghệ, giáo dục và đổi mới sáng tạo.</li>
-                <li><strong>Tầng lớp doanh nhân:</strong> Thúc đẩy sản xuất, kinh doanh, tạo việc làm và phát triển kinh tế.</li>
-                <li><strong>Các tầng lớp khác:</strong> Tầng lớp thanh niên, phụ nữ,..</li>
-              </ul>
-              <div className="my-6">
-                <img src="/assets/docx_images/image1.png" alt="Thành phần chủ yếu" className="rounded-xl shadow-md max-h-96 mx-auto object-cover" />
+              <h3 className="font-bold text-3xl text-primary mb-8 flex items-center gap-3">
+                <span className="material-symbols-outlined text-4xl">category</span>
+                Các thành phần chủ yếu
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                {[
+                  { title: "Giai cấp công nhân", desc: "Lực lượng giữ vai trò lãnh đạo thông qua Đảng.", icon: "engineering" },
+                  { title: "Giai cấp nông dân", desc: "Lực lượng đông đảo, có vai trò quan trọng trong phát triển nông nghiệp và nông thôn.", icon: "agriculture" },
+                  { title: "Tầng lớp trí thức", desc: "Đóng góp vào khoa học, công nghệ, giáo dục và đổi mới sáng tạo.", icon: "school" },
+                  { title: "Tầng lớp doanh nhân", desc: "Thúc đẩy sản xuất, kinh doanh, tạo việc làm và phát triển kinh tế.", icon: "business_center" },
+                  { title: "Các tầng lớp khác", desc: "Tầng lớp thanh niên, phụ nữ,..", icon: "groups" }
+                ].map((item, idx) => (
+                  <div key={idx} className="group relative bg-surface-container-lowest p-6 rounded-3xl shadow-sm border border-outline-variant hover:shadow-xl hover:border-primary transition-all duration-300">
+                    <div className="h-14 w-14 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center mb-6 group-hover:scale-110 transition-transform group-hover:rotate-3 shadow-inner">
+                      <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                    </div>
+                    <h4 className="text-xl font-bold text-on-surface mb-3">{item.title}</h4>
+                    <p className="text-on-surface-variant text-base leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-12 overflow-hidden rounded-3xl shadow-2xl border border-outline-variant max-w-4xl mx-auto">
+                <img src="/assets/docx_images/image1.png" alt="Thành phần chủ yếu" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
 
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Đặc điểm của cơ cấu xã hội trong thời kỳ quá độ:</h3>
-              <ul className="list-disc pl-8 space-y-2">
-                <li><strong>Đa dạng về thành phần xã hội:</strong> Tồn tại nhiều giai cấp, tầng lớp khác nhau.</li>
-                <li><strong>Có sự biến đổi liên tục:</strong> Cơ cấu xã hội thay đổi theo sự phát triển của nền kinh tế và quá trình công nghiệp hóa, hiện đại hóa đất nước.</li>
-                <li><strong>Vừa có khác biệt về lợi ích nhưng cũng vừa hợp tác:</strong> Các giai cấp, tầng lớp mặc dù có lợi ích riêng nhưng cùng hướng đến một mục đích chung là xây dựng XHCN</li>
-              </ul>
-              <div className="my-6">
-                <img src="/assets/docx_images/image2.png" alt="Đặc điểm" className="rounded-xl shadow-md max-h-96 mx-auto object-cover" />
+            {/* Đặc điểm */}
+            <div className="bg-surface-container-low rounded-3xl p-8 lg:p-12 shadow-inner border border-outline-variant">
+              <h3 className="font-bold text-3xl text-primary mb-8 flex items-center gap-3">
+                <span className="material-symbols-outlined text-4xl">star</span>
+                Đặc điểm thời kỳ quá độ
+              </h3>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <ul className="space-y-6">
+                  {[
+                    { title: "Đa dạng về thành phần xã hội", desc: "Tồn tại nhiều giai cấp, tầng lớp khác nhau.", icon: "diversity_3" },
+                    { title: "Có sự biến đổi liên tục", desc: "Cơ cấu xã hội thay đổi theo sự phát triển của nền kinh tế và quá trình công nghiệp hóa, hiện đại hóa đất nước.", icon: "update" },
+                    { title: "Khác biệt nhưng hợp tác", desc: "Các giai cấp, tầng lớp mặc dù có lợi ích riêng nhưng cùng hướng đến một mục đích chung là xây dựng XHCN.", icon: "handshake" }
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex gap-5 bg-surface p-5 rounded-2xl shadow-sm border border-outline-variant hover:border-secondary transition-colors">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                        <span className="material-symbols-outlined">{item.icon}</span>
+                      </div>
+                      <div>
+                        <strong className="text-on-surface text-lg block mb-1">{item.title}</strong>
+                        <span className="text-on-surface-variant">{item.desc}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="rounded-3xl overflow-hidden shadow-xl border border-outline-variant">
+                  <img src="/assets/docx_images/image2.jpg" alt="Đặc điểm" className="w-full h-full object-cover" />
+                </div>
               </div>
             </div>
 
+            {/* Ý nghĩa */}
             <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Ý nghĩa:</h3>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Tạo cơ sở để phát huy sức mạnh đại đoàn kết toàn dân.</li>
-                <li>Thúc đẩy phát triển kinh tế gắn liền với công bằng xã hội.</li>
-                <li>Xây dựng thành công chủ nghĩa xã hội.</li>
-              </ul>
+              <h3 className="font-bold text-3xl text-primary mb-8 flex items-center gap-3">
+                <span className="material-symbols-outlined text-4xl">flag</span>
+                Ý nghĩa lịch sử
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  { text: "Tạo cơ sở để phát huy sức mạnh đại đoàn kết toàn dân.", icon: "group_add" },
+                  { text: "Thúc đẩy phát triển kinh tế gắn liền với công bằng xã hội.", icon: "balance" },
+                  { text: "Xây dựng thành công chủ nghĩa xã hội.", icon: "account_balance" }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gradient-to-br from-primary to-tertiary p-1 rounded-3xl shadow-md hover:shadow-xl transition-shadow hover:-translate-y-1 duration-300">
+                    <div className="bg-surface h-full rounded-[23px] p-6 flex flex-col items-center text-center gap-4">
+                      <div className="h-16 w-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-inner">
+                        <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                      </div>
+                      <p className="text-on-surface font-bold text-lg">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
