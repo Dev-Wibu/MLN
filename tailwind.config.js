@@ -75,6 +75,12 @@ module.exports = {
         "margin-desktop": "64px"
       },
       "fontFamily": {
+        "serif": [
+          "\"Source Serif 4\"",
+          "ui-serif",
+          "Georgia",
+          "serif"
+        ],
         "body-lg": [
           "\"Source Serif 4\""
         ],

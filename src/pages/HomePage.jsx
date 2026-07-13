@@ -5,62 +5,70 @@ const HomePage = () => {
   return (
     <div className="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen">
       {/* Top Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant shadow-sm">
-        <div className="flex justify-between items-center h-16 px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="font-display-lg text-primary tracking-tight font-bold text-xl">Modern Socialism</div>
-          <Link to="/games" className="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all">
-            GÓC TRÒ CHƠI
+      <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="flex justify-between items-center h-20 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="font-serif text-[#8B0000] font-bold text-3xl">Modern Socialism</div>
+          <Link 
+            to="/games" 
+            className="text-[#8B0000] text-lg font-bold hover:underline hover:decoration-2 underline-offset-8 transition-all uppercase"
+          >
+            Góc Trò Chơi
           </Link>
         </div>
       </nav>
 
-      <main className="mt-16">
+      <main className="mt-20">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-surface py-24 sm:py-32 flex items-center justify-center min-h-[80vh] border-b border-outline-variant">
-          {/* Background Glow */}
-          <div className="absolute -top-40 -z-10 transform-gpu blur-3xl sm:-top-80">
-            <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary to-tertiary opacity-20"></div>
-          </div>
-
+        <section className="relative bg-white py-24 sm:py-32 flex items-center justify-center min-h-[70vh] border-b border-gray-200">
           <div className="absolute inset-0 z-0">
             <img
               src="/assets/docx_images/image2.jpg"
               alt="Poster"
-              className="w-full h-full object-cover opacity-10 object-top mix-blend-multiply dark:mix-blend-screen"
+              className="w-full h-full object-cover opacity-5 object-top mix-blend-multiply"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-surface/50 via-surface/80 to-surface"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-[#8B0000] font-serif tracking-widest uppercase text-sm font-bold mb-6"
+            >
+              Học thuyết Chính trị - Xã hội
+            </motion.div>
+            
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl font-extrabold tracking-tight text-on-surface sm:text-7xl leading-tight"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-5xl font-bold text-[#111] font-serif sm:text-6xl leading-tight mb-4"
             >
               Cơ cấu xã hội <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-secondary">Giai cấp & Liên minh</span>
+              <span className="text-[#8B0000]">Giai cấp & Liên minh</span>
             </motion.h1>
+            
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mt-6 text-xl leading-8 text-on-surface-variant max-w-3xl mx-auto"
+              className="mt-6 text-xl leading-8 text-gray-700 font-serif max-w-3xl mx-auto"
             >
               Tìm hiểu về sự phân tầng, đặc điểm và sự biến đổi của cơ cấu xã hội trong thời kỳ quá độ lên Chủ nghĩa Xã hội ở Việt Nam.
             </motion.p>
+            
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
               className="mt-10 flex items-center justify-center gap-x-6"
             >
               <Link
                 to="/games"
-                className="group rounded-full bg-primary px-8 py-4 text-lg font-bold text-on-primary shadow-sm hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-xl flex items-center gap-2"
+                className="group bg-[#8B0000] border-2 border-[#8B0000] px-8 py-3 text-lg font-serif font-bold text-white hover:bg-white hover:text-[#8B0000] transition-colors flex items-center gap-2"
               >
                 Khám phá Trò Chơi
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
               </Link>
             </motion.div>
           </div>
