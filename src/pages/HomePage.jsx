@@ -346,6 +346,54 @@ const HomePage = () => {
             </motion.div>
           </div>
         </section>
+        {/* TEAM & TOOLS SECTION */}
+        <section className="py-stack-lg bg-surface-container-low border-t border-outline-variant">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-16">
+            {/* Left Column - Team Members */}
+            <div className="lg:col-span-7">
+              <span className="text-on-surface-variant font-bold text-sm tracking-wider uppercase block mb-2 font-body">ĐỘI NGŨ THỰC HIỆN</span>
+              <h2 className="font-display-lg text-4xl text-on-surface mb-8 pb-3 border-b-2 border-primary inline-block font-bold">Thành viên nhóm</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { name: "Nguyễn Phạm Thu Hà", id: "SE184261", init: "NH" },
+                  { name: "Quách Hữu Khang", id: "SE184031", init: "QK" },
+                  { name: "Trần Nhật Tân", id: "SE184055", init: "TN" },
+                  { name: "Trần Quốc Phú", id: "SE173106", init: "TP" },
+                  { name: "Trần Bá Thành", id: "HE171047", init: "TT" }
+                ].map((member, idx) => (
+                  <div key={idx} className="bg-surface border border-outline-variant rounded-lg p-5 flex items-center gap-4 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:border-primary transition-all duration-200">
+                    <div className="w-12 h-12 bg-primary-container rounded flex items-center justify-center shrink-0">
+                      <span className="text-on-primary-container font-bold text-base font-body">{member.init}</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-bold text-on-surface text-base leading-snug font-body">{member.name}</span>
+                      <span className="text-on-surface-variant text-xs font-mono mt-0.5">{member.id}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Tools */}
+            <div className="lg:col-span-5">
+              <span className="text-on-surface-variant font-bold text-sm tracking-wider uppercase block mb-2 font-body">CÔNG CỤ HỖ TRỢ</span>
+              <h2 className="font-display-lg text-4xl text-on-surface mb-8 pb-3 border-b-2 border-primary inline-block font-bold">AI & Tools</h2>
+              
+              <div className="flex flex-col gap-4">
+                <div className="bg-surface border border-outline-variant rounded-lg p-5 flex items-center gap-4 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:border-primary transition-all duration-200">
+                  <div className="w-12 h-12 bg-primary-container rounded flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-on-primary-container text-2xl">code</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-bold text-on-surface text-base leading-snug font-body">GitHub Copilot</span>
+                    <span className="text-on-surface-variant text-sm mt-0.5 font-body">Trợ lý AI lập trình, hỗ trợ viết code và debug</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
