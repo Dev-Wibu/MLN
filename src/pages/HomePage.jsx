@@ -1,9 +1,134 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { QRCodeSVG } from "qrcode.react";
 
 const HomePage = () => {
+  const [showQR, setShowQR] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const quizUrl = typeof window !== "undefined" ? window.location.origin + "/games" : "http://localhost:5173/games";
+
+  useEffect(() => {
+    // Handle scroll progress for the vertical bar
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        setScrollProgress(scrollTop / docHeight);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    // Intersection observer for waypoints
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "-10% 0px -40% 0px" }
+    );
+
+    const sections = ["muc-1-1", "muc-1-2", "muc-2", "muc-3-1", "muc-3-2"];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen">
+      {/* Vertical Progress Indicator */}
+      <aside className="fixed left-6 top-1/2 -translate-y-1/2 z-[40] hidden xl:flex flex-col items-center pointer-events-none h-[400px]">
+        {/* SVG Path line */}
+        <div className="absolute inset-0 w-full flex justify-center">
+          <div className="w-[2px] h-full bg-outline-variant/30 relative">
+             <div 
+               className="absolute top-0 left-0 w-full bg-primary origin-top"
+               style={{ height: `${scrollProgress * 100}%` }}
+             ></div>
+          </div>
+        </div>
+        
+        {/* Ship/Star cursor */}
+        <div 
+          className="absolute z-10 text-primary transition-all duration-100 ease-linear"
+          style={{ top: `${scrollProgress * 100}%`, transform: 'translateY(-50%)' }}
+        >
+          <span className="material-symbols-outlined text-3xl drop-shadow-md bg-surface rounded-full">stars</span>
+        </div>
+
+        {/* Waypoints */}
+        <div className="h-full flex flex-col justify-between w-full absolute inset-0 py-0 z-0">
+          {[
+            { id: "muc-1-1", label: "1.1" },
+            { id: "muc-1-2", label: "1.2" },
+            { id: "muc-2", label: "2" },
+            { id: "muc-3-1", label: "3.1" },
+            { id: "muc-3-2", label: "3.2" }
+          ].map((waypoint) => (
+            <div key={waypoint.id} className="relative flex justify-center group pointer-events-auto">
+              <a 
+                href={`#${waypoint.id}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 z-10 ring-4 ring-surface ${activeSection === waypoint.id ? 'bg-primary scale-125' : 'bg-outline-variant'}`}
+                title={`Mục ${waypoint.label}`}
+              ></a>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      {/* QR Code Full-Screen Modal */}
+      {showQR && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in p-6"
+          onClick={() => setShowQR(false)}
+        >
+          <div
+            className="bg-surface rounded-3xl p-8 max-w-md w-full mx-auto text-center shadow-2xl relative max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowQR(false)}
+              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-variant/50 hover:bg-primary/10 flex items-center justify-center transition-colors cursor-pointer z-10"
+            >
+              <span className="material-symbols-outlined text-on-surface-variant text-lg">close</span>
+            </button>
+            <div className="mb-6">
+              <span className="material-symbols-outlined text-primary text-3xl mb-2 block">qr_code_2</span>
+              <h3 className="text-2xl font-bold text-on-surface font-serif">Quét mã QR để chơi game</h3>
+            </div>
+            <div className="bg-white rounded-xl inline-block mb-6 shadow-inner p-4">
+              <QRCodeSVG
+                value={quizUrl}
+                size={250}
+                level="M"
+                includeMargin={false}
+                fgColor="#1a1a1a"
+                bgColor="#ffffff"
+              />
+            </div>
+            <p className="text-sm text-on-surface-variant/70 break-all px-4 mb-4">{quizUrl}</p>
+            <Link
+              to="/games"
+              className="inline-flex justify-center items-center gap-2 bg-primary text-white py-3 px-6 rounded-full font-bold w-full hover:bg-primary/90 transition-colors"
+            >
+              Tham gia ngay trên máy tính
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      )}
       {/* Top Navigation Bar */}
       <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex justify-between items-center h-20 px-6 md:px-12 max-w-7xl mx-auto">
@@ -70,12 +195,19 @@ const HomePage = () => {
                 Khám phá Trò Chơi
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
               </Link>
+              <button
+                onClick={() => setShowQR(true)}
+                className="group border-2 border-[#8B0000] bg-white px-5 py-3 text-lg font-serif font-bold text-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
+                title="Quét mã QR để chơi trên điện thoại"
+              >
+                <span className="material-symbols-outlined">qr_code_scanner</span>
+              </button>
             </motion.div>
           </div>
         </section>
 
         {/* MỤC 1.1 */}
-        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+        <section id="muc-1-1" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">
               Khái niệm và vị trí của cơ cấu xã hội - giai cấp trong cơ cấu xã hội
@@ -203,7 +335,7 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 1.2 */}
-        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+        <section id="muc-1-2" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
           <div className="mb-20 text-center max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">
               Sự biến đổi có tính quy luật của cơ cấu xã hội - giai cấp
@@ -338,7 +470,7 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 2 */}
-        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
+        <section id="muc-2" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">
               Liên minh giai cấp, tầng lớp <br />
@@ -503,7 +635,7 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 3.1 */}
-        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+        <section id="muc-3-1" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
           <div className="text-center mb-20 max-w-4xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 border border-primary/20">
               <span className="material-symbols-outlined text-sm">flag</span>
@@ -753,7 +885,7 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 3.2 */}
-        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
+        <section id="muc-3-2" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
           <div className="text-center mb-20 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">
               Liên minh giai cấp, tầng lớp <br />ở Việt Nam
