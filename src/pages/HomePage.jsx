@@ -159,149 +159,238 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 1.2 */}
-        <section className="py-16 border-b border-outline-variant max-w-5xl mx-auto px-6 bg-surface-container-lowest">
-          <h2 className="text-4xl text-primary font-bold mb-8">Sự biến đổi có tính quy luật của cơ cấu xã giai cấp trong thời quá độ lên chủ nghĩa xã hội</h2>
+        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+          <div className="mb-20 text-center max-w-4xl mx-auto">
+             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Sự biến đổi có tính quy luật của cơ cấu xã hội - giai cấp</h2>
+             <p className="text-xl text-on-surface-variant">Sự vận động và phát triển của cơ cấu xã hội - giai cấp trong thời kỳ quá độ luôn tuân theo những quy luật khách quan, gắn liền với sự chuyển biến của cơ cấu kinh tế.</p>
+          </div>
           
-          <div className="space-y-12 text-lg">
+          <div className="space-y-16">
             {/* Quy luật 1 */}
-            <div>
-              <h3 className="font-bold text-3xl text-secondary mb-4">Quy luật 1</h3>
-              <div className="my-6">
-                <img src="/assets/docx_images/image3.png" alt="Quy luật 1" className="rounded-xl shadow-md max-h-96 mx-auto object-cover" />
+            <div className="group bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant hover:border-primary/50 hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 border border-primary/20">
+                  <span className="material-symbols-outlined text-lg">looks_one</span>
+                  Quy luật thứ nhất
+                </div>
+                <h3 className="text-3xl font-bold text-on-surface mb-4 leading-snug">Cơ cấu xã hội - giai cấp biến đổi gắn liền và bị quy định bởi cơ cấu kinh tế</h3>
+                <p className="text-on-surface-variant mb-8 text-lg">Sự chuyển biến của cơ sở hạ tầng kinh tế là nguyên nhân sâu xa dẫn đến sự thay đổi của cơ cấu xã hội. Tác động được thể hiện rõ qua:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {['Phương thức sản xuất', 'Cơ cấu ngành nghề', 'Thành phần kinh tế', 'Cơ chế kinh tế'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-surface p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/40 transition-colors">
+                      <span className="material-symbols-outlined text-primary">check_circle</span>
+                      <span className="font-bold text-on-surface">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="font-bold mb-4">Cơ cấu xã hội - giai cấp biến đổi gắn liền và bị quy định bởi cơ cấu kinh tế của thời kỳ quá độ lên CNXH.</p>
-              <p className="mb-2">Sự chuyển biến của cơ sở hạ tầng kinh tế là nguyên nhân sâu xa dẫn đến sự thay đổi của cơ cấu xã hội - giai cấp. Tác động được thể hiện như sau:</p>
-              <ul className="list-disc pl-8 space-y-1">
-                <li>Phương thức sản xuất</li>
-                <li>Cơ cấu ngành nghề</li>
-                <li>Thành phần kinh tế</li>
-                <li>Cơ cấu kinh tế</li>
-                <li>Cơ chế kinh tế</li>
-              </ul>
-              <p className="mt-2 font-bold text-tertiary">=&gt; Cơ cấu xã hội giai cấp</p>
+              <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
+                <img src="/assets/docx_images/image3.png" alt="Quy luật 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]" />
+              </div>
             </div>
 
             {/* Quy luật 2 */}
-            <div>
-              <h3 className="font-bold text-3xl text-secondary mb-4">Quy luật 2</h3>
-              <div className="my-6">
-                <img src="/assets/docx_images/image4.png" alt="Quy luật 2" className="rounded-xl shadow-md max-h-96 mx-auto object-cover" />
+            <div className="group bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant hover:border-secondary/50 hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-1 lg:order-1 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
+                <img src="/assets/docx_images/image4.png" alt="Quy luật 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]" />
               </div>
-              <p className="font-bold mb-4">Cơ cấu xã hội - giai cấp biến đổi phức tạp, đa dạng, làm xuất hiện các tầng lớp xã hội mới.</p>
-              <p className="mb-2">Trong thời kỳ quá độ, nền kinh tế tồn tại nhiều thành phần kinh tế và nhiều ngành nghề khác nhau.</p>
-              <p className="mb-2">Sự đa dạng về kinh tế này tất yếu dẫn đến hệ quả:</p>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Tồn tại nhiều giai cấp, tầng lớp và nhóm người khác nhau trong xã hội.</li>
-                <li>Làm xuất hiện các tầng lớp xã hội mới (ví dụ: Đội ngũ doanh nhân, tầng lớp trung lưu mới, những người khởi nghiệp...).</li>
-                <li>Sự đan xen, dịch chuyển vị trí xã hội giữa các nhóm dân cư diễn ra liên tục và năng động.</li>
-              </ul>
+              <div className="order-2 lg:order-2">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary/10 text-secondary font-bold text-sm mb-6 border border-secondary/20">
+                  <span className="material-symbols-outlined text-lg">looks_two</span>
+                  Quy luật thứ hai
+                </div>
+                <h3 className="text-3xl font-bold text-on-surface mb-4 leading-snug">Cơ cấu xã hội biến đổi phức tạp, đa dạng, làm xuất hiện các tầng lớp mới</h3>
+                <p className="text-on-surface-variant mb-6 text-lg">Trong thời kỳ quá độ, sự đa dạng về các thành phần kinh tế tất yếu dẫn đến các hệ quả sâu sắc trong xã hội:</p>
+                <ul className="space-y-4">
+                  {[
+                    'Tồn tại nhiều giai cấp, tầng lớp và nhóm người khác nhau.',
+                    'Làm xuất hiện các tầng lớp xã hội mới (Doanh nhân, trung lưu mới...).',
+                    'Sự đan xen, dịch chuyển vị trí xã hội diễn ra liên tục, năng động.'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-4 bg-surface p-4 rounded-xl border border-outline-variant shadow-sm hover:-translate-y-1 transition-transform">
+                      <div className="shrink-0 h-8 w-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mt-0.5">
+                        <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                      </div>
+                      <span className="text-on-surface font-medium leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Quy luật 3 */}
-            <div>
-              <h3 className="font-bold text-3xl text-secondary mb-4">Quy luật 3</h3>
-              <div className="my-6">
-                <img src="/assets/docx_images/image5.jpg" alt="Quy luật 3" className="rounded-xl shadow-md max-h-96 mx-auto object-cover" />
+            <div className="group bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant hover:border-tertiary/50 hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-tertiary/10 text-tertiary font-bold text-sm mb-6 border border-tertiary/20">
+                  <span className="material-symbols-outlined text-lg">looks_3</span>
+                  Quy luật thứ ba
+                </div>
+                <h3 className="text-3xl font-bold text-on-surface mb-4 leading-snug">Mối quan hệ vừa đấu tranh, vừa liên minh, tiến tới xích lại gần nhau</h3>
+                <p className="text-on-surface-variant mb-6 text-lg">Cơ cấu không đứng im mà luôn vận động theo xu hướng hội tụ nhằm xây dựng khối đại đoàn kết:</p>
+                <div className="space-y-4">
+                  <div className="bg-surface p-5 rounded-2xl border border-outline-variant hover:border-tertiary/40 hover:shadow-md transition-all flex gap-4">
+                    <span className="material-symbols-outlined text-tertiary text-3xl">handshake</span>
+                    <div>
+                      <strong className="text-on-surface block text-lg mb-1">Vừa đấu tranh, vừa liên minh</strong>
+                      <span className="text-on-surface-variant">Giải quyết mâu thuẫn cục bộ, liên kết chặt chẽ dựa trên lợi ích chung.</span>
+                    </div>
+                  </div>
+                  <div className="bg-surface p-5 rounded-2xl border border-outline-variant hover:border-tertiary/40 hover:shadow-md transition-all flex gap-4">
+                    <span className="material-symbols-outlined text-tertiary text-3xl">balance</span>
+                    <div>
+                      <strong className="text-on-surface block text-lg mb-1">Xóa bỏ bất bình đẳng</strong>
+                      <span className="text-on-surface-variant">Từng bước xóa bỏ triệt để áp bức, hướng tới công bằng xã hội.</span>
+                    </div>
+                  </div>
+                  <div className="bg-surface p-5 rounded-2xl border border-outline-variant hover:border-tertiary/40 hover:shadow-md transition-all flex gap-4">
+                    <span className="material-symbols-outlined text-tertiary text-3xl">group_add</span>
+                    <div>
+                      <strong className="text-on-surface block text-lg mb-1">Xích lại gần nhau</strong>
+                      <span className="text-on-surface-variant">Thu hẹp khoảng cách về tư liệu sản xuất và đời sống tinh thần.</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="font-bold mb-4">Biến đổi trong mối quan hệ vừa đấu tranh, vừa liên minh, từng bước xóa bỏ bất bình đẳng, tiến tới xích lại gần nhau.</p>
-              <p className="mb-2">Cơ cấu xã hội - giai cấp không đứng im mà luôn vận động theo xu hướng hội tụ nhằm xây dựng khối đại đoàn kết.</p>
-              <ul className="list-disc pl-8 space-y-2">
-                <li><strong>Vừa đấu tranh, vừa liên minh:</strong> Nhằm giải quyết các mâu thuẫn cục bộ, đồng thời liên kết chặt chẽ dựa trên lợi ích chung của sự nghiệp xây dựng Chủ nghĩa Xã hội.</li>
-                <li><strong>Xóa bỏ bất bình đẳng:</strong> Quá trình phát triển kinh tế đi đôi với tiến bộ, công bằng xã hội, từng bước xóa bỏ triệt để áp bức, bóc lột.</li>
-                <li><strong>Xích lại gần nhau:</strong> Các giai cấp, tầng lớp dần thu hẹp khoảng cách về tư liệu sản xuất, tính chất lao động và đời sống tinh thần.</li>
-              </ul>
+              <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
+                <img src="/assets/docx_images/image5.png" alt="Quy luật 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]" />
+              </div>
             </div>
           </div>
         </section>
 
         {/* MỤC 2 */}
-        <section className="py-16 border-b border-outline-variant max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl text-primary font-bold mb-8">Liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên CNXH</h2>
+        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">Liên minh giai cấp, tầng lớp <br/>trong thời kỳ quá độ lên CNXH</h2>
+            <div className="h-2 w-24 bg-gradient-to-r from-primary to-tertiary mx-auto rounded-full"></div>
+          </div>
           
-          <div className="space-y-8 text-lg">
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Thế nào là liên minh và Liên minh giai cấp, tầng lớp là gì ?</h3>
-              <p>Liên minh là sự kết hợp, hợp tác giữa các cá nhân hoặc tổ chức với một mục đích chung nhằm đạt được một lợi ích hoặc mục tiêu cụ thể.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Ví dụ về liên minh:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4 text-center font-bold">
-                <div>
-                  <p className="mb-2">NATO</p>
-                  <img src="/assets/docx_images/image6.png" alt="NATO" className="rounded-xl shadow-sm h-40 mx-auto object-contain" />
+          <div className="space-y-24">
+            {/* Khái niệm & Ví dụ */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+              <div className="bg-surface p-10 rounded-3xl border border-outline-variant shadow-lg hover:shadow-xl transition-all relative overflow-hidden">
+                <div className="absolute -right-10 -top-10 opacity-5">
+                  <span className="material-symbols-outlined text-[150px]">hub</span>
                 </div>
-                <div>
-                  <p className="mb-2">EU</p>
-                  <img src="/assets/docx_images/image7.png" alt="EU" className="rounded-xl shadow-sm h-40 mx-auto object-contain" />
+                <div className="h-16 w-16 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center mb-8 shadow-inner">
+                  <span className="material-symbols-outlined text-4xl">hub</span>
                 </div>
-                <div>
-                  <p className="mb-2">ASEAN</p>
-                  <img src="/assets/docx_images/image8.png" alt="ASEAN" className="rounded-xl shadow-sm h-40 mx-auto object-contain" />
-                </div>
-              </div>
-              <p className="mb-2 mt-6">Ở mỗi thời đại lịch sử, mỗi giai cấp và tầng lớp đều có vị trí và vai trò nhất định. Do nhu cầu cuộc sống và đặc biệt là trong các cuộc cách mạng xã hội, giữa các giai cấp và tầng lớp thường nảy sinh những nhu cầu và lợi ích chung.</p>
-              <p className="font-bold text-tertiary">-&gt; Điều đó khiến cho họ phải tìm cách liên minh, hợp tác với nhau để thực hiện những nhu cầu và lợi ích chung đó.</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Những loại hình liên minh:</h3>
-              <ul className="list-disc pl-8 space-y-2 mb-4">
-                <li>Các giai cấp, tầng lớp có lợi ích cơ bản không đối kháng (liên minh chiến lược)</li>
-                <li>Sau này, có thể các giai cấp, tầng lớp có lợi ích cơ bản đối kháng nhau nhưng có lúc lại xuất hiện những lợi ích chung (liên minh sách lược)</li>
-              </ul>
-              <p className="font-bold bg-surface-container p-4 rounded-lg border border-outline-variant">=&gt; Liên minh giai cấp, tầng lớp, cũng như như đấu tranh giai cấp, tầng lớp đều mang tính phổ biến và là một động lực của cách mạng xã hội, hơn nữa là động lực to lớn, không chỉ trong cách mạng, mà trong sự phát triển xã hội nói chung. Điều này được thể hiện cao nhất và rõ nhất trong cách mạng xã hội chủ nghĩa</p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-3xl text-secondary mb-6 mt-12 border-b pb-2">Những lợi ích của liên minh giai cấp, tầng lớp</h3>
-              
-              <h4 className="font-bold text-2xl text-primary mb-4">Đối với mỗi giai cấp, tầng lớp:</h4>
-              <div className="space-y-6 ml-4 mb-8">
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Nâng cao vị thế, bảo vệ quyền lợi:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Tăng cường sức mạnh tổng hợp:</strong> Khi đoàn kết, các giai cấp, tầng lớp sẽ có tiếng nói chung lớn hơn, dễ dàng hơn trong việc đàm phán, bảo vệ quyền lợi và lợi ích hợp pháp của mình.</li>
-                    <li><strong>Tạo cơ chế đối thoại:</strong> Liên minh tạo ra một diễn đàn để các giai cấp, tầng lớp có thể trao đổi, lắng nghe ý kiến của nhau, từ đó giải quyết mâu thuẫn, bất đồng.</li>
-                    <li><strong>Tăng cường sự tin tưởng:</strong> Khi các giai cấp, tầng lớp thấy được lợi ích chung và sự công bằng trong quá trình hợp tác, sự tin tưởng lẫn nhau sẽ được củng cố.</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Tham gia vào quá trình quản lý nhà nước:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Đảm bảo tính dân chủ:</strong> Sự tham gia của nhiều giai cấp, tầng lớp vào quá trình quản lý nhà nước giúp cho các chính sách được đưa ra phù hợp hơn với nguyện vọng của nhân dân.</li>
-                    <li><strong>Nâng cao hiệu quả quản lý:</strong> Nhờ có sự đóng góp ý kiến của nhiều tầng lớp xã hội, quá trình hoạch định và thực hiện chính sách sẽ được hoàn thiện hơn, tránh được những sai sót không đáng có.</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Có cơ hội phát triển:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Mở rộng cơ hội:</strong> Liên minh tạo ra nhiều cơ hội hợp tác, hỗ trợ lẫn nhau giữa các giai cấp, tầng lớp, từ đó mở rộng không gian phát triển cho mỗi cá nhân.</li>
-                  </ul>
+                <h3 className="font-bold text-3xl text-on-surface mb-4">Khái niệm Liên minh</h3>
+                <p className="text-on-surface-variant text-lg leading-relaxed">
+                  Là sự kết hợp, hợp tác giữa các cá nhân hoặc tổ chức với một mục đích chung nhằm đạt được một lợi ích cụ thể. Giữa các giai cấp và tầng lớp thường nảy sinh những nhu cầu chung, dẫn đến sự cần thiết phải liên minh để cùng thực hiện.
+                </p>
+                <div className="mt-8 p-4 bg-surface-container rounded-xl border-l-4 border-primary">
+                  <p className="font-semibold text-on-surface italic">"Liên minh giai cấp mang tính phổ biến và là động lực to lớn của cách mạng xã hội chủ nghĩa."</p>
                 </div>
               </div>
 
-              <h4 className="font-bold text-2xl text-primary mb-4">Đối với xã hội</h4>
-              <div className="space-y-6 ml-4">
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Tạo ra sự ổn định, thống nhất:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Giảm thiểu xung đột:</strong> Khi các giai cấp, tầng lớp cùng hướng tới mục tiêu chung, các xung đột, mâu thuẫn xã hội sẽ được giảm thiểu.</li>
-                    <li><strong>Tăng cường đoàn kết:</strong> Liên minh giúp tăng cường tình đoàn kết, gắn bó giữa các thành viên trong xã hội.</li>
+              <div className="flex flex-col justify-center">
+                <h3 className="font-bold text-2xl text-on-surface mb-8 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary text-3xl">public</span>
+                  Các tổ chức liên minh tiêu biểu
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {[
+                    { name: 'NATO', img: 'image6.png' },
+                    { name: 'EU', img: 'image7.png' },
+                    { name: 'ASEAN', img: 'image8.png' }
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-surface p-6 rounded-2xl border border-outline-variant text-center hover:border-primary hover:-translate-y-2 transition-all shadow-sm hover:shadow-lg group">
+                      <div className="h-24 flex items-center justify-center mb-4">
+                        <img src={`/assets/docx_images/${item.img}`} alt={item.name} className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform" />
+                      </div>
+                      <p className="font-extrabold text-lg text-on-surface">{item.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Lợi ích của liên minh */}
+            <div>
+              <div className="text-center mb-16">
+                <h3 className="font-bold text-4xl text-on-surface">Lợi ích cốt lõi của Liên minh</h3>
+                <p className="text-on-surface-variant mt-4 text-xl">Tạo ra sức mạnh tổng hợp, bảo vệ quyền lợi và thúc đẩy phát triển bền vững.</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Cột 1 */}
+                <div className="bg-gradient-to-br from-surface to-surface-container-low p-10 rounded-3xl border border-outline-variant relative overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-bl-full -z-10"></div>
+                  <h4 className="font-bold text-2xl text-primary mb-10 flex items-center gap-3">
+                    <div className="p-3 bg-primary-container text-on-primary-container rounded-xl">
+                      <span className="material-symbols-outlined">groups</span>
+                    </div>
+                    Đối với mỗi giai cấp, tầng lớp
+                  </h4>
+                  <ul className="space-y-8">
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+                        <span className="material-symbols-outlined text-primary">shield_person</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Bảo vệ quyền lợi chung</strong>
+                        <span className="text-on-surface-variant text-base">Tăng sức mạnh tổng hợp, tạo cơ chế đối thoại và củng cố sự tin tưởng lẫn nhau.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+                        <span className="material-symbols-outlined text-primary">gavel</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Tham gia quản lý nhà nước</strong>
+                        <span className="text-on-surface-variant text-base">Đảm bảo tính dân chủ và nâng cao hiệu quả hoạch định chính sách xã hội.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+                        <span className="material-symbols-outlined text-primary">trending_up</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Mở rộng cơ hội phát triển</strong>
+                        <span className="text-on-surface-variant text-base">Tạo không gian hợp tác và hỗ trợ nhau phát triển toàn diện cho mỗi cá nhân.</span>
+                      </div>
+                    </li>
                   </ul>
                 </div>
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Thúc đẩy sự phát triển kinh tế - xã hội:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Tăng cường nguồn lực:</strong> Khi các giai cấp, tầng lớp cùng nhau đóng góp, nguồn lực xã hội sẽ được huy động một cách hiệu quả.</li>
-                    <li><strong>Tạo môi trường đầu tư thuận lợi:</strong> Một xã hội ổn định, thống nhất sẽ thu hút đầu tư, tạo điều kiện cho kinh tế phát triển.</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="font-bold text-xl mb-2 text-tertiary">Bảo vệ độc lập, chủ quyền quốc gia:</p>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Tăng cường sức mạnh quốc gia:</strong> Khi toàn dân đoàn kết, chung sức, đất nước sẽ có sức mạnh tổng hợp lớn để đối phó với mọi thách thức.</li>
-                    <li><strong>Nâng cao vị thế quốc tế:</strong> Một đất nước ổn định, phát triển sẽ có vị thế ngày càng cao trên trường quốc tế.</li>
+
+                {/* Cột 2 */}
+                <div className="bg-gradient-to-br from-surface to-surface-container-low p-10 rounded-3xl border border-outline-variant relative overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-tertiary/5 rounded-bl-full -z-10"></div>
+                  <h4 className="font-bold text-2xl text-tertiary mb-10 flex items-center gap-3">
+                    <div className="p-3 bg-tertiary-container text-on-tertiary-container rounded-xl">
+                      <span className="material-symbols-outlined">language</span>
+                    </div>
+                    Đối với toàn xã hội
+                  </h4>
+                  <ul className="space-y-8">
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-tertiary transition-colors">
+                        <span className="material-symbols-outlined text-tertiary">balance</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Tạo sự ổn định, thống nhất</strong>
+                        <span className="text-on-surface-variant text-base">Giảm thiểu tối đa xung đột, mâu thuẫn và củng cố tinh thần đoàn kết toàn dân.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-tertiary transition-colors">
+                        <span className="material-symbols-outlined text-tertiary">rocket_launch</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Thúc đẩy phát triển KT-XH</strong>
+                        <span className="text-on-surface-variant text-base">Huy động hiệu quả các nguồn lực, tạo môi trường đầu tư thuận lợi bền vững.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-5 group">
+                      <div className="shrink-0 h-12 w-12 rounded-full bg-surface border border-outline-variant flex items-center justify-center group-hover:border-tertiary transition-colors">
+                        <span className="material-symbols-outlined text-tertiary">security</span>
+                      </div>
+                      <div>
+                        <strong className="text-xl block text-on-surface mb-1">Bảo vệ vững chắc quốc gia</strong>
+                        <span className="text-on-surface-variant text-base">Tăng cường sức mạnh tổng hợp, nâng cao vị thế và uy tín trên trường quốc tế.</span>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -310,169 +399,303 @@ const HomePage = () => {
         </section>
 
         {/* MỤC 3.1 */}
-        <section className="py-16 border-b border-outline-variant max-w-5xl mx-auto px-6 bg-surface-container-lowest">
-          <h2 className="text-4xl text-primary font-bold mb-8">Cơ cấu xã hội – giai cấp trong thời kì quá độ lên chủ nghĩa xã hội ở Việt Nam</h2>
+        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
+          <div className="text-center mb-20 max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 border border-primary/20">
+              <span className="material-symbols-outlined text-sm">flag</span>
+              Việt Nam
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Cơ cấu xã hội – giai cấp trong thời kỳ quá độ ở Việt Nam</h2>
+            <div className="h-2 w-24 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+          </div>
           
-          <div className="space-y-8 text-lg">
-            <div className="my-6">
-              <img src="/assets/docx_images/image9.png" alt="Cơ cấu XH-GC ở VN" className="rounded-xl shadow-md w-full max-h-96 object-cover" />
+          <div className="space-y-20">
+            {/* Intro & Đặc điểm */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant shadow-lg hover:shadow-xl transition-all">
+              <div className="order-2 lg:order-1">
+                <h3 className="font-bold text-3xl text-on-surface mb-6 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-secondary text-4xl">psychology_alt</span>
+                  Đặc điểm nổi bật
+                </h3>
+                <ul className="space-y-6">
+                  {[
+                    'Đảm bảo tính quy luật phổ biến, vừa mang tính đặc thù sâu sắc của xã hội Việt Nam.',
+                    'Vị trí, vai trò của các giai cấp ngày càng được khẳng định rõ nét trong công cuộc đổi mới.',
+                    'Tính năng động và sự đan xen lợi ích tạo động lực mạnh mẽ cho phát triển toàn diện.'
+                  ].map((text, i) => (
+                    <li key={i} className="flex gap-4 group">
+                      <div className="shrink-0 h-10 w-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+                        <span className="material-symbols-outlined text-sm">done_all</span>
+                      </div>
+                      <span className="text-on-surface-variant text-lg leading-relaxed pt-1">{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-md border border-outline-variant h-full">
+                <img src="/assets/docx_images/image9.jpg" alt="Cơ cấu XH-GC ở VN" className="w-full h-full object-cover min-h-[300px] hover:scale-105 transition-transform duration-500" />
+              </div>
             </div>
 
+            {/* Các giai cấp, tầng lớp (Grid layout) */}
             <div>
-              <h3 className="font-bold text-2xl text-secondary mb-2">Đặc điểm:</h3>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Sự biến đổi của cơ cấu xã hội - giai cấp vừa đảm bảo tính quy luật phổ biến, vừa mang tính đặc thù sâu sắc của xã hội Việt Nam.</li>
-                <li>Vị trí, vai trò của các giai cấp, tầng lớp xã hội ngày càng được khẳng định và thể hiện rõ nét trong công cuộc đổi mới.</li>
-                <li>Tính năng động và sự đan xen lợi ích giữa các tầng lớp tạo nên động lực mạnh mẽ cho sự phát triển toàn diện của đất nước.</li>
-              </ul>
-            </div>
+              <div className="text-center mb-16">
+                <h3 className="font-bold text-3xl md:text-4xl text-on-surface">Các giai cấp, tầng lớp cơ bản</h3>
+                <p className="text-on-surface-variant mt-4 text-xl">Lực lượng nòng cốt tạo nên sức mạnh tổng hợp của đất nước</p>
+              </div>
 
-            <div>
-              <h3 className="font-bold text-3xl text-secondary mb-6 border-b pb-2">Các giai cấp, tầng lớp cơ bản trong TKQD lên CNXH ở Việt Nam:</h3>
-              
-              <div className="space-y-12">
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Giai cấp công nhân (Lực lượng lãnh đạo cách mạng):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image10.png" alt="Giai cấp công nhân" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Giai cấp công nhân */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image10.png" alt="Giai cấp công nhân" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Lãnh đạo cách mạng</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li>Là giai cấp lãnh đạo cách mạng thông qua đội tiền phong là Đảng Cộng sản Việt Nam.</li>
-                    <li>Đại diện cho phương thức sản xuất tiên tiến và lực lượng sản xuất hiện đại.</li>
-                    <li>Giữ vị trí tiên phong trong sự nghiệp xây dựng chủ nghĩa xã hội.</li>
-                    <li>Là lực lượng nòng cốt trong liên minh giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Giai cấp công nhân</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>Lãnh đạo cách mạng qua Đảng CSVN.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>Đại diện phương thức sản xuất tiên tiến.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>Giữ vị trí tiên phong xây dựng CNXH.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>Nòng cốt trong liên minh công - nông - trí.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Giai cấp nông dân (Lực lượng nền tảng và chiến lược):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image11.png" alt="Giai cấp nông dân" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+                {/* Giai cấp nông dân */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image11.png" alt="Giai cấp nông dân" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-secondary text-on-secondary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Nền tảng chiến lược</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li>Có vị trí chiến lược đặc biệt quan trọng trong sự nghiệp công nghiệp hoá, hiện đại hoá nông nghiệp, nông thôn.</li>
-                    <li>Đóng vai trò cốt lõi trong việc giữ gìn, phát huy bản sắc văn hoá dân tộc và bảo vệ môi trường sinh thái.</li>
-                    <li>Là chủ thể chính của quá trình phát triển kinh tế nông thôn và xây dựng nông thôn mới.</li>
-                    <li>Hướng tới phát triển toàn diện, đẩy mạnh ứng dụng khoa học công nghệ, hiện đại hóa nông nghiệp.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Giai cấp nông dân</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Vị trí chiến lược trong CNH, HĐH nông nghiệp.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Cốt lõi giữ gìn bản sắc văn hoá & môi trường.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Chủ thể chính phát triển nông thôn mới.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Đội ngũ trí thức (Lực lượng lao động sáng tạo đặc biệt):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image12.png" alt="Đội ngũ trí thức" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+                {/* Đội ngũ trí thức */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image12.png" alt="Đội ngũ trí thức" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-tertiary text-on-tertiary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Lao động sáng tạo</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li>Là lực lượng lao động đặc biệt quan trọng trong sự nghiệp công nghiệp hóa, hiện đại hóa đất nước và hội nhập quốc tế.</li>
-                    <li>Tiên phong trong việc nghiên cứu, ứng dụng khoa học, xây dựng nền tảng cho kinh tế tri thức vững mạnh.</li>
-                    <li>Là một bộ phận không thể tách rời, củng cố vững chắc khối liên minh công - nông - trí thức.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Đội ngũ trí thức</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>Đặc biệt quan trọng trong CNH, HĐH & hội nhập.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>Tiên phong nghiên cứu, ứng dụng khoa học.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>Bộ phận không thể tách rời của liên minh.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Đội ngũ doanh nhân (Lực lượng phát triển kinh tế mạnh mẽ):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image13.png" alt="Đội ngũ doanh nhân" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+                {/* Đội ngũ doanh nhân */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image13.png" alt="Đội ngũ doanh nhân" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Phát triển kinh tế</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li><strong>Tầng lớp đặc biệt</strong> - Là tầng lớp xã hội đặc biệt được Đảng ta chủ trương xây dựng thành một đội ngũ vững mạnh.</li>
-                    <li><strong>Đóng góp tích cực</strong> - Đóng góp tích cực vào việc thực hiện chiến lược phát triển kinh tế - xã hội.</li>
-                    <li><strong>Phát triển nhanh</strong> - Đang phát triển nhanh cả về số lượng và qui mô với vai trò không ngừng tăng lên.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Đội ngũ doanh nhân</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span><strong>Tầng lớp đặc biệt:</strong> Chủ trương xây dựng vững mạnh.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span><strong>Đóng góp tích cực:</strong> Thực hiện chiến lược KT-XH.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-primary text-base mt-0.5">check</span><strong>Phát triển nhanh:</strong> Qui mô & vai trò không ngừng tăng.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Phụ nữ Việt Nam (Lực lượng quan trọng có đóng góp to lớn):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image14.png" alt="Phụ nữ Việt Nam" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+                {/* Phụ nữ Việt Nam */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image14.png" alt="Phụ nữ Việt Nam" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-secondary text-on-secondary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Đóng góp to lớn</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li>Là một lực lượng vô cùng quan trọng và đông đảo trong đội ngũ những người lao động, đóng góp vào mọi mặt của nền kinh tế.</li>
-                    <li>Phụ nữ ngày càng thể hiện vai trò xuất sắc và vị thế vững chắc của mình trong mọi lĩnh vực của đời sống xã hội.</li>
-                    <li>Tiếp tục phát huy truyền thống tốt đẹp, là người gìn giữ ngọn lửa hạnh phúc và định hướng giáo dục trong gia đình.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Phụ nữ Việt Nam</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Lực lượng đông đảo, đóng góp mọi mặt kinh tế.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Thể hiện vai trò xuất sắc ở mọi lĩnh vực.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-secondary text-base mt-0.5">check</span>Gìn giữ hạnh phúc và giáo dục gia đình.</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-2xl text-primary mb-2">Đội ngũ thanh niên (Lực lượng xung kích trong xây dựng và bảo vệ Tổ quốc):</h4>
-                  <div className="my-4">
-                    <img src="/assets/docx_images/image15.png" alt="Đội ngũ thanh niên" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+                {/* Đội ngũ thanh niên */}
+                <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src="/assets/docx_images/image15.png" alt="Đội ngũ thanh niên" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute bottom-4 left-6 px-4 py-1 bg-tertiary text-on-tertiary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Lực lượng xung kích</div>
                   </div>
-                  <ul className="list-disc pl-8 space-y-2">
-                    <li>Là rường cột của nước nhà, chủ nhân tương lai của đất nước.</li>
-                    <li><strong>Tâm trong</strong> - Luôn tu dưỡng đạo đức cách mạng, có lối sống trong sạch, lành mạnh, đề cao lòng yêu nước và tinh thần tự hào dân tộc.</li>
-                    <li><strong>Trí sáng</strong> - Không ngừng học tập, rèn luyện, trau dồi tri thức, làm chủ khoa học công nghệ, nhạy bén và không ngừng đổi mới sáng tạo.</li>
-                    <li><strong>Hoài bão lớn</strong> - Dám nghĩ, dám làm, có khát vọng vươn lên mạnh mẽ, sẵn sàng cống hiến tuổi trẻ vì mục tiêu phát triển và bảo vệ đất nước.</li>
-                  </ul>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h4 className="font-bold text-2xl text-on-surface mb-4">Đội ngũ thanh niên</h4>
+                    <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span><strong>Tâm trong:</strong> Đạo đức, yêu nước, tự hào dân tộc.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span><strong>Trí sáng:</strong> Trau dồi tri thức, nhạy bén công nghệ.</li>
+                      <li className="flex items-start gap-2"><span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span><strong>Hoài bão lớn:</strong> Dám nghĩ dám làm, cống hiến hết mình.</li>
+                    </ul>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
         </section>
 
         {/* MỤC 3.2 */}
-        <section className="py-16 border-b border-outline-variant max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl text-primary font-bold mb-8">Liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam</h2>
+        <section className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface-container-lowest">
+          <div className="text-center mb-20 max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">Liên minh giai cấp, tầng lớp <br/>ở Việt Nam</h2>
+            <div className="h-2 w-24 bg-gradient-to-r from-primary to-tertiary mx-auto rounded-full"></div>
+            <p className="text-xl text-on-surface-variant mt-6">Sự đoàn kết gắn bó chặt chẽ trên mọi lĩnh vực đời sống, tạo nền tảng vững chắc cho sự phát triển của Chủ nghĩa Xã hội.</p>
+          </div>
           
-          <div className="space-y-10 text-lg">
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-4">Liên minh trên lĩnh vực kinh tế:</h3>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Được thực hiện qua các khâu của các quá trình kinh tế, các lĩnh vực kinh tế, các địa bàn, vùng, miền trong cả nước</li>
-                <li>Từng bước hình thành quan hệ sản xuất XHCN trong quá trình thực hiện liên minh</li>
-                <li>Nhà nước có vai trò quan trọng trong liên minh kinh tế.</li>
-              </ul>
-              <div className="my-6">
-                <img src="/assets/docx_images/image16.png" alt="Liên minh kinh tế" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+          <div className="space-y-24">
+            {/* Lĩnh vực Kinh tế */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1 relative">
+                <div className="absolute -left-8 -top-8 text-[120px] text-primary/5 material-symbols-outlined z-0 pointer-events-none">payments</div>
+                <div className="relative z-10">
+                  <h3 className="font-bold text-3xl text-primary mb-6 flex items-center gap-4">
+                    <div className="p-3 bg-primary-container text-on-primary-container rounded-2xl"><span className="material-symbols-outlined text-3xl">trending_up</span></div>
+                    Liên minh Kinh tế
+                  </h3>
+                  <ul className="space-y-5 bg-surface p-8 rounded-3xl border border-outline-variant shadow-sm">
+                    <li className="flex gap-4">
+                      <span className="material-symbols-outlined text-primary">stop_circle</span>
+                      <span className="text-on-surface-variant text-lg">Được thực hiện qua các khâu của các quá trình kinh tế, các lĩnh vực, địa bàn, vùng miền cả nước.</span>
+                    </li>
+                    <li className="flex gap-4">
+                      <span className="material-symbols-outlined text-primary">stop_circle</span>
+                      <span className="text-on-surface-variant text-lg">Từng bước hình thành quan hệ sản xuất XHCN trong quá trình thực hiện liên minh.</span>
+                    </li>
+                    <li className="flex gap-4">
+                      <span className="material-symbols-outlined text-primary">stop_circle</span>
+                      <span className="text-on-surface-variant text-lg font-bold">Nhà nước có vai trò đặc biệt quan trọng trong liên minh kinh tế.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                  <img src="/assets/docx_images/image16.png" alt="Liên minh kinh tế" className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700" />
+                </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-4">Liên minh trên lĩnh vực chính trị :</h3>
-              <p className="mb-2">Mục đích của liên minh là tạo khối đại đoàn kết toàn dân, đập tan âm mưu thù địch, bảo vệ vững chắc XHCN.</p>
-              <p className="mb-2">Thực hiện liên minh trên lĩnh vực chính trị, cần phải:</p>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Giữ vững lập trường chính trị - tư tưởng của giai cấp công công nhân</li>
-                <li>Giữ vững sự lãnh đạo của Đảng</li>
-                <li>Phát huy quyền làm chủ của nhân dân</li>
-                <li>Xây dựng Đảng và NN trong sạch vững mạnh</li>
-                <li>Đấu tranh chống lại mọi âm mưu thù địch</li>
-              </ul>
-              <div className="my-6">
-                <img src="/assets/docx_images/image17.png" alt="Liên minh chính trị" className="rounded-xl shadow-md max-h-80 mx-auto object-cover" />
+            {/* Lĩnh vực Chính trị */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-1 lg:order-1">
+                <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
+                  <div className="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                  <img src="/assets/docx_images/image17.png" alt="Liên minh chính trị" className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700" />
+                </div>
+              </div>
+              <div className="order-2 lg:order-2 relative">
+                <div className="absolute -right-8 -bottom-8 text-[120px] text-secondary/5 material-symbols-outlined z-0 pointer-events-none">account_balance</div>
+                <div className="relative z-10">
+                  <h3 className="font-bold text-3xl text-secondary mb-6 flex items-center gap-4">
+                    <div className="p-3 bg-secondary-container text-on-secondary-container rounded-2xl"><span className="material-symbols-outlined text-3xl">policy</span></div>
+                    Liên minh Chính trị
+                  </h3>
+                  <div className="bg-surface p-8 rounded-3xl border border-outline-variant shadow-sm">
+                    <p className="text-secondary font-bold text-lg mb-6 italic border-l-4 border-secondary pl-4">"Mục đích: Tạo khối đại đoàn kết toàn dân, đập tan âm mưu thù địch, bảo vệ vững chắc XHCN."</p>
+                    <ul className="space-y-4 text-on-surface-variant">
+                      <li className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">check_circle</span> Giữ vững lập trường chính trị giai cấp công nhân.</li>
+                      <li className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">check_circle</span> Giữ vững sự lãnh đạo của Đảng.</li>
+                      <li className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">check_circle</span> Phát huy quyền làm chủ của nhân dân.</li>
+                      <li className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">check_circle</span> Xây dựng Đảng và Nhà nước trong sạch vững mạnh.</li>
+                      <li className="flex items-center gap-3"><span className="material-symbols-outlined text-secondary">check_circle</span> Đấu tranh chống lại mọi âm mưu thù địch.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="font-bold text-2xl text-secondary mb-4">Liên minh trên lĩnh vực văn hóa, tư tưởng :</h3>
-              <p className="mb-2">Mục đích của liên minh văn hóa xã hội là xây dựng nền VH tiên tiến đậm đà bản sắc dân tộc.</p>
-              <p className="mb-2">Để thực hiện liên minh trên lĩnh vực văn hóa xã hội, cần phải:</p>
-              <ul className="list-disc pl-8 space-y-2">
-                <li>Gắn tăng trưởng kinh tế với phát triển văn hóa, con người và thực hiện tiến bộ, công bằng xã hội.</li>
-                <li>Xây dựng và phát triển văn hóa và con người Việt Nam phát triển toàn diện.</li>
-                <li>Nâng cao chất lượng nguồn nhân lực, xóa đói giảm nghèo</li>
-                <li>Nâng cao dân trí, thực hiện tốt an sinh xã hội</li>
-                <li>Nâng cao chất lượng cuộc sống cho nhân dân</li>
-              </ul>
-              <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <img src="/assets/docx_images/image18.png" alt="Liên minh văn hóa 1" className="rounded-xl shadow-md h-64 w-full object-cover" />
-                <img src="/assets/docx_images/image19.png" alt="Liên minh văn hóa 2" className="rounded-xl shadow-md h-64 w-full object-cover" />
+            {/* Lĩnh vực Văn hóa, tư tưởng */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-5 relative">
+                <div className="absolute -left-8 -top-8 text-[120px] text-tertiary/5 material-symbols-outlined z-0 pointer-events-none">palette</div>
+                <div className="relative z-10">
+                  <h3 className="font-bold text-3xl text-tertiary mb-6 flex items-center gap-4">
+                    <div className="p-3 bg-tertiary-container text-on-tertiary-container rounded-2xl"><span className="material-symbols-outlined text-3xl">menu_book</span></div>
+                    Liên minh Văn hóa
+                  </h3>
+                  <div className="bg-surface p-8 rounded-3xl border border-outline-variant shadow-sm mb-6">
+                    <p className="text-tertiary font-bold text-lg mb-6 italic border-l-4 border-tertiary pl-4">"Mục đích: Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc dân tộc."</p>
+                    <ul className="space-y-4 text-on-surface-variant">
+                      <li className="flex items-start gap-3"><span className="material-symbols-outlined text-tertiary mt-1">star</span> <span>Gắn tăng trưởng kinh tế với phát triển văn hóa, thực hiện tiến bộ xã hội.</span></li>
+                      <li className="flex items-start gap-3"><span className="material-symbols-outlined text-tertiary mt-1">star</span> <span>Xây dựng con người Việt Nam phát triển toàn diện.</span></li>
+                      <li className="flex items-start gap-3"><span className="material-symbols-outlined text-tertiary mt-1">star</span> <span>Nâng cao chất lượng nguồn nhân lực, xóa đói giảm nghèo.</span></li>
+                      <li className="flex items-start gap-3"><span className="material-symbols-outlined text-tertiary mt-1">star</span> <span>Nâng cao dân trí, thực hiện tốt an sinh xã hội.</span></li>
+                      <li className="flex items-start gap-3"><span className="material-symbols-outlined text-tertiary mt-1">star</span> <span>Nâng cao chất lượng cuộc sống cho nhân dân.</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
+                <div className="rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                  <img src="/assets/docx_images/image18.png" alt="Liên minh văn hóa 1" className="w-full h-full object-cover min-h-[250px]" />
+                </div>
+                <div className="rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300 sm:mt-12">
+                  <img src="/assets/docx_images/image19.png" alt="Liên minh văn hóa 2" className="w-full h-full object-cover min-h-[250px]" />
+                </div>
               </div>
             </div>
 
-            <div className="bg-surface-container p-6 rounded-xl border border-outline-variant mt-8">
-              <h3 className="font-bold text-2xl text-primary mb-4">Phương hướng cơ bản để xây dựng cơ cấu xã hội – giai cấp và tăng cường liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên CNXH ở Việt Nam:</h3>
-              <p className="font-bold mb-4">Bao gồm 5 phương hướng :</p>
-              <ul className="list-decimal pl-8 space-y-3 font-medium">
-                <li>Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước</li>
-                <li>Xây dựng và thực hiện hệ thống chính sách xã hội hiệu quả và toàn diện, nhất là các chính sách liên quan đến cơ cấu xã hội – giai cấp.</li>
-                <li>Tạo sự đồng thuận và phát huy tinh thần đoàn kết thống nhất giữa các lực lượng trong khối liên minh và toàn xã hội.</li>
-                <li>Hoàn thiện thể chế kinh tế thị trường định hướng xã hội chủ nghĩa và đẩy mạnh phát triển khoa học và công nghệ, tạo điều kiện thuận lợi để các chủ thể trong các khối liên minh phát triển</li>
-                <li>Đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc Việt Nam nhằm tăng cường khối liên minh và xây dựng khối đại đoàn kết toàn dân.</li>
-              </ul>
+            {/* Phương hướng cơ bản */}
+            <div className="bg-gradient-to-r from-primary to-secondary p-1 rounded-3xl shadow-xl mt-16">
+              <div className="bg-surface p-10 lg:p-16 rounded-[22px] relative overflow-hidden">
+                <div className="absolute right-0 top-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+                <div className="absolute left-0 bottom-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-center mb-12">
+                    <span className="material-symbols-outlined text-6xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">explore</span>
+                    <h3 className="font-extrabold text-3xl md:text-4xl text-on-surface mb-4">5 Phương hướng cơ bản</h3>
+                    <p className="text-xl text-on-surface-variant">Xây dựng cơ cấu xã hội – giai cấp và tăng cường liên minh trong thời kỳ quá độ</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {[
+                      { icon: 'factory', text: 'Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước.' },
+                      { icon: 'account_balance', text: 'Xây dựng hệ thống chính sách xã hội hiệu quả, toàn diện liên quan đến cơ cấu XH-GC.' },
+                      { icon: 'diversity_3', text: 'Tạo sự đồng thuận và phát huy tinh thần đoàn kết thống nhất giữa các lực lượng.' },
+                      { icon: 'storefront', text: 'Hoàn thiện thể chế kinh tế thị trường định hướng XHCN, phát triển khoa học công nghệ.' },
+                      { icon: 'published_with_changes', text: 'Đổi mới hoạt động của Đảng, Nhà nước, Mặt trận Tổ quốc nhằm tăng cường khối đại đoàn kết.' }
+                    ].map((ph, idx) => (
+                      <div key={idx} className={`flex gap-5 items-start p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant hover:border-primary/50 transition-colors ${idx === 4 ? 'md:col-span-2 md:w-1/2 md:mx-auto' : ''}`}>
+                        <div className="shrink-0 h-12 w-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center shadow-md font-bold text-xl">
+                          {idx + 1}
+                        </div>
+                        <div>
+                          <p className="text-on-surface font-medium text-lg leading-snug">{ph.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
             
-            <p className="text-sm text-on-surface-variant italic mt-8 text-right">Nguồn : https://www.studocu.vn/vn/document/hoc-vien-hang-khong-viet-nam/chu-nghia-xa-hoi-khoa-hoc/lien-minh-giai-cap-trong-thoi-ki-qua-do-len-chu-nghia-xa-hoi/66431338?sid=586239631783853144</p>
+            <div className="pt-8 border-t border-outline-variant flex justify-end">
+               <a href="https://www.studocu.vn/vn/document/hoc-vien-hang-khong-viet-nam/chu-nghia-xa-hoi-khoa-hoc/lien-minh-giai-cap-trong-thoi-ki-qua-do-len-chu-nghia-xa-hoi/66431338?sid=586239631783853144" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline bg-primary/10 px-4 py-2 rounded-lg">
+                 <span className="material-symbols-outlined text-sm">link</span>
+                 Nguồn tham khảo: Tài liệu Học viện Hàng không Việt Nam
+               </a>
+            </div>
           </div>
         </section>
 
