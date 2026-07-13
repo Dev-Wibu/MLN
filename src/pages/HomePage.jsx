@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [showQR, setShowQR] = useState(false);
@@ -14,33 +14,33 @@ const HomePage = () => {
     // Handle scroll progress for the vertical bar
     const handleScroll = () => {
       const sectionIds = ["muc-1-1", "muc-1-2", "muc-2", "muc-3-1", "muc-3-2"];
-      const elements = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-      
+      const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
       if (elements.length === sectionIds.length) {
         // Calculate progress based on sections to perfectly sync the star cursor with the dots
-        const scrollPosition = window.scrollY + (window.innerHeight * 0.3);
+        const scrollPosition = window.scrollY + window.innerHeight * 0.3;
         const first = elements[0].offsetTop;
         const last = elements[elements.length - 1].offsetTop;
 
         let newProgress = 0;
         if (scrollPosition <= first) {
-           newProgress = 0;
+          newProgress = 0;
         } else if (scrollPosition >= last) {
-           newProgress = 1;
+          newProgress = 1;
         } else {
-           for (let i = 0; i < elements.length - 1; i++) {
-             const currentEl = elements[i];
-             const nextEl = elements[i+1];
-             if (scrollPosition >= currentEl.offsetTop && scrollPosition < nextEl.offsetTop) {
-               const sectionHeight = nextEl.offsetTop - currentEl.offsetTop;
-               const rangeProgress = (scrollPosition - currentEl.offsetTop) / sectionHeight;
-               newProgress = (i + rangeProgress) / (elements.length - 1);
-               break;
-             }
-           }
+          for (let i = 0; i < elements.length - 1; i++) {
+            const currentEl = elements[i];
+            const nextEl = elements[i + 1];
+            if (scrollPosition >= currentEl.offsetTop && scrollPosition < nextEl.offsetTop) {
+              const sectionHeight = nextEl.offsetTop - currentEl.offsetTop;
+              const rangeProgress = (scrollPosition - currentEl.offsetTop) / sectionHeight;
+              newProgress = (i + rangeProgress) / (elements.length - 1);
+              break;
+            }
+          }
         }
         setScrollProgress(newProgress);
-        
+
         // Sync activeSection precisely with the closest dot on the progress bar
         const closestIndex = Math.round(newProgress * (sectionIds.length - 1));
         setActiveSection(sectionIds[closestIndex]);
@@ -71,17 +71,14 @@ const HomePage = () => {
         {/* SVG Path line */}
         <div className="absolute inset-0 w-full flex justify-center">
           <div className="w-[2px] h-full bg-outline-variant/30 relative">
-             <div 
-               className="absolute top-0 left-0 w-full bg-primary origin-top"
-               style={{ height: `${scrollProgress * 100}%` }}
-             ></div>
+            <div className="absolute top-0 left-0 w-full bg-primary origin-top" style={{ height: `${scrollProgress * 100}%` }}></div>
           </div>
         </div>
-        
+
         {/* Ship/Star cursor */}
-        <div 
+        <div
           className="absolute z-10 text-primary transition-all duration-100 ease-linear"
-          style={{ top: `${scrollProgress * 100}%`, transform: 'translateY(-50%)' }}
+          style={{ top: `${scrollProgress * 100}%`, transform: "translateY(-50%)" }}
         >
           <span className="material-symbols-outlined text-3xl drop-shadow-md bg-surface rounded-full">stars</span>
         </div>
@@ -93,12 +90,12 @@ const HomePage = () => {
             { id: "muc-1-2", label: "1.2" },
             { id: "muc-2", label: "2" },
             { id: "muc-3-1", label: "3.1" },
-            { id: "muc-3-2", label: "3.2" }
+            { id: "muc-3-2", label: "3.2" },
           ].map((waypoint) => (
             <div key={waypoint.id} className="relative flex justify-center group pointer-events-auto">
-              <a 
+              <a
                 href={`#${waypoint.id}`}
-                className={`block w-3 h-3 rounded-full transition-all duration-300 z-10 ring-4 ring-surface ${activeSection === waypoint.id ? 'bg-primary scale-125' : 'bg-outline-variant'}`}
+                className={`block w-3 h-3 rounded-full transition-all duration-300 z-10 ring-4 ring-surface ${activeSection === waypoint.id ? "bg-primary scale-125" : "bg-outline-variant"}`}
                 title={`Mục ${waypoint.label}`}
               ></a>
             </div>
@@ -127,14 +124,7 @@ const HomePage = () => {
               <h3 className="text-2xl font-bold text-on-surface font-serif">Quét mã QR để chơi game</h3>
             </div>
             <div className="bg-white rounded-xl inline-block mb-6 shadow-inner p-4">
-              <QRCodeSVG
-                value={quizUrl}
-                size={250}
-                level="M"
-                includeMargin={false}
-                fgColor="#1a1a1a"
-                bgColor="#ffffff"
-              />
+              <QRCodeSVG value={quizUrl} size={250} level="M" includeMargin={false} fgColor="#1a1a1a" bgColor="#ffffff" />
             </div>
             <p className="text-sm text-on-surface-variant/70 break-all px-4 mb-4">{quizUrl}</p>
             <Link
@@ -151,8 +141,8 @@ const HomePage = () => {
       <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex justify-between items-center h-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="font-serif text-[#8B0000] font-bold text-3xl">Modern Socialism</div>
-          <Link 
-            to="/games" 
+          <Link
+            to="/games"
             className="text-[#8B0000] text-lg font-bold hover:underline hover:decoration-2 underline-offset-8 transition-all uppercase"
           >
             Góc Trò Chơi
@@ -164,11 +154,7 @@ const HomePage = () => {
         {/* Hero Section */}
         <section className="relative bg-white py-24 sm:py-32 flex items-center justify-center min-h-[70vh] border-b border-gray-200">
           <div className="absolute inset-0 z-0">
-            <img
-              src="/assets/docx_images/image2.jpg"
-              alt="Poster"
-              className="w-full h-full object-cover opacity-5 object-top mix-blend-multiply"
-            />
+            <img src="/assets/docx_images/image5.jpg" alt="Poster" className="w-full h-full object-cover opacity-5 object-top mix-blend-multiply" />
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -180,7 +166,7 @@ const HomePage = () => {
             >
               Học thuyết Chính trị - Xã hội
             </motion.div>
-            
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,7 +176,7 @@ const HomePage = () => {
               Cơ cấu xã hội <br className="hidden sm:block" />
               <span className="text-[#8B0000]">Giai cấp & Liên minh</span>
             </motion.h1>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -199,7 +185,7 @@ const HomePage = () => {
             >
               Tìm hiểu về sự phân tầng, đặc điểm và sự biến đổi của cơ cấu xã hội trong thời kỳ quá độ lên Chủ nghĩa Xã hội ở Việt Nam.
             </motion.p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -226,15 +212,26 @@ const HomePage = () => {
 
         {/* MỤC 1.1 */}
         <section id="muc-1-1" className="py-24 border-b border-outline-variant max-w-7xl mx-auto px-6 lg:px-8 bg-surface">
-          <div className="mb-16 max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">
-              Khái niệm và vị trí của cơ cấu xã hội - giai cấp trong cơ cấu xã hội
-            </h2>
-            <p className="mt-4 text-xl text-on-surface-variant border-l-4 border-primary pl-6 py-2 bg-surface-container-low rounded-r-xl">
-              Cơ cấu xã hội – giai cấp là tổng thể các giai cấp, tầng lớp xã hội cùng tồn tại khách quan trong một chế độ xã hội nhất định và những
-              mối quan hệ của chúng được hình thành dựa trên những đặc điểm như sở hữu tư liệu sản xuất, sự khác biệt về tổ chức quản lí, về địa vị
-              chính trị - xã hội… giữa những giai cấp và tầng lớp đó.
-            </p>
+          <div className="mb-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-3">
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-6">
+                Khái niệm và vị trí của cơ cấu xã hội - giai cấp trong cơ cấu xã hội
+              </h2>
+              <p className="mt-4 text-xl text-on-surface-variant border-l-4 border-primary pl-6 py-2 bg-surface-container-low rounded-r-xl shadow-sm">
+                Cơ cấu xã hội – giai cấp là tổng thể các giai cấp, tầng lớp xã hội cùng tồn tại khách quan trong một chế độ xã hội nhất định và những
+                mối quan hệ của chúng được hình thành dựa trên những đặc điểm như sở hữu tư liệu sản xuất, sự khác biệt về tổ chức quản lí, về địa vị
+                chính trị - xã hội… giữa những giai cấp và tầng lớp đó.
+              </p>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="overflow-hidden rounded-3xl shadow-xl border border-outline-variant group">
+                <img
+                  src="/assets/docx_images/image1.png"
+                  alt="Cơ cấu xã hội"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-20">
@@ -273,16 +270,7 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
-
-              <div className="mt-12 overflow-hidden rounded-3xl shadow-2xl border border-outline-variant max-w-4xl mx-auto">
-                <img
-                  src="/assets/docx_images/image3.png"
-                  alt="Thành phần chủ yếu"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
             </div>
-
             {/* Đặc điểm */}
             <div className="bg-surface-container-low rounded-3xl p-8 lg:p-12 shadow-inner border border-outline-variant">
               <h3 className="font-bold text-3xl text-primary mb-8 flex items-center gap-3">
@@ -319,7 +307,7 @@ const HomePage = () => {
                   ))}
                 </ul>
                 <div className="rounded-3xl overflow-hidden shadow-xl border border-outline-variant">
-                  <img src="/assets/docx_images/image5.png" alt="Đặc điểm" className="w-full h-full object-cover" />
+                  <img src="/assets/docx_images/image2.png" alt="Đặc điểm" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -392,9 +380,9 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image10.png"
+                  src="/assets/docx_images/image3.png"
                   alt="Quy luật 1"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
+                  className="w-full h-full object-contain bg-surface-container-low group-hover:scale-105 transition-transform duration-700 min-h-[300px] p-2"
                 />
               </div>
             </div>
@@ -403,9 +391,9 @@ const HomePage = () => {
             <div className="group bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant hover:border-secondary/50 hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="order-1 lg:order-1 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image15.png"
+                  src="/assets/docx_images/image4.png"
                   alt="Quy luật 2"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
+                  className="w-full h-full object-contain bg-surface-container-low group-hover:scale-105 transition-transform duration-700 min-h-[300px] p-2"
                 />
               </div>
               <div className="order-2 lg:order-2">
@@ -478,9 +466,9 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image18.png"
+                  src="/assets/docx_images/image5.jpg"
                   alt="Quy luật 3"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
+                  className="w-full h-full object-contain bg-surface-container-low group-hover:scale-105 transition-transform duration-700 min-h-[300px] p-2"
                 />
               </div>
             </div>
@@ -499,42 +487,42 @@ const HomePage = () => {
 
           <div className="space-y-24">
             {/* Khái niệm & Ví dụ */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-              <div className="bg-surface p-10 rounded-3xl border border-outline-variant shadow-lg hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+              <div className="lg:col-span-2 bg-surface p-6 md:p-8 rounded-3xl border border-outline-variant shadow-lg hover:shadow-xl transition-all relative overflow-hidden">
                 <div className="absolute -right-10 -top-10 opacity-5">
                   <span className="material-symbols-outlined text-[150px]">hub</span>
                 </div>
-                <div className="h-16 w-16 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center mb-8 shadow-inner">
+                <div className="h-16 w-16 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center mb-4 shadow-inner">
                   <span className="material-symbols-outlined text-4xl">hub</span>
                 </div>
-                <h3 className="font-bold text-3xl text-on-surface mb-4">Khái niệm Liên minh</h3>
-                <p className="text-on-surface-variant text-lg leading-relaxed">
+                <h3 className="font-bold text-3xl text-on-surface mb-3">Khái niệm Liên minh</h3>
+                <p className="text-on-surface-variant text-base leading-relaxed">
                   Là sự kết hợp, hợp tác giữa các cá nhân hoặc tổ chức với một mục đích chung nhằm đạt được một lợi ích cụ thể. Giữa các giai cấp và
                   tầng lớp thường nảy sinh những nhu cầu chung, dẫn đến sự cần thiết phải liên minh để cùng thực hiện.
                 </p>
-                <div className="mt-8 p-4 bg-surface-container rounded-xl border-l-4 border-primary">
-                  <p className="font-semibold text-on-surface italic">
+                <div className="mt-4 p-4 bg-surface-container rounded-xl border-l-4 border-primary">
+                  <p className="font-semibold text-on-surface italic text-sm">
                     "Liên minh giai cấp mang tính phổ biến và là động lực to lớn của cách mạng xã hội chủ nghĩa."
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center">
+              <div className="lg:col-span-3 flex flex-col justify-center">
                 <h3 className="font-bold text-2xl text-on-surface mb-8 flex items-center gap-3">
                   <span className="material-symbols-outlined text-secondary text-3xl">public</span>
                   Các tổ chức liên minh tiêu biểu
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {[
-                    { name: "NATO", img: "image16.png" },
-                    { name: "EU", img: "image1.png" },
-                    { name: "ASEAN", img: "image17.png" },
+                    { name: "NATO", img: "image6.png" },
+                    { name: "EU", img: "image7.png" },
+                    { name: "ASEAN", img: "image8.png" },
                   ].map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-surface p-6 rounded-2xl border border-outline-variant text-center hover:border-primary hover:-translate-y-2 transition-all shadow-sm hover:shadow-lg group"
+                      className="bg-surface p-2 rounded-2xl border border-outline-variant text-center hover:border-primary hover:-translate-y-2 transition-all shadow-sm hover:shadow-lg group flex flex-col justify-center"
                     >
-                      <div className="h-24 flex items-center justify-center mb-4">
+                      <div className="h-40 sm:h-52 flex items-center justify-center mb-2">
                         <img
                           src={`/assets/docx_images/${item.img}`}
                           alt={item.name}
@@ -690,7 +678,7 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-md border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image2.jpg"
+                  src="/assets/docx_images/image9.png"
                   alt="Cơ cấu XH-GC ở VN"
                   className="w-full h-full object-cover min-h-[300px] hover:scale-105 transition-transform duration-500"
                 />
@@ -709,11 +697,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image8.png"
+                      src="/assets/docx_images/image10.png"
                       alt="Giai cấp công nhân"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Lãnh đạo cách mạng
                     </div>
@@ -742,11 +730,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image13.png"
+                      src="/assets/docx_images/image11.png"
                       alt="Giai cấp nông dân"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-secondary text-on-secondary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Nền tảng chiến lược
                     </div>
@@ -774,11 +762,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image4.png"
+                      src="/assets/docx_images/image12.png"
                       alt="Đội ngũ trí thức"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-tertiary text-on-tertiary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Lao động sáng tạo
                     </div>
@@ -806,11 +794,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image11.png"
+                      src="/assets/docx_images/image13.png"
                       alt="Đội ngũ doanh nhân"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-primary text-on-primary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Phát triển kinh tế
                     </div>
@@ -820,15 +808,21 @@ const HomePage = () => {
                     <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>
-                        <strong>Tầng lớp đặc biệt:</strong> Chủ trương xây dựng vững mạnh.
+                        <span>
+                          <strong>Tầng lớp đặc biệt:</strong> Chủ trương xây dựng vững mạnh.
+                        </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>
-                        <strong>Đóng góp tích cực:</strong> Thực hiện chiến lược KT-XH.
+                        <span>
+                          <strong>Đóng góp tích cực:</strong> Thực hiện chiến lược KT-XH.
+                        </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-primary text-base mt-0.5">check</span>
-                        <strong>Phát triển nhanh:</strong> Qui mô & vai trò không ngừng tăng.
+                        <span>
+                          <strong>Phát triển nhanh:</strong> Qui mô & vai trò không ngừng tăng.
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -838,11 +832,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image12.png"
+                      src="/assets/docx_images/image14.png"
                       alt="Phụ nữ Việt Nam"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-secondary text-on-secondary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Đóng góp to lớn
                     </div>
@@ -870,11 +864,11 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image9.png"
+                      src="/assets/docx_images/image15.png"
                       alt="Đội ngũ thanh niên"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-6 px-4 py-1 bg-tertiary text-on-tertiary rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
                       Lực lượng xung kích
                     </div>
@@ -884,15 +878,21 @@ const HomePage = () => {
                     <ul className="space-y-3 text-on-surface-variant text-sm flex-1">
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>
-                        <strong>Tâm trong:</strong> Đạo đức, yêu nước, tự hào dân tộc.
+                        <span>
+                          <strong>Tâm trong:</strong> Đạo đức, yêu nước, tự hào dân tộc.
+                        </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>
-                        <strong>Trí sáng:</strong> Trau dồi tri thức, nhạy bén công nghệ.
+                        <span>
+                          <strong>Trí sáng:</strong> Trau dồi tri thức, nhạy bén công nghệ.
+                        </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="material-symbols-outlined text-tertiary text-base mt-0.5">check</span>
-                        <strong>Hoài bão lớn:</strong> Dám nghĩ dám làm, cống hiến hết mình.
+                        <span>
+                          <strong>Hoài bão lớn:</strong> Dám nghĩ dám làm, cống hiến hết mình.
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -952,7 +952,7 @@ const HomePage = () => {
                 <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   <img
-                    src="/assets/docx_images/image19.png"
+                    src="/assets/docx_images/image16.png"
                     alt="Liên minh kinh tế"
                     className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700"
                   />
@@ -966,7 +966,7 @@ const HomePage = () => {
                 <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
                   <div className="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   <img
-                    src="/assets/docx_images/image7.png"
+                    src="/assets/docx_images/image17.png"
                     alt="Liên minh chính trị"
                     className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700"
                   />
@@ -1050,11 +1050,11 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-                <div className="rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300">
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-5 gap-6 h-full">
+                <div className="sm:col-span-2 rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300">
                   <img src="/assets/docx_images/image18.png" alt="Liên minh văn hóa 1" className="w-full h-full object-cover min-h-[250px]" />
                 </div>
-                <div className="rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300 sm:mt-12">
+                <div className="sm:col-span-3 rounded-3xl overflow-hidden border border-outline-variant shadow-lg hover:-translate-y-2 transition-transform duration-300 sm:mt-12">
                   <img src="/assets/docx_images/image19.png" alt="Liên minh văn hóa 2" className="w-full h-full object-cover min-h-[250px]" />
                 </div>
               </div>
