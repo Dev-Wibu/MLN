@@ -80,7 +80,7 @@ const HomePage = () => {
             <div key={waypoint.id} className="relative flex justify-center group pointer-events-auto">
               <a 
                 href={`#${waypoint.id}`}
-                className={`w-3 h-3 rounded-full transition-all duration-300 z-10 ring-4 ring-surface ${activeSection === waypoint.id ? 'bg-primary scale-125' : 'bg-outline-variant'}`}
+                className={`block w-3 h-3 rounded-full transition-all duration-300 z-10 ring-4 ring-surface ${activeSection === waypoint.id ? 'bg-primary scale-125' : 'bg-outline-variant'}`}
                 title={`Mục ${waypoint.label}`}
               ></a>
             </div>
