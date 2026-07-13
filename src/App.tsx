@@ -1,13 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // @ts-ignore
 import HomePage from "./pages/HomePage";
-import Navigation from "./components/Navigation";
+// @ts-ignore
+import GamesPage from "./pages/GamesPage";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-slate-50 relative overflow-hidden font-sans">
-      <Navigation />
-      <HomePage />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/games" element={<GamesPage />} />
+      </Routes>
+    </Router>
   );
 };
 

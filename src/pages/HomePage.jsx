@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,9 +35,9 @@ const HomePage = () => {
             <a className="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Alliances</a>
             <a className="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Directions</a>
           </div>
-          <button className="bg-primary text-on-primary px-6 py-2 font-label-uppercase rounded-lg hover:opacity-90 active:opacity-80 transition-all cursor-pointer">
+          <Link to="/games" className="bg-primary text-on-primary px-6 py-2 font-label-uppercase rounded-lg hover:opacity-90 active:opacity-80 transition-all cursor-pointer">
             GET STARTED
-          </button>
+          </Link>
         </div>
       </motion.nav>
 
@@ -79,7 +80,7 @@ const HomePage = () => {
               transition={{ delay: 0.8 }}
               className="flex flex-col md:flex-row justify-center gap-stack-sm"
             >
-              <button className="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Khám phá nội dung</button>
+              <Link to="/games" className="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Góc Trò Chơi</Link>
               <button className="border-2 border-secondary text-secondary px-8 py-3 rounded-lg font-bold hover:bg-secondary hover:text-on-secondary transition-all">Tìm hiểu Liên minh</button>
             </motion.div>
           </div>

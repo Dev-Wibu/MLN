@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-navigation-menu": "^1.2.14",
@@ -20,6 +21,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "@tsparticles/react": "^4.2.1",
     "animejs": "^4.4.1",
+    "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
@@ -27,6 +29,7 @@
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router-dom": "^7.18.1",
     "reveal.js": "^6.0.1",
     "styled-components": "^6.4.2",
     "swiper": "^12.2.0",
