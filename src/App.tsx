@@ -1,3 +1,4 @@
+// @ts-ignore
 import HomePage from "./pages/HomePage";
 import Navigation from "./components/Navigation";
 

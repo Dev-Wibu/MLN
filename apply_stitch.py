@@ -1,11 +1,11 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  "darkMode": [
-    "class"
-  ],
+import json
+import os
+
+html_config = {
+  "darkMode": ["class"],
   "content": [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   "theme": {
     "extend": {
@@ -75,83 +75,58 @@ module.exports = {
         "margin-desktop": "64px"
       },
       "fontFamily": {
-        "body-lg": [
-          "\"Source Serif 4\""
-        ],
-        "display-lg": [
-          "Montserrat"
-        ],
-        "headline-md": [
-          "Montserrat"
-        ],
-        "body-md": [
-          "\"Source Serif 4\""
-        ],
-        "display-lg-mobile": [
-          "Montserrat"
-        ],
-        "caption": [
-          "Inter"
-        ],
-        "label-uppercase": [
-          "Inter"
-        ]
+        "body-lg": ["\"Source Serif 4\""],
+        "display-lg": ["Montserrat"],
+        "headline-md": ["Montserrat"],
+        "body-md": ["\"Source Serif 4\""],
+        "display-lg-mobile": ["Montserrat"],
+        "caption": ["Inter"],
+        "label-uppercase": ["Inter"]
       },
       "fontSize": {
-        "body-lg": [
-          "18px",
-          {
-            "lineHeight": "30px",
-            "fontWeight": "400"
-          }
-        ],
-        "display-lg": [
-          "48px",
-          {
-            "lineHeight": "56px",
-            "letterSpacing": "-0.02em",
-            "fontWeight": "700"
-          }
-        ],
-        "headline-md": [
-          "24px",
-          {
-            "lineHeight": "32px",
-            "fontWeight": "600"
-          }
-        ],
-        "body-md": [
-          "16px",
-          {
-            "lineHeight": "26px",
-            "fontWeight": "400"
-          }
-        ],
-        "display-lg-mobile": [
-          "32px",
-          {
-            "lineHeight": "40px",
-            "letterSpacing": "-0.01em",
-            "fontWeight": "700"
-          }
-        ],
-        "caption": [
-          "13px",
-          {
-            "lineHeight": "18px",
-            "fontWeight": "400"
-          }
-        ],
-        "label-uppercase": [
-          "12px",
-          {
-            "lineHeight": "16px",
-            "letterSpacing": "0.05em",
-            "fontWeight": "600"
-          }
-        ]
+        "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+        "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "caption": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+        "label-uppercase": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
       }
     }
   },
   "plugins": []
-};
+}
+
+tailwind_js = f"/** @type {{import('tailwindcss').Config}} */\nmodule.exports = {json.dumps(html_config, indent=2)};"
+
+with open("tailwind.config.js", "w") as f:
+    f.write(tailwind_js)
+
+index_css_content = """@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  --background: 0 0% 100%;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.social-class-card {
+    border-top: 4px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.social-class-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+.texture-overlay {
+    background-image: radial-gradient(circle at 2px 2px, rgba(142, 112, 109, 0.1) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+"""
+
+with open("src/index.css", "w") as f:
+    f.write(index_css_content)
+
+print("Updated tailwind.config.js and src/index.css")
