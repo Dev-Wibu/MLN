@@ -7,7 +7,11 @@ const initialCards = [
   { id: 'card-2', content: 'Lực lượng đông đảo nhất' },
   { id: 'card-3', content: 'Đóng vai trò quyết định phát triển khoa học - công nghệ' },
   { id: 'card-4', content: 'Lực lượng tổ chức sản xuất, kinh doanh' },
-  { id: 'card-5', content: 'Đóng góp đa dạng vào sự ổn định xã hội' }
+  { id: 'card-5', content: 'Đóng góp đa dạng vào sự ổn định xã hội' },
+  // Decoy cards
+  { id: 'card-6', content: 'Lực lượng bảo vệ an ninh biên giới' },
+  { id: 'card-7', content: 'Sáng tạo giá trị văn hóa nghệ thuật thuần túy' },
+  { id: 'card-8', content: 'Lực lượng nòng cốt của cách mạng' }
 ];
 
 const classes = [
@@ -18,47 +22,78 @@ const classes = [
   { id: 'box-others', title: 'Các tầng lớp khác', matchId: 'card-5', color: 'border-outline' }
 ];
 
-const DragDropGame = () => {
+const DragDropGame = ({ onComplete }) => {
   const [cards, setCards] = useState(initialCards);
   const [boxes, setBoxes] = useState(classes.map(c => ({ ...c, items: [] })));
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onDragEnd = (result) => {
+    if (isSubmitted) return;
     if (!result.destination) return;
 
     const { source, destination } = result;
 
-    if (source.droppableId === 'card-pool' && destination.droppableId !== 'card-pool') {
-      const draggedCard = cards[source.index];
-      const targetBox = boxes.find(b => b.id === destination.droppableId);
-      
-      if (draggedCard.id === targetBox.matchId) {
-        // Correct match
-        const newCards = Array.from(cards);
-        newCards.splice(source.index, 1);
-        setCards(newCards);
+    const newCards = Array.from(cards);
+    const newBoxes = Array.from(boxes);
 
-        const newBoxes = boxes.map(b => {
-          if (b.id === destination.droppableId) {
-            return { ...b, items: [...b.items, draggedCard] };
-          }
-          return b;
-        });
-        setBoxes(newBoxes);
+    // Find and remove dragged item
+    let draggedItem;
+    if (source.droppableId === 'card-pool') {
+      draggedItem = newCards[source.index];
+      newCards.splice(source.index, 1);
+    } else {
+      const sourceBoxIndex = newBoxes.findIndex(b => b.id === source.droppableId);
+      draggedItem = newBoxes[sourceBoxIndex].items[source.index];
+      newBoxes[sourceBoxIndex].items.splice(source.index, 1);
+    }
 
-        if (newCards.length === 0) {
-          confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-        }
+    // Add dragged item to destination
+    if (destination.droppableId === 'card-pool') {
+      newCards.splice(destination.index, 0, draggedItem);
+    } else {
+      const destBoxIndex = newBoxes.findIndex(b => b.id === destination.droppableId);
+      newBoxes[destBoxIndex].items.splice(destination.index, 0, draggedItem);
+    }
+
+    setCards(newCards);
+    setBoxes(newBoxes);
+  };
+
+  const handleSubmit = () => {
+    setIsSubmitted(true);
+    let correctCount = 0;
+    
+    // Check each box
+    boxes.forEach(box => {
+      // Box is correct if it contains exactly the matchId and no others, 
+      // or at least contains the matchId (let's say it must contain the correct one)
+      // For strictness: must contain exactly 1 card and it's the correct one.
+      if (box.items.length === 1 && box.items[0].id === box.matchId) {
+        correctCount++;
+      } else if (box.items.some(item => item.id === box.matchId) && box.items.length === 1) {
+         // This is redundant but keeping it clear
+         correctCount++;
       }
+    });
+
+    const score = correctCount * 20; // 5 boxes * 20 = 100 max
+    if (score === 100) {
+      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+    }
+    
+    if (onComplete) {
+       // Small delay to let user see result
+       setTimeout(() => onComplete(score), 1500);
     }
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <h2 className="text-2xl font-bold text-primary mb-4 text-center">Trò chơi 1: Đặt đúng vị trí</h2>
-      <p className="text-center mb-8 text-on-surface-variant">Kéo thả các đặc điểm vào đúng giai cấp tương ứng.</p>
+      <p className="text-center mb-8 text-on-surface-variant">Kéo thả đặc điểm vào giai cấp tương ứng. Cẩn thận với các đáp án nhiễu!</p>
 
       <div className="flex flex-col gap-8">
-        <Droppable droppableId="card-pool" direction="horizontal">
+        <Droppable droppableId="card-pool" direction="horizontal" isDropDisabled={isSubmitted}>
           {(provided) => (
             <div 
               ref={provided.innerRef} 
@@ -66,7 +101,7 @@ const DragDropGame = () => {
               className="flex flex-wrap gap-4 justify-center min-h-[100px] p-4 bg-surface-container rounded-xl"
             >
               {cards.map((card, index) => (
-                <Draggable key={card.id} draggableId={card.id} index={index}>
+                <Draggable key={card.id} draggableId={card.id} index={index} isDragDisabled={isSubmitted}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
@@ -86,38 +121,49 @@ const DragDropGame = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {boxes.map(box => (
-            <Droppable key={box.id} droppableId={box.id}>
-              {(provided, snapshot) => (
+            <Droppable key={box.id} droppableId={box.id} isDropDisabled={isSubmitted}>
+              {(provided, snapshot) => {
+                 let boxBg = isSubmitted ? 
+                    (box.items.length === 1 && box.items[0].id === box.matchId ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500') 
+                    : (snapshot.isDraggingOver ? 'bg-surface-variant' : 'bg-surface-container-low');
+                 
+                 return (
                 <div
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  className={`p-4 rounded-xl border-t-4 bg-surface-container-low min-h-[200px] flex flex-col ${box.color} ${snapshot.isDraggingOver ? 'bg-surface-variant' : ''}`}
+                  className={`p-4 rounded-xl border-t-4 min-h-[200px] flex flex-col ${box.color} ${boxBg} transition-colors`}
                 >
                   <h3 className="font-bold text-center mb-4">{box.title}</h3>
                   <div className="flex flex-col gap-2 flex-1">
                     {box.items.map((item, idx) => (
-                      <div key={idx} className="bg-primary-container text-on-primary-container p-2 rounded text-xs text-center shadow-sm">
-                        {item.content}
-                      </div>
+                      <Draggable key={item.id} draggableId={item.id} index={idx} isDragDisabled={isSubmitted}>
+                        {(provided) => (
+                          <div 
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="bg-primary-container text-on-primary-container p-2 rounded text-xs text-center shadow-sm cursor-grab"
+                          >
+                            {item.content}
+                          </div>
+                        )}
+                      </Draggable>
                     ))}
                     {provided.placeholder}
                   </div>
                 </div>
-              )}
+              )}}
             </Droppable>
           ))}
         </div>
         
-        {cards.length === 0 && (
+        {!isSubmitted && (
           <div className="text-center mt-4">
             <button 
-              onClick={() => {
-                setCards(initialCards);
-                setBoxes(classes.map(c => ({ ...c, items: [] })));
-              }}
-              className="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-90"
+              onClick={handleSubmit}
+              className="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:opacity-90 shadow-md text-lg"
             >
-              Chơi lại
+              Nộp Bài
             </button>
           </div>
         )}

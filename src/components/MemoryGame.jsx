@@ -17,7 +17,7 @@ const initialCards = [
 
 const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
-const MemoryGame = () => {
+const MemoryGame = ({ onComplete }) => {
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [matched, setMatched] = useState([]);
@@ -48,11 +48,15 @@ const MemoryGame = () => {
       const match2 = cards[newFlipped[1]];
 
       if (match1.pairId === match2.pairId && match1.isConcept !== match2.isConcept) {
-        setMatched([...matched, newFlipped[0], newFlipped[1]]);
+        const newMatched = [...matched, newFlipped[0], newFlipped[1]];
+        setMatched(newMatched);
         setFlipped([]);
-        if (matched.length + 2 === cards.length) {
+        if (newMatched.length === cards.length) {
           confetti({ particleCount: 200, spread: 100, origin: { y: 0.5 } });
           setIsPlaying(false);
+          if (onComplete) {
+            setTimeout(() => onComplete(100), 2000); // 100 points max for completion
+          }
         }
       } else {
         setTimeout(() => setFlipped([]), 1000);
@@ -75,7 +79,6 @@ const MemoryGame = () => {
       
       <div className="flex justify-between items-center mb-6 px-4 bg-surface-variant py-3 rounded-xl border border-outline-variant">
         <span className="font-bold text-on-surface">Thời gian: {timer}s</span>
-        <button onClick={resetGame} className="text-primary font-bold hover:underline">Chơi lại</button>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -118,7 +121,7 @@ const MemoryGame = () => {
       {matched.length === cards.length && (
         <div className="mt-8 text-center p-6 bg-primary-container text-on-primary-container rounded-xl">
           <h3 className="text-2xl font-bold mb-2">Chúc mừng!</h3>
-          <p>Bạn đã hoàn thành trong {timer} giây.</p>
+          <p>Bạn đã hoàn thành trong {timer} giây. Đang lưu kết quả...</p>
         </div>
       )}
     </div>

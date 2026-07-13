@@ -32,7 +32,7 @@ const questions = [
   }
 ];
 
-const SimulationGame = () => {
+const SimulationGame = ({ onComplete }) => {
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(25); // Start with 25% solidarity
   const [showFeedback, setShowFeedback] = useState(false);
@@ -60,6 +60,10 @@ const SimulationGame = () => {
       setCurrentQ(currentQ + 1);
     } else {
       setIsFinished(true);
+      if (onComplete) {
+         // Pass score after a short delay
+         setTimeout(() => onComplete(score), 1500);
+      }
     }
   };
 
@@ -82,17 +86,15 @@ const SimulationGame = () => {
         </div>
       </div>
 
-      {score === 100 ? (
+      {score === 100 && isFinished ? (
         <div className="text-center p-8 bg-surface-container rounded-2xl">
           <h3 className="text-2xl text-primary font-bold mb-4">Hoàn hảo!</h3>
-          <p>Bạn đã xây dựng thành công khối đại đoàn kết toàn dân vững chắc.</p>
-          <button onClick={() => { setScore(25); setCurrentQ(0); setShowFeedback(false); setIsFinished(false); }} className="mt-4 bg-primary text-on-primary px-6 py-2 rounded-lg font-bold">Chơi lại</button>
+          <p>Bạn đã xây dựng thành công khối đại đoàn kết toàn dân vững chắc. Đang chuyển sang trò chơi tiếp theo...</p>
         </div>
       ) : isFinished ? (
         <div className="text-center p-8 bg-surface-container rounded-2xl">
-          <h3 className="text-2xl text-secondary font-bold mb-4">Chưa đạt mục tiêu!</h3>
-          <p>Điểm Đại đoàn kết của bạn là {score}%. Hãy cân nhắc kỹ hơn trong các quyết định nhé!</p>
-          <button onClick={() => { setScore(25); setCurrentQ(0); setShowFeedback(false); setIsFinished(false); }} className="mt-4 bg-secondary text-on-secondary px-6 py-2 rounded-lg font-bold">Thử lại</button>
+          <h3 className="text-2xl text-secondary font-bold mb-4">Hoàn thành tình huống!</h3>
+          <p>Điểm Đại đoàn kết của bạn là {score}%. Đang chuyển sang trò chơi tiếp theo...</p>
         </div>
       ) : (
         <div className="bg-surface-container p-6 rounded-2xl shadow-sm border border-outline-variant">
@@ -116,7 +118,7 @@ const SimulationGame = () => {
               <h4 className="font-bold mb-2">{feedback.isCorrect ? 'Tuyệt vời!' : 'Chưa chính xác!'}</h4>
               <p className="text-sm mb-4">{feedback.msg}</p>
               <button onClick={nextQ} className={`px-6 py-2 rounded-lg font-bold ${feedback.isCorrect ? 'bg-primary text-on-primary' : 'bg-error text-on-error'}`}>
-                {currentQ < questions.length - 1 ? 'Tiếp tục' : (score === 100 ? 'Kết thúc' : 'Hoàn thành bài tập')}
+                {currentQ < questions.length - 1 ? 'Tiếp tục' : 'Hoàn thành bài tập'}
               </button>
             </motion.div>
           )}
