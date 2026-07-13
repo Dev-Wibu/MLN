@@ -13,10 +13,40 @@ const HomePage = () => {
   useEffect(() => {
     // Handle scroll progress for the vertical bar
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0) {
-        setScrollProgress(scrollTop / docHeight);
+      const sectionIds = ["muc-1-1", "muc-1-2", "muc-2", "muc-3-1", "muc-3-2"];
+      const elements = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      
+      if (elements.length === sectionIds.length) {
+        // Calculate progress based on sections to perfectly sync the star cursor with the dots
+        const scrollPosition = window.scrollY + (window.innerHeight * 0.3);
+        const first = elements[0].offsetTop;
+        const last = elements[elements.length - 1].offsetTop;
+
+        let newProgress = 0;
+        if (scrollPosition <= first) {
+           newProgress = 0;
+        } else if (scrollPosition >= last) {
+           newProgress = 1;
+        } else {
+           for (let i = 0; i < elements.length - 1; i++) {
+             const currentEl = elements[i];
+             const nextEl = elements[i+1];
+             if (scrollPosition >= currentEl.offsetTop && scrollPosition < nextEl.offsetTop) {
+               const sectionHeight = nextEl.offsetTop - currentEl.offsetTop;
+               const rangeProgress = (scrollPosition - currentEl.offsetTop) / sectionHeight;
+               newProgress = (i + rangeProgress) / (elements.length - 1);
+               break;
+             }
+           }
+        }
+        setScrollProgress(newProgress);
+      } else {
+        // Fallback
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+          setScrollProgress(scrollTop / docHeight);
+        }
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -49,7 +79,7 @@ const HomePage = () => {
   return (
     <div className="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen">
       {/* Vertical Progress Indicator */}
-      <aside className="fixed left-6 top-1/2 -translate-y-1/2 z-[40] hidden xl:flex flex-col items-center pointer-events-none h-[400px]">
+      <aside className="fixed left-6 top-1/2 -translate-y-1/2 z-[40] hidden xl:flex flex-col items-center pointer-events-none h-[400px] w-12">
         {/* SVG Path line */}
         <div className="absolute inset-0 w-full flex justify-center">
           <div className="w-[2px] h-full bg-outline-variant/30 relative">
