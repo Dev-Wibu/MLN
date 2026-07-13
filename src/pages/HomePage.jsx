@@ -126,9 +126,9 @@ const HomePage = () => {
 
               <div className="mt-12 overflow-hidden rounded-3xl shadow-2xl border border-outline-variant max-w-4xl mx-auto">
                 <img
-                  src="/assets/docx_images/image1.png"
+                  src="/assets/docx_images/image3.png"
                   alt="Thành phần chủ yếu"
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
@@ -169,7 +169,7 @@ const HomePage = () => {
                   ))}
                 </ul>
                 <div className="rounded-3xl overflow-hidden shadow-xl border border-outline-variant">
-                  <img src="/assets/docx_images/image2.jpg" alt="Đặc điểm" className="w-full h-full object-cover" />
+                  <img src="/assets/docx_images/image5.png" alt="Đặc điểm" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image3.png"
+                  src="/assets/docx_images/image10.png"
                   alt="Quy luật 1"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
                 />
@@ -253,7 +253,7 @@ const HomePage = () => {
             <div className="group bg-surface-container-lowest rounded-3xl p-8 lg:p-12 border border-outline-variant hover:border-secondary/50 hover:shadow-2xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="order-1 lg:order-1 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image4.png"
+                  src="/assets/docx_images/image15.png"
                   alt="Quy luật 2"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
                 />
@@ -328,7 +328,7 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-lg border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image5.png"
+                  src="/assets/docx_images/image18.png"
                   alt="Quy luật 3"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[300px]"
                 />
@@ -376,9 +376,9 @@ const HomePage = () => {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {[
-                    { name: "NATO", img: "image6.png" },
-                    { name: "EU", img: "image7.png" },
-                    { name: "ASEAN", img: "image8.png" },
+                    { name: "NATO", img: "image16.png" },
+                    { name: "EU", img: "image1.png" },
+                    { name: "ASEAN", img: "image17.png" },
                   ].map((item, idx) => (
                     <div
                       key={idx}
@@ -540,7 +540,7 @@ const HomePage = () => {
               </div>
               <div className="order-1 lg:order-2 overflow-hidden rounded-2xl shadow-md border border-outline-variant h-full">
                 <img
-                  src="/assets/docx_images/image9.png"
+                  src="/assets/docx_images/image2.jpg"
                   alt="Cơ cấu XH-GC ở VN"
                   className="w-full h-full object-cover min-h-[300px] hover:scale-105 transition-transform duration-500"
                 />
@@ -559,7 +559,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image10.png"
+                      src="/assets/docx_images/image8.png"
                       alt="Giai cấp công nhân"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -592,7 +592,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image11.png"
+                      src="/assets/docx_images/image13.png"
                       alt="Giai cấp nông dân"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -624,7 +624,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image12.png"
+                      src="/assets/docx_images/image4.png"
                       alt="Đội ngũ trí thức"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -656,7 +656,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-primary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image13.png"
+                      src="/assets/docx_images/image11.png"
                       alt="Đội ngũ doanh nhân"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -688,7 +688,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-secondary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image14.png"
+                      src="/assets/docx_images/image12.png"
                       alt="Phụ nữ Việt Nam"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -720,7 +720,7 @@ const HomePage = () => {
                 <div className="bg-surface rounded-3xl border border-outline-variant overflow-hidden hover:border-tertiary hover:shadow-2xl transition-all duration-300 group flex flex-col">
                   <div className="h-56 overflow-hidden relative">
                     <img
-                      src="/assets/docx_images/image15.png"
+                      src="/assets/docx_images/image9.png"
                       alt="Đội ngũ thanh niên"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -802,7 +802,7 @@ const HomePage = () => {
                 <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   <img
-                    src="/assets/docx_images/image16.png"
+                    src="/assets/docx_images/image19.png"
                     alt="Liên minh kinh tế"
                     className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700"
                   />
@@ -816,7 +816,7 @@ const HomePage = () => {
                 <div className="rounded-3xl overflow-hidden border-4 border-surface shadow-2xl relative group h-full">
                   <div className="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   <img
-                    src="/assets/docx_images/image17.png"
+                    src="/assets/docx_images/image7.png"
                     alt="Liên minh chính trị"
                     className="w-full h-full object-cover min-h-[300px] group-hover:scale-110 transition-transform duration-700"
                   />
