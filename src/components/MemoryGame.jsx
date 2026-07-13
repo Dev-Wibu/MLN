@@ -23,6 +23,7 @@ const MemoryGame = ({ onComplete }) => {
   const [matched, setMatched] = useState([]);
   const [timer, setTimer] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [mistakes, setMistakes] = useState(0);
 
   useEffect(() => {
     setCards(shuffleArray(initialCards));
@@ -55,10 +56,13 @@ const MemoryGame = ({ onComplete }) => {
           confetti({ particleCount: 200, spread: 100, origin: { y: 0.5 } });
           setIsPlaying(false);
           if (onComplete) {
-            setTimeout(() => onComplete(100), 2000); // 100 points max for completion
+            // Deduct 2 points per mistake, min score 20
+            const finalScore = Math.max(100 - (mistakes * 2), 20);
+            setTimeout(() => onComplete(finalScore), 2000);
           }
         }
       } else {
+        setMistakes(m => m + 1);
         setTimeout(() => setFlipped([]), 1000);
       }
     }
