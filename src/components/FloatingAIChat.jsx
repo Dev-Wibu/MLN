@@ -6,7 +6,7 @@ Chỉ trả lời các câu hỏi liên quan đến: Chủ nghĩa Xã hội, tri
 Nếu câu hỏi ngoài phạm vi, lịch sự từ chối và gợi ý câu hỏi phù hợp.
 Giữ câu trả lời dưới 150 từ để tiện đọc trên widget chat.`;
 
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent";
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
 const RATE_LIMIT_MS = 7000;
 
