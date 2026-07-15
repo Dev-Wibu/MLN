@@ -1,471 +1,515 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cơ cấu Xã hội - Giai cấp và Liên minh giai cấp | Modern Socialism</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cơ cấu Xã hội - Giai cấp và Liên minh giai cấp | Modern Socialism</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
-            "colors": {
-                    "on-secondary-fixed-variant": "#544600",
-                    "primary": "#8f000d",
-                    "on-secondary": "#ffffff",
-                    "on-surface-variant": "#5a403e",
-                    "on-tertiary-fixed-variant": "#173bab",
-                    "secondary": "#705d00",
-                    "on-tertiary-fixed": "#001453",
-                    "surface-bright": "#f8f9fa",
-                    "tertiary-container": "#3453c1",
-                    "secondary-container": "#fcd400",
-                    "background": "#f8f9fa",
-                    "error": "#ba1a1a",
-                    "on-secondary-fixed": "#221b00",
-                    "on-primary-fixed": "#410003",
-                    "on-tertiary": "#ffffff",
-                    "outline": "#8e706d",
-                    "on-primary": "#ffffff",
-                    "primary-container": "#b22222",
-                    "tertiary-fixed-dim": "#b8c4ff",
-                    "on-error": "#ffffff",
-                    "surface-container-lowest": "#ffffff",
-                    "inverse-surface": "#2e3132",
-                    "surface-container": "#edeeef",
-                    "surface-container-low": "#f3f4f5",
-                    "inverse-on-surface": "#f0f1f2",
-                    "on-tertiary-container": "#ccd3ff",
-                    "on-error-container": "#93000a",
-                    "outline-variant": "#e2beba",
-                    "surface-variant": "#e1e3e4",
-                    "surface-dim": "#d9dadb",
-                    "error-container": "#ffdad6",
-                    "on-background": "#191c1d",
-                    "surface-container-highest": "#e1e3e4",
-                    "on-primary-container": "#ffc8c2",
-                    "on-surface": "#191c1d",
-                    "inverse-primary": "#ffb4ac",
-                    "surface": "#f8f9fa",
-                    "secondary-fixed-dim": "#e9c400",
-                    "tertiary": "#1439a9",
-                    "surface-tint": "#b52424",
-                    "primary-fixed-dim": "#ffb4ac",
-                    "on-primary-fixed-variant": "#92030f",
-                    "tertiary-fixed": "#dde1ff",
-                    "surface-container-high": "#e7e8e9",
-                    "secondary-fixed": "#ffe16d",
-                    "on-secondary-container": "#6e5c00",
-                    "primary-fixed": "#ffdad6"
+            colors: {
+              "on-secondary-fixed-variant": "#544600",
+              primary: "#8f000d",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#5a403e",
+              "on-tertiary-fixed-variant": "#173bab",
+              secondary: "#705d00",
+              "on-tertiary-fixed": "#001453",
+              "surface-bright": "#f8f9fa",
+              "tertiary-container": "#3453c1",
+              "secondary-container": "#fcd400",
+              background: "#f8f9fa",
+              error: "#ba1a1a",
+              "on-secondary-fixed": "#221b00",
+              "on-primary-fixed": "#410003",
+              "on-tertiary": "#ffffff",
+              outline: "#8e706d",
+              "on-primary": "#ffffff",
+              "primary-container": "#b22222",
+              "tertiary-fixed-dim": "#b8c4ff",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "surface-container": "#edeeef",
+              "surface-container-low": "#f3f4f5",
+              "inverse-on-surface": "#f0f1f2",
+              "on-tertiary-container": "#ccd3ff",
+              "on-error-container": "#93000a",
+              "outline-variant": "#e2beba",
+              "surface-variant": "#e1e3e4",
+              "surface-dim": "#d9dadb",
+              "error-container": "#ffdad6",
+              "on-background": "#191c1d",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-container": "#ffc8c2",
+              "on-surface": "#191c1d",
+              "inverse-primary": "#ffb4ac",
+              surface: "#f8f9fa",
+              "secondary-fixed-dim": "#e9c400",
+              tertiary: "#1439a9",
+              "surface-tint": "#b52424",
+              "primary-fixed-dim": "#ffb4ac",
+              "on-primary-fixed-variant": "#92030f",
+              "tertiary-fixed": "#dde1ff",
+              "surface-container-high": "#e7e8e9",
+              "secondary-fixed": "#ffe16d",
+              "on-secondary-container": "#6e5c00",
+              "primary-fixed": "#ffdad6",
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
             },
-            "spacing": {
-                    "container-max": "1280px",
-                    "stack-lg": "48px",
-                    "stack-md": "24px",
-                    "margin-mobile": "16px",
-                    "gutter": "24px",
-                    "stack-sm": "12px",
-                    "base": "8px",
-                    "margin-desktop": "64px"
+            spacing: {
+              "container-max": "1280px",
+              "stack-lg": "48px",
+              "stack-md": "24px",
+              "margin-mobile": "16px",
+              gutter: "24px",
+              "stack-sm": "12px",
+              base: "8px",
+              "margin-desktop": "64px",
             },
-            "fontFamily": {
-                    "body-lg": ["\"Source Serif 4\""],
-                    "display-lg": ["Montserrat"],
-                    "headline-md": ["Montserrat"],
-                    "body-md": ["\"Source Serif 4\""],
-                    "display-lg-mobile": ["Montserrat"],
-                    "caption": ["Inter"],
-                    "label-uppercase": ["Inter"]
+            fontFamily: {
+              "body-lg": ['"Source Serif 4"'],
+              "display-lg": ["Montserrat"],
+              "headline-md": ["Montserrat"],
+              "body-md": ['"Source Serif 4"'],
+              "display-lg-mobile": ["Montserrat"],
+              caption: ["Inter"],
+              "label-uppercase": ["Inter"],
             },
-            "fontSize": {
-                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
-                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
-                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                    "caption": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
-                    "label-uppercase": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
-            }
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "30px", fontWeight: "400" }],
+              "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+              "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+              "body-md": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+              "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+              caption: ["13px", { lineHeight: "18px", fontWeight: "400" }],
+              "label-uppercase": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+            },
           },
         },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .social-class-card {
-            border-top: 4px solid;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .social-class-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-        }
-        .texture-overlay {
-            background-image: radial-gradient(circle at 2px 2px, rgba(142, 112, 109, 0.1) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
+      .social-class-card {
+        border-top: 4px solid;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .social-class-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+      }
+      .texture-overlay {
+        background-image: radial-gradient(circle at 2px 2px, rgba(142, 112, 109, 0.1) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
     </style>
-</head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
-<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<div class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">
-                Modern Socialism
-            </div>
-<div class="hidden md:flex gap-gutter items-center">
-<a class="text-primary border-b-2 border-primary font-bold pb-1 cursor-pointer transition-colors duration-200" href="#">Concepts</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Characteristics</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Alliances</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Directions</a>
-</div>
-<button class="bg-primary text-on-primary px-6 py-2 font-label-uppercase rounded-lg hover:opacity-90 active:opacity-80 transition-all cursor-pointer">
-                GET STARTED
+  </head>
+  <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
+      <div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">Modern Socialism</div>
+        <div class="hidden md:flex gap-gutter items-center">
+          <a class="text-primary border-b-2 border-primary font-bold pb-1 cursor-pointer transition-colors duration-200" href="#">Concepts</a>
+          <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#"
+            >Characteristics</a
+          >
+          <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Alliances</a>
+          <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200 cursor-pointer" href="#">Directions</a>
+        </div>
+        <button
+          class="bg-primary text-on-primary px-6 py-2 font-label-uppercase rounded-lg hover:opacity-90 active:opacity-80 transition-all cursor-pointer"
+        >
+          GET STARTED
+        </button>
+      </div>
+    </nav>
+    <main class="mt-16">
+      <!-- Hero Section -->
+      <section class="relative py-20 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 z-0"></div>
+        <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+          <span class="font-label-uppercase text-primary tracking-[0.2em] mb-4 block">HỌC THUYẾT CHÍNH TRỊ - XÃ HỘI</span>
+          <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-stack-md max-w-4xl mx-auto">
+            Cơ cấu Xã hội - Giai cấp và Liên minh giai cấp trong thời kỳ quá độ
+          </h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-stack-lg">
+            Phân tích bản chất, vị trí và vai trò của các giai cấp, tầng lớp trong sự nghiệp xây dựng chủ nghĩa xã hội, nền tảng của khối đại đoàn kết
+            toàn dân tộc.
+          </p>
+          <div class="flex flex-col md:flex-row justify-center gap-stack-sm">
+            <button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Khám phá nội dung</button>
+            <button
+              class="border-2 border-secondary text-secondary px-8 py-3 rounded-lg font-bold hover:bg-secondary hover:text-on-secondary transition-all"
+            >
+              Tìm hiểu Liên minh
             </button>
-</div>
-</nav>
-<main class="mt-16">
-<!-- Hero Section -->
-<section class="relative py-20 md:py-32 overflow-hidden">
-<div class="absolute inset-0 z-0">
-
-</div>
-<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
-<span class="font-label-uppercase text-primary tracking-[0.2em] mb-4 block">HỌC THUYẾT CHÍNH TRỊ - XÃ HỘI</span>
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-stack-md max-w-4xl mx-auto">
-                    Cơ cấu Xã hội - Giai cấp và Liên minh giai cấp trong thời kỳ quá độ
-                </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-stack-lg">
-                    Phân tích bản chất, vị trí và vai trò của các giai cấp, tầng lớp trong sự nghiệp xây dựng chủ nghĩa xã hội, nền tảng của khối đại đoàn kết toàn dân tộc.
+          </div>
+        </div>
+      </section>
+      <!-- Concept Section: Bento Grid Components -->
+      <section class="py-stack-lg bg-surface-container-low texture-overlay">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div class="text-center mb-stack-lg">
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Cơ cấu xã hội – giai cấp</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <!-- Worker Class -->
+            <div class="md:col-span-8 social-class-card bg-surface p-stack-md rounded-xl border-primary shadow-sm flex flex-col md:flex-row gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="material-symbols-outlined text-primary text-4xl">construction</span>
+                  <h3 class="font-headline-md text-primary">Giai cấp công nhân</h3>
+                </div>
+                <p class="font-body-md text-on-surface-variant mb-4">
+                  Là lực lượng lãnh đạo thông qua Đảng Cộng sản, đại diện cho phương thức sản xuất tiên tiến, giữ vai trò chủ chốt trong quá trình
+                  công nghiệp hóa và hiện đại hóa đất nước.
                 </p>
-<div class="flex flex-col md:flex-row justify-center gap-stack-sm">
-<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Khám phá nội dung</button>
-<button class="border-2 border-secondary text-secondary px-8 py-3 rounded-lg font-bold hover:bg-secondary hover:text-on-secondary transition-all">Tìm hiểu Liên minh</button>
-</div>
-</div>
-</section>
-<!-- Concept Section: Bento Grid Components -->
-<section class="py-stack-lg bg-surface-container-low texture-overlay">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="text-center mb-stack-lg">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Cơ cấu xã hội – giai cấp</h2>
-<div class="w-24 h-1 bg-primary mx-auto"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Worker Class -->
-<div class="md:col-span-8 social-class-card bg-surface p-stack-md rounded-xl border-primary shadow-sm flex flex-col md:flex-row gap-6">
-<div class="flex-1">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-primary text-4xl">construction</span>
-<h3 class="font-headline-md text-primary">Giai cấp công nhân</h3>
-</div>
-<p class="font-body-md text-on-surface-variant mb-4">
-                                Là lực lượng lãnh đạo thông qua Đảng Cộng sản, đại diện cho phương thức sản xuất tiên tiến, giữ vai trò chủ chốt trong quá trình công nghiệp hóa và hiện đại hóa đất nước.
-                            </p>
-<ul class="space-y-2 text-on-surface">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Tiên phong trong cách mạng</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Ý thức tổ chức kỷ luật cao</li>
-</ul>
-</div>
-<div class="md:w-1/3 min-h-[200px] bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A professional, high-contrast photograph of a modern industrial worker in a clean, high-tech manufacturing environment. The worker is wearing a safety helmet and reflective gear, silhouetted against soft industrial lighting with subtle red and golden accents. The visual style is crisp, authoritative, and minimalist, emphasizing the dignity of modern labor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZQoXlJPokXxWrrzkr25nGwhG8Zznx8Z44sX5OFP6t-jJcBcX7HXhPhBdI-oJbnkjmb2eyVhFCsNpSkTa2L9gyLrDbMPAk2uSS2yk3gYA8c1SG0uvLDhPZGY57mdrIOOaiYXA333mGTeYG7nqdGIaFNKbL2bSimc5JuvmQW2lQCkNmo1KNuq40qOtYebnuPuqaYSZ1lx10YSM1A0o8tjRLzlIhhyH-NT-d24rt5KAXr44RUtLhskLa1SBdZKp5N_HHcC3E2wxfY40"/>
-</div>
-</div>
-<!-- Farmer Class -->
-<div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-secondary shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-secondary text-4xl">agriculture</span>
-<h3 class="font-headline-md text-on-secondary-container">Giai cấp nông dân</h3>
-</div>
-<p class="font-body-md text-on-surface-variant mb-6">
-                            Lực lượng đông đảo nhất, là đồng minh tự nhiên của giai cấp công nhân, đóng vai trò then chốt trong phát triển nông nghiệp và xây dựng nông thôn mới.
-                        </p>
-<div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a lush, golden rice field during harvest season in Vietnam. The morning sunlight casts a warm, golden glow across the landscape, symbolizing agricultural prosperity. The style is serene and high-fidelity, following a minimalist and corporate modern aesthetic with rich natural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3G73-QCBUCbkxaOdQaQc9yHUrCXggEA5WHiGYa0Z1EPeTm05FBCE_Z-ZnQq9CzPpNG7hXeez02T741WlxD3AXSVtZmnUhtSOcPqdCr2lWyVw-rr30J9BaPmlvw6wt-yxX49KTxzwxyUoJtJ5H-JZQRn2Bfkgr9rWy7UCPuI46LJwhA3ZIueHi09YcBSyhd5ey3eHiUq6qSGL5rMahhiVZL1_xvDdtjDAhoJbu04xKGkaFm01ubMtsB24EJo6thAIMnD6rt-PPwuI"/>
-</div>
-</div>
-<!-- Intellectuals -->
-<div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-tertiary shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-tertiary text-4xl">menu_book</span>
-<h3 class="font-headline-md text-on-tertiary-fixed-variant">Tầng lớp trí thức</h3>
-</div>
-<p class="font-body-md text-on-surface-variant mb-6">
-                            Lực lượng nòng cốt trong sáng tạo và truyền bá tri thức, đóng vai trò quyết định trong việc phát triển khoa học - công nghệ và kinh tế tri thức.
-                        </p>
-<div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A clean, minimalist representation of modern science and innovation featuring a sleek laboratory or a high-tech library setting. Soft, diffused lighting illuminates scientific instruments and books, with a color palette of white, deep blue, and silver. The mood is intellectual and progressive, aligned with an academic social science theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2mfpiPFkInlSFj7mkSTnUdVl7o7JiNyg4aTCAb369p0I1N8V5Lc_2IvcQbq51arOXl4PTdaD7AXq3ySwYrZJmijeQnO2t0mcwCvMKIJ2V6F3gGkJRPo1IHCn2hvjrZ4gMBO361VcOGTnxZwk-4CQvus0gR2hw1u3oq8-PxXv4KshNKJcPgmCgEy7jjGLMholzRTcGXXztSjjgc-LnM0aBJ5FJNQ9ow34RdA8k70arccSHBpwNTVpffkw71c0MG_xWrpuzEp45l0"/>
-</div>
-</div>
-<!-- Entrepreneurs -->
-<div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-primary shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-primary text-4xl">business_center</span>
-<h3 class="font-headline-md text-primary">Tầng lớp doanh nhân</h3>
-</div>
-<p class="font-body-md text-on-surface-variant mb-6">
-                            Lực lượng tổ chức sản xuất, kinh doanh, đóng góp quan trọng vào tăng trưởng kinh tế và giải quyết việc làm trong nền kinh tế thị trường.
-                        </p>
-<div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A professional aerial view of a modern business district with sleek glass buildings reflecting a clear sky. The image emphasizes structural clarity and economic growth, using a corporate modern aesthetic with high contrast and sharp lines. The lighting is bright and optimistic, showcasing institutional progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89QL65ogcMsaKfGTYouI6NEgqA7JDhfv6gCJ6-pd1UxJ0wewhLrphQrmzE3nyxFnk23jmChH-LHHXXSoDbfzeQQSk2nYMgnLCKjTW-RzPHXkeqO4tbtNuMEO1UaFCKWl9XU2cMGThHKq2sdR3UrzgeBFbFH0VLBcC4li0M99n6NHyOqJ4Ixh8bLgpuxyXg5qjfUTblctgHkCQLdiZGN0-HUrjvgYZUrUKWJ03QGRwn-D4MHmdUOdRBLxcotklKTxCLyUWW_WC3EI"/>
-</div>
-</div>
-<!-- Youth/Women Layer -->
-<div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-outline shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-outline text-4xl">groups</span>
-<h3 class="font-headline-md text-on-surface">Các tầng lớp khác</h3>
-</div>
-<p class="font-body-md text-on-surface-variant mb-6">
-                            Thanh niên, phụ nữ, các cựu chiến binh... là những bộ phận cấu thành quan trọng, đóng góp đa dạng vào sự ổn định và phát triển xã hội.
-                        </p>
-<div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A diverse group of energetic young professionals and community leaders engaged in a collaborative discussion in a modern, open-plan community space. The lighting is warm and inclusive, with a focus on human interaction and solidarity. The visual style is clean, corporate, and focuses on social cohesion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIuJiKPQfYy17R2Y5pKvlgdD4KD6xGwVK0zaMDQespnRkl1eue3qE8IS_g6CBKAZ7NUxrHO-1oy9ChojYaxqRvt07TD6UM2vXrJhGGF5qSkzp6bTwppBJOu5qJt53c1nbW_sxWy2HnwtYS3WxAcsv-dYVvN8jK4Xq6oGZfglr0YMfaH1DPIG-0WS5dFVF9rxa9RaBf4qixgRcH8OUC-WDANX6OgAa5MAqocJW-EHHrFDCCvFBtMCWo2fXQTk5S_685c9W5odm6iJs"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Characteristics & Significance -->
-<section class="py-stack-lg">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
-<!-- Characteristics -->
-<div>
-<h3 class="font-headline-md text-headline-md text-primary border-l-4 border-primary pl-4 mb-stack-md">Đặc điểm nổi bật</h3>
-<div class="space-y-gutter">
-<div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
-<span class="font-display-lg text-primary opacity-20">01</span>
-<div>
-<h4 class="font-bold text-on-surface mb-1">Tính đa dạng</h4>
-<p class="text-on-surface-variant text-sm">Tồn tại nhiều giai cấp, tầng lớp khác nhau trong quá trình chuyển đổi sang CNXH.</p>
-</div>
-</div>
-<div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
-<span class="font-display-lg text-primary opacity-20">02</span>
-<div>
-<h4 class="font-bold text-on-surface mb-1">Biến đổi không ngừng</h4>
-<p class="text-on-surface-variant text-sm">Các giai cấp luôn vận động, thay đổi cơ cấu để thích nghi với sự phát triển của sản xuất.</p>
-</div>
-</div>
-<div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
-<span class="font-display-lg text-primary opacity-20">03</span>
-<div>
-<h4 class="font-bold text-on-surface mb-1">Tính hợp tác &amp; Liên minh</h4>
-<p class="text-on-surface-variant text-sm">Mối quan hệ chủ đạo là sự đoàn kết, giúp đỡ lẫn nhau vì mục tiêu chung.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Significance -->
-<div class="bg-primary-container p-stack-md rounded-2xl text-on-primary">
-<h3 class="font-headline-md text-headline-md mb-stack-md">Ý nghĩa chiến lược</h3>
-<div class="space-y-stack-md">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary-container">diversity_3</span>
-<div>
-<h4 class="font-bold">Đại đoàn kết toàn dân tộc</h4>
-<p class="text-on-primary-container text-sm">Cơ sở vững chắc để tập hợp mọi nguồn lực xã hội cho sự nghiệp cách mạng.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary-container">trending_up</span>
-<div>
-<h4 class="font-bold">Phát triển kinh tế &amp; Công bằng</h4>
-<p class="text-on-primary-container text-sm">Gắn kết phát triển kinh tế với thực hiện tiến bộ và công bằng xã hội.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary-container">account_balance</span>
-<div>
-<h4 class="font-bold">Xây dựng thành công CNXH</h4>
-<p class="text-on-primary-container text-sm">Đảm bảo vai trò lãnh đạo và sự đồng thuận cao trong toàn xã hội.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section III: Alliance in Vietnam -->
-<section class="py-stack-lg bg-surface-container overflow-hidden">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
-<div class="text-center mb-stack-lg">
-<h2 class="font-headline-md text-headline-md text-on-surface">Liên minh Giai cấp tại Việt Nam</h2>
-<p class="text-on-surface-variant font-body-md">Nền tảng của hệ thống chính trị và sự phát triển toàn diện</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Economic Alliance -->
-<div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
-<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-<span class="material-symbols-outlined text-[120px]">payments</span>
-</div>
-<div class="relative z-10">
-<h4 class="font-label-uppercase text-primary mb-4">Nội dung Kinh tế</h4>
-<ul class="space-y-4 font-body-md text-on-surface">
-<li class="flex gap-2">
-<span class="text-primary font-bold">•</span>
-<span>Xác lập quan hệ sản xuất tiến bộ, phù hợp.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-primary font-bold">•</span>
-<span>Phát huy vai trò kiến tạo của Nhà nước.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-primary font-bold">•</span>
-<span>Gắn kết lợi ích giữa các chủ thể kinh tế.</span>
-</li>
-</ul>
-</div>
-</div>
-<!-- Political Alliance -->
-<div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
-<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-<span class="material-symbols-outlined text-[120px]">policy</span>
-</div>
-<div class="relative z-10">
-<h4 class="font-label-uppercase text-secondary mb-4">Nội dung Chính trị</h4>
-<ul class="space-y-4 font-body-md text-on-surface">
-<li class="flex gap-2">
-<span class="text-secondary font-bold">•</span>
-<span>Tăng cường sự lãnh đạo của Đảng Cộng sản.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-secondary font-bold">•</span>
-<span>Phát huy quyền làm chủ của nhân dân.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-secondary font-bold">•</span>
-<span>Củng cố khối đại đoàn kết toàn dân.</span>
-</li>
-</ul>
-</div>
-</div>
-<!-- Cultural/Ideological Alliance -->
-<div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
-<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-<span class="material-symbols-outlined text-[120px]">theater_comedy</span>
-</div>
-<div class="relative z-10">
-<h4 class="font-label-uppercase text-tertiary mb-4">Văn hóa - Tư tưởng</h4>
-<ul class="space-y-4 font-body-md text-on-surface">
-<li class="flex gap-2">
-<span class="text-tertiary font-bold">•</span>
-<span>Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-tertiary font-bold">•</span>
-<span>Phát triển con người toàn diện.</span>
-</li>
-<li class="flex gap-2">
-<span class="text-tertiary font-bold">•</span>
-<span>Nâng cao chất lượng đời sống tinh thần.</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 5 Basic Directions -->
-<section class="py-stack-lg">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="flex flex-col md:flex-row items-end justify-between mb-stack-lg gap-4">
-<div class="max-w-xl">
-<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">5 Phương hướng cơ bản</h2>
-<p class="text-on-surface-variant mt-2">Định hướng chiến lược nhằm củng cố cơ cấu giai cấp và liên minh trong giai đoạn mới.</p>
-</div>
-<div class="hidden md:block w-32 h-px bg-outline-variant mb-6"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-5 gap-stack-sm">
-<!-- Direction 1 -->
-<div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl">precision_manufacturing</span>
-<h5 class="font-bold text-sm mb-2">CÔNG NGHIỆP HÓA</h5>
-<p class="text-caption text-on-surface-variant">Đẩy mạnh hiện đại hóa gắn với kinh tế tri thức.</p>
-</div>
-<!-- Direction 2 -->
-<div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl">volunteer_activism</span>
-<h5 class="font-bold text-sm mb-2">CHÍNH SÁCH XÃ HỘI</h5>
-<p class="text-caption text-on-surface-variant">Thực hiện hiệu quả các chính sách an sinh, phúc lợi.</p>
-</div>
-<!-- Direction 3 -->
-<div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl">handshake</span>
-<h5 class="font-bold text-sm mb-2">SỰ ĐỒNG THUẬN</h5>
-<p class="text-caption text-on-surface-variant">Tạo lập sự nhất trí cao trong toàn thể nhân dân.</p>
-</div>
-<!-- Direction 4 -->
-<div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl">terminal</span>
-<h5 class="font-bold text-sm mb-2">THỂ CHẾ &amp; CÔNG NGHỆ</h5>
-<p class="text-caption text-on-surface-variant">Hoàn thiện kinh tế thị trường và ứng dụng Tech.</p>
-</div>
-<!-- Direction 5 -->
-<div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
-<span class="material-symbols-outlined text-primary mb-4 text-3xl">refresh</span>
-<h5 class="font-bold text-sm mb-2">ĐỔI MỚI HỆ THỐNG</h5>
-<p class="text-caption text-on-surface-variant">Đổi mới hoạt động Đảng, Nhà nước và Mặt trận.</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-surface-container-highest w-full mt-stack-lg">
-<div class="flex flex-col md:flex-row justify-between items-center py-stack-md px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
-<div class="font-headline-md text-headline-md text-on-surface mb-stack-sm md:mb-0">
-                Modern Socialism
+                <ul class="space-y-2 text-on-surface">
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-sm">check_circle</span> Tiên phong trong cách mạng
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-sm">check_circle</span> Ý thức tổ chức kỷ luật cao
+                  </li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 min-h-[200px] bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A professional, high-contrast photograph of a modern industrial worker in a clean, high-tech manufacturing environment. The worker is wearing a safety helmet and reflective gear, silhouetted against soft industrial lighting with subtle red and golden accents. The visual style is crisp, authoritative, and minimalist, emphasizing the dignity of modern labor."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZQoXlJPokXxWrrzkr25nGwhG8Zznx8Z44sX5OFP6t-jJcBcX7HXhPhBdI-oJbnkjmb2eyVhFCsNpSkTa2L9gyLrDbMPAk2uSS2yk3gYA8c1SG0uvLDhPZGY57mdrIOOaiYXA333mGTeYG7nqdGIaFNKbL2bSimc5JuvmQW2lQCkNmo1KNuq40qOtYebnuPuqaYSZ1lx10YSM1A0o8tjRLzlIhhyH-NT-d24rt5KAXr44RUtLhskLa1SBdZKp5N_HHcC3E2wxfY40"
+                />
+              </div>
             </div>
-<div class="flex flex-wrap justify-center gap-stack-md mb-stack-sm md:mb-0">
-<a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Sources</a>
-<a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Contact Us</a>
-<a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Archive</a>
-</div>
-<div class="text-body-md text-on-surface-variant text-center md:text-right">
-                © 2024 Institute for Social Science. All rights reserved.
+            <!-- Farmer Class -->
+            <div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-secondary shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-secondary text-4xl">agriculture</span>
+                <h3 class="font-headline-md text-on-secondary-container">Giai cấp nông dân</h3>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-6">
+                Lực lượng đông đảo nhất, là đồng minh tự nhiên của giai cấp công nhân, đóng vai trò then chốt trong phát triển nông nghiệp và xây dựng
+                nông thôn mới.
+              </p>
+              <div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A cinematic, wide-angle shot of a lush, golden rice field during harvest season in Vietnam. The morning sunlight casts a warm, golden glow across the landscape, symbolizing agricultural prosperity. The style is serene and high-fidelity, following a minimalist and corporate modern aesthetic with rich natural tones."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3G73-QCBUCbkxaOdQaQc9yHUrCXggEA5WHiGYa0Z1EPeTm05FBCE_Z-ZnQq9CzPpNG7hXeez02T741WlxD3AXSVtZmnUhtSOcPqdCr2lWyVw-rr30J9BaPmlvw6wt-yxX49KTxzwxyUoJtJ5H-JZQRn2Bfkgr9rWy7UCPuI46LJwhA3ZIueHi09YcBSyhd5ey3eHiUq6qSGL5rMahhiVZL1_xvDdtjDAhoJbu04xKGkaFm01ubMtsB24EJo6thAIMnD6rt-PPwuI"
+                />
+              </div>
             </div>
-</div>
-</footer>
-<!-- Interactive Micro-Interactions Script -->
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.social-class-card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    // Light atmospheric focus effect could go here
-                });
-            });
+            <!-- Intellectuals -->
+            <div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-tertiary shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-tertiary text-4xl">menu_book</span>
+                <h3 class="font-headline-md text-on-tertiary-fixed-variant">Tầng lớp trí thức</h3>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-6">
+                Lực lượng nòng cốt trong sáng tạo và truyền bá tri thức, đóng vai trò quyết định trong việc phát triển khoa học - công nghệ và kinh tế
+                tri thức.
+              </p>
+              <div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A clean, minimalist representation of modern science and innovation featuring a sleek laboratory or a high-tech library setting. Soft, diffused lighting illuminates scientific instruments and books, with a color palette of white, deep blue, and silver. The mood is intellectual and progressive, aligned with an academic social science theme."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2mfpiPFkInlSFj7mkSTnUdVl7o7JiNyg4aTCAb369p0I1N8V5Lc_2IvcQbq51arOXl4PTdaD7AXq3ySwYrZJmijeQnO2t0mcwCvMKIJ2V6F3gGkJRPo1IHCn2hvjrZ4gMBO361VcOGTnxZwk-4CQvus0gR2hw1u3oq8-PxXv4KshNKJcPgmCgEy7jjGLMholzRTcGXXztSjjgc-LnM0aBJ5FJNQ9ow34RdA8k70arccSHBpwNTVpffkw71c0MG_xWrpuzEp45l0"
+                />
+              </div>
+            </div>
+            <!-- Entrepreneurs -->
+            <div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-primary shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-primary text-4xl">business_center</span>
+                <h3 class="font-headline-md text-primary">Tầng lớp doanh nhân</h3>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-6">
+                Lực lượng tổ chức sản xuất, kinh doanh, đóng góp quan trọng vào tăng trưởng kinh tế và giải quyết việc làm trong nền kinh tế thị
+                trường.
+              </p>
+              <div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A professional aerial view of a modern business district with sleek glass buildings reflecting a clear sky. The image emphasizes structural clarity and economic growth, using a corporate modern aesthetic with high contrast and sharp lines. The lighting is bright and optimistic, showcasing institutional progress."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89QL65ogcMsaKfGTYouI6NEgqA7JDhfv6gCJ6-pd1UxJ0wewhLrphQrmzE3nyxFnk23jmChH-LHHXXSoDbfzeQQSk2nYMgnLCKjTW-RzPHXkeqO4tbtNuMEO1UaFCKWl9XU2cMGThHKq2sdR3UrzgeBFbFH0VLBcC4li0M99n6NHyOqJ4Ixh8bLgpuxyXg5qjfUTblctgHkCQLdiZGN0-HUrjvgYZUrUKWJ03QGRwn-D4MHmdUOdRBLxcotklKTxCLyUWW_WC3EI"
+                />
+              </div>
+            </div>
+            <!-- Youth/Women Layer -->
+            <div class="md:col-span-4 social-class-card bg-surface p-stack-md rounded-xl border-outline shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-outline text-4xl">groups</span>
+                <h3 class="font-headline-md text-on-surface">Các tầng lớp khác</h3>
+              </div>
+              <p class="font-body-md text-on-surface-variant mb-6">
+                Thanh niên, phụ nữ, các cựu chiến binh... là những bộ phận cấu thành quan trọng, đóng góp đa dạng vào sự ổn định và phát triển xã hội.
+              </p>
+              <div class="h-32 bg-surface-variant rounded-lg overflow-hidden border border-outline-variant">
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="A diverse group of energetic young professionals and community leaders engaged in a collaborative discussion in a modern, open-plan community space. The lighting is warm and inclusive, with a focus on human interaction and solidarity. The visual style is clean, corporate, and focuses on social cohesion."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIuJiKPQfYy17R2Y5pKvlgdD4KD6xGwVK0zaMDQespnRkl1eue3qE8IS_g6CBKAZ7NUxrHO-1oy9ChojYaxqRvt07TD6UM2vXrJhGGF5qSkzp6bTwppBJOu5qJt53c1nbW_sxWy2HnwtYS3WxAcsv-dYVvN8jK4Xq6oGZfglr0YMfaH1DPIG-0WS5dFVF9rxa9RaBf4qixgRcH8OUC-WDANX6OgAa5MAqocJW-EHHrFDCCvFBtMCWo2fXQTk5S_685c9W5odm6iJs"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Characteristics & Significance -->
+      <section class="py-stack-lg">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
+            <!-- Characteristics -->
+            <div>
+              <h3 class="font-headline-md text-headline-md text-primary border-l-4 border-primary pl-4 mb-stack-md">Đặc điểm nổi bật</h3>
+              <div class="space-y-gutter">
+                <div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
+                  <span class="font-display-lg text-primary opacity-20">01</span>
+                  <div>
+                    <h4 class="font-bold text-on-surface mb-1">Tính đa dạng</h4>
+                    <p class="text-on-surface-variant text-sm">Tồn tại nhiều giai cấp, tầng lớp khác nhau trong quá trình chuyển đổi sang CNXH.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
+                  <span class="font-display-lg text-primary opacity-20">02</span>
+                  <div>
+                    <h4 class="font-bold text-on-surface mb-1">Biến đổi không ngừng</h4>
+                    <p class="text-on-surface-variant text-sm">
+                      Các giai cấp luôn vận động, thay đổi cơ cấu để thích nghi với sự phát triển của sản xuất.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-4 p-stack-sm bg-surface-container-highest rounded-lg">
+                  <span class="font-display-lg text-primary opacity-20">03</span>
+                  <div>
+                    <h4 class="font-bold text-on-surface mb-1">Tính hợp tác &amp; Liên minh</h4>
+                    <p class="text-on-surface-variant text-sm">Mối quan hệ chủ đạo là sự đoàn kết, giúp đỡ lẫn nhau vì mục tiêu chung.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Significance -->
+            <div class="bg-primary-container p-stack-md rounded-2xl text-on-primary">
+              <h3 class="font-headline-md text-headline-md mb-stack-md">Ý nghĩa chiến lược</h3>
+              <div class="space-y-stack-md">
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-secondary-container">diversity_3</span>
+                  <div>
+                    <h4 class="font-bold">Đại đoàn kết toàn dân tộc</h4>
+                    <p class="text-on-primary-container text-sm">Cơ sở vững chắc để tập hợp mọi nguồn lực xã hội cho sự nghiệp cách mạng.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-secondary-container">trending_up</span>
+                  <div>
+                    <h4 class="font-bold">Phát triển kinh tế &amp; Công bằng</h4>
+                    <p class="text-on-primary-container text-sm">Gắn kết phát triển kinh tế với thực hiện tiến bộ và công bằng xã hội.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-secondary-container">account_balance</span>
+                  <div>
+                    <h4 class="font-bold">Xây dựng thành công CNXH</h4>
+                    <p class="text-on-primary-container text-sm">Đảm bảo vai trò lãnh đạo và sự đồng thuận cao trong toàn xã hội.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section III: Alliance in Vietnam -->
+      <section class="py-stack-lg bg-surface-container overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
+          <div class="text-center mb-stack-lg">
+            <h2 class="font-headline-md text-headline-md text-on-surface">Liên minh Giai cấp tại Việt Nam</h2>
+            <p class="text-on-surface-variant font-body-md">Nền tảng của hệ thống chính trị và sự phát triển toàn diện</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Economic Alliance -->
+            <div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
+              <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span class="material-symbols-outlined text-[120px]">payments</span>
+              </div>
+              <div class="relative z-10">
+                <h4 class="font-label-uppercase text-primary mb-4">Nội dung Kinh tế</h4>
+                <ul class="space-y-4 font-body-md text-on-surface">
+                  <li class="flex gap-2">
+                    <span class="text-primary font-bold">•</span>
+                    <span>Xác lập quan hệ sản xuất tiến bộ, phù hợp.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-primary font-bold">•</span>
+                    <span>Phát huy vai trò kiến tạo của Nhà nước.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-primary font-bold">•</span>
+                    <span>Gắn kết lợi ích giữa các chủ thể kinh tế.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Political Alliance -->
+            <div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
+              <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span class="material-symbols-outlined text-[120px]">policy</span>
+              </div>
+              <div class="relative z-10">
+                <h4 class="font-label-uppercase text-secondary mb-4">Nội dung Chính trị</h4>
+                <ul class="space-y-4 font-body-md text-on-surface">
+                  <li class="flex gap-2">
+                    <span class="text-secondary font-bold">•</span>
+                    <span>Tăng cường sự lãnh đạo của Đảng Cộng sản.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-secondary font-bold">•</span>
+                    <span>Phát huy quyền làm chủ của nhân dân.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-secondary font-bold">•</span>
+                    <span>Củng cố khối đại đoàn kết toàn dân.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Cultural/Ideological Alliance -->
+            <div class="relative bg-surface p-stack-md rounded-xl shadow-sm overflow-hidden group">
+              <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                <span class="material-symbols-outlined text-[120px]">theater_comedy</span>
+              </div>
+              <div class="relative z-10">
+                <h4 class="font-label-uppercase text-tertiary mb-4">Văn hóa - Tư tưởng</h4>
+                <ul class="space-y-4 font-body-md text-on-surface">
+                  <li class="flex gap-2">
+                    <span class="text-tertiary font-bold">•</span>
+                    <span>Xây dựng nền văn hóa tiên tiến, đậm đà bản sắc.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-tertiary font-bold">•</span>
+                    <span>Phát triển con người toàn diện.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="text-tertiary font-bold">•</span>
+                    <span>Nâng cao chất lượng đời sống tinh thần.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 5 Basic Directions -->
+      <section class="py-stack-lg">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div class="flex flex-col md:flex-row items-end justify-between mb-stack-lg gap-4">
+            <div class="max-w-xl">
+              <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">5 Phương hướng cơ bản</h2>
+              <p class="text-on-surface-variant mt-2">Định hướng chiến lược nhằm củng cố cơ cấu giai cấp và liên minh trong giai đoạn mới.</p>
+            </div>
+            <div class="hidden md:block w-32 h-px bg-outline-variant mb-6"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-stack-sm">
+            <!-- Direction 1 -->
+            <div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
+              <span class="material-symbols-outlined text-primary mb-4 text-3xl">precision_manufacturing</span>
+              <h5 class="font-bold text-sm mb-2">CÔNG NGHIỆP HÓA</h5>
+              <p class="text-caption text-on-surface-variant">Đẩy mạnh hiện đại hóa gắn với kinh tế tri thức.</p>
+            </div>
+            <!-- Direction 2 -->
+            <div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
+              <span class="material-symbols-outlined text-primary mb-4 text-3xl">volunteer_activism</span>
+              <h5 class="font-bold text-sm mb-2">CHÍNH SÁCH XÃ HỘI</h5>
+              <p class="text-caption text-on-surface-variant">Thực hiện hiệu quả các chính sách an sinh, phúc lợi.</p>
+            </div>
+            <!-- Direction 3 -->
+            <div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
+              <span class="material-symbols-outlined text-primary mb-4 text-3xl">handshake</span>
+              <h5 class="font-bold text-sm mb-2">SỰ ĐỒNG THUẬN</h5>
+              <p class="text-caption text-on-surface-variant">Tạo lập sự nhất trí cao trong toàn thể nhân dân.</p>
+            </div>
+            <!-- Direction 4 -->
+            <div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
+              <span class="material-symbols-outlined text-primary mb-4 text-3xl">terminal</span>
+              <h5 class="font-bold text-sm mb-2">THỂ CHẾ &amp; CÔNG NGHỆ</h5>
+              <p class="text-caption text-on-surface-variant">Hoàn thiện kinh tế thị trường và ứng dụng Tech.</p>
+            </div>
+            <!-- Direction 5 -->
+            <div class="p-stack-md border border-outline-variant hover:border-primary transition-colors flex flex-col items-center text-center">
+              <span class="material-symbols-outlined text-primary mb-4 text-3xl">refresh</span>
+              <h5 class="font-bold text-sm mb-2">ĐỔI MỚI HỆ THỐNG</h5>
+              <p class="text-caption text-on-surface-variant">Đổi mới hoạt động Đảng, Nhà nước và Mặt trận.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest w-full mt-stack-lg">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center py-stack-md px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto"
+      >
+        <div class="font-headline-md text-headline-md text-on-surface mb-stack-sm md:mb-0">Modern Socialism</div>
+        <div class="flex flex-wrap justify-center gap-stack-md mb-stack-sm md:mb-0">
+          <a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Privacy Policy</a>
+          <a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Sources</a>
+          <a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Contact Us</a>
+          <a class="text-on-surface-variant hover:underline decoration-primary transition-all duration-300" href="#">Archive</a>
+        </div>
+        <div class="text-body-md text-on-surface-variant text-center md:text-right">© 2026 Institute for Social Science. All rights reserved.</div>
+      </div>
+    </footer>
+    <!-- Interactive Micro-Interactions Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".social-class-card");
 
-            // Smooth scroll logic for navigation
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.innerText.toLowerCase();
-                    // Just a visual cue since sections don't have IDs in this simplified demo
-                    this.parentElement.querySelectorAll('a').forEach(a => {
-                        a.classList.remove('text-primary', 'border-b-2', 'border-primary', 'font-bold', 'pb-1');
-                        a.classList.add('text-on-surface-variant', 'font-body-md');
-                    });
-                    this.classList.remove('text-on-surface-variant', 'font-body-md');
-                    this.classList.add('text-primary', 'border-b-2', 'border-primary', 'font-bold', 'pb-1');
-                });
-            });
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            // Light atmospheric focus effect could go here
+          });
         });
+
+        // Smooth scroll logic for navigation
+        document.querySelectorAll("nav a").forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.innerText.toLowerCase();
+            // Just a visual cue since sections don't have IDs in this simplified demo
+            this.parentElement.querySelectorAll("a").forEach((a) => {
+              a.classList.remove("text-primary", "border-b-2", "border-primary", "font-bold", "pb-1");
+              a.classList.add("text-on-surface-variant", "font-body-md");
+            });
+            this.classList.remove("text-on-surface-variant", "font-body-md");
+            this.classList.add("text-primary", "border-b-2", "border-primary", "font-bold", "pb-1");
+          });
+        });
+      });
     </script>
-</body></html>
+  </body>
+</html>
