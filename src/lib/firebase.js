@@ -1,4 +1,4 @@
-const FIREBASE_DB_URL = "https://taukhongso-leaderboard-default-rtdb.asia-southeast1.firebasedatabase.app";
+const FIREBASE_DB_URL = import.meta.env.VITE_FIREBASE_DB_URL || "https://mln3-f83fd-default-rtdb.asia-southeast1.firebasedatabase.app";
 const TABLE_NAME = "mln_leaderboard";
 
 export const getLeaderboard = async () => {
